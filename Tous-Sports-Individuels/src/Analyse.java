@@ -12,13 +12,14 @@ import javax.swing.JLabel;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextPane;
+import javax.swing.JTextArea;
+import java.awt.Font;
+import java.awt.Color;
 
 public class Analyse {
 
 	private JFrame frmPageAnalyse;
-	private JTextField txtAnalyseDeVos;
-	private JTextField txtChoixDuSport;
-	private JTextField txtChoixDunAmis;
 
 	/**
 	 * Launch the application.
@@ -80,27 +81,36 @@ public class Analyse {
 		btnValider.setBounds(554, 411, 159, 29);
 		frmPageAnalyse.getContentPane().add(btnValider);
 		
-		txtAnalyseDeVos = new JTextField();
-		txtAnalyseDeVos.setText("Analyse de vos statistiques");
-		txtAnalyseDeVos.setBounds(26, 16, 291, 44);
-		frmPageAnalyse.getContentPane().add(txtAnalyseDeVos);
-		txtAnalyseDeVos.setColumns(10);
-		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setToolTipText("");
 		comboBox.setBounds(499, 246, 159, 26);
 		frmPageAnalyse.getContentPane().add(comboBox);
 		
-		txtChoixDuSport = new JTextField();
-		txtChoixDuSport.setText("Choix du sport \u00E0 analyser");
-		txtChoixDuSport.setColumns(10);
-		txtChoixDuSport.setBounds(499, 33, 208, 37);
-		frmPageAnalyse.getContentPane().add(txtChoixDuSport);
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
+		panel_1.setBounds(26, 16, 423, 42);
+		frmPageAnalyse.getContentPane().add(panel_1);
 		
-		txtChoixDunAmis = new JTextField();
-		txtChoixDunAmis.setText("Choix d'un amis pour comparaison");
-		txtChoixDunAmis.setColumns(10);
-		txtChoixDunAmis.setBounds(499, 203, 255, 37);
-		frmPageAnalyse.getContentPane().add(txtChoixDunAmis);
+		JLabel lblAnalyseDeVos = new JLabel("Analyse de vos statistiques");
+		lblAnalyseDeVos.setFont(new Font("Tahoma", Font.BOLD, 19));
+		panel_1.add(lblAnalyseDeVos);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.WHITE);
+		panel_2.setBounds(499, 23, 233, 37);
+		frmPageAnalyse.getContentPane().add(panel_2);
+		
+		JLabel lblChoixDuSport = new JLabel("Choix du sport \u00E0 analyser");
+		lblChoixDuSport.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_2.add(lblChoixDuSport);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(Color.WHITE);
+		panel_3.setBounds(499, 204, 255, 37);
+		frmPageAnalyse.getContentPane().add(panel_3);
+		
+		JLabel lblChoixDunAmi = new JLabel("Choix d'un ami pour comparaison");
+		lblChoixDunAmi.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_3.add(lblChoixDunAmi);
 	}
 }

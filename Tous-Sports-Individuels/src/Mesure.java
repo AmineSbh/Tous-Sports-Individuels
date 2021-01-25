@@ -9,12 +9,13 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.Font;
 
 public class Mesure {
 
 	private JFrame frmPageAnalyse;
-	private JTextField txtAnalyseDeVos;
-	private JTextField txtChoixDuSport;
 
 
 	/**
@@ -64,18 +65,6 @@ public class Mesure {
 		btnValider.setBounds(554, 411, 159, 29);
 		frmPageAnalyse.getContentPane().add(btnValider);
 		
-		txtAnalyseDeVos = new JTextField();
-		txtAnalyseDeVos.setText("Ici, pourrez entrer vos donn\u00E9es concernant le sport souhait\u00E9.");
-		txtAnalyseDeVos.setBounds(26, 16, 441, 44);
-		frmPageAnalyse.getContentPane().add(txtAnalyseDeVos);
-		txtAnalyseDeVos.setColumns(10);
-		
-		txtChoixDuSport = new JTextField();
-		txtChoixDuSport.setText("Choisissez votre sport");
-		txtChoixDuSport.setColumns(10);
-		txtChoixDuSport.setBounds(26, 111, 208, 37);
-		frmPageAnalyse.getContentPane().add(txtChoixDuSport);
-		
 		TextField textPrenom = new TextField();
 		textPrenom.setBounds(256, 164, 140, 27);
 		frmPageAnalyse.getContentPane().add(textPrenom);
@@ -99,5 +88,23 @@ public class Mesure {
 		JLabel label_1 = new JLabel("Entrer vos valeurs");
 		label_1.setBounds(402, 340, 140, 20);
 		frmPageAnalyse.getContentPane().add(label_1);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel.setBounds(26, 28, 641, 42);
+		frmPageAnalyse.getContentPane().add(panel);
+		
+		JLabel lblIciPourrezEntrer = new JLabel("Ici, pourrez entrer vos donn\u00E9es concernant le sport souhait\u00E9.");
+		lblIciPourrezEntrer.setFont(new Font("Tahoma", Font.BOLD, 19));
+		panel.add(lblIciPourrezEntrer);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
+		panel_1.setBounds(26, 111, 193, 37);
+		frmPageAnalyse.getContentPane().add(panel_1);
+		
+		JLabel lblChoisissezVotreSport = new JLabel("Choisissez votre sport");
+		lblChoisissezVotreSport.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_1.add(lblChoisissezVotreSport);
 	}
 }
