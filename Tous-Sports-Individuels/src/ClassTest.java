@@ -2,7 +2,7 @@
 public class ClassTest {
 
 	public static void main(String[] args) {
-		System.out.println("eeeeeeej");
+		System.out.println("eeeeee");
 
 	}
 
