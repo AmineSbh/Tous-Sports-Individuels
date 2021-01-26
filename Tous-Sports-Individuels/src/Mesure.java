@@ -62,7 +62,7 @@ public class Mesure {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnValider.setBounds(554, 411, 159, 29);
+		btnValider.setBounds(256, 401, 159, 29);
 		frmPageAnalyse.getContentPane().add(btnValider);
 		
 		TextField textPrenom = new TextField();
@@ -106,5 +106,10 @@ public class Mesure {
 		JLabel lblChoisissezVotreSport = new JLabel("Choisissez votre sport");
 		lblChoisissezVotreSport.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_1.add(lblChoisissezVotreSport);
+		
+		JButton btnRetour_Menu = new JButton("Retour au menu principal");
+		btnRetour_Menu.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnRetour_Menu.setBounds(570, 398, 161, 38);
+		frmPageAnalyse.getContentPane().add(btnRetour_Menu);
 	}
 }

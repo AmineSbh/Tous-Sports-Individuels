@@ -50,7 +50,7 @@ public class Analyse {
 	private void initialize() {
 		frmPageAnalyse = new JFrame();
 		frmPageAnalyse.setTitle("Page Analyse");
-		frmPageAnalyse.setBounds(100, 100, 791, 522);
+		frmPageAnalyse.setBounds(100, 100, 791, 585);
 		frmPageAnalyse.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPageAnalyse.getContentPane().setLayout(null);
 		
@@ -61,7 +61,7 @@ public class Analyse {
 		frmPageAnalyse.getContentPane().add(comboBox_1);
 		
 		Panel panel = new Panel();
-		panel.setBounds(26, 76, 447, 364);
+		panel.setBounds(26, 76, 447, 443);
 		frmPageAnalyse.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -70,7 +70,7 @@ public class Analyse {
 		panel.add(lblMoyenneParJour);
 		
 		JLabel label = new JLabel("Moyenne \r\n/ jour");
-		label.setBounds(330, 147, 122, 37);
+		label.setBounds(330, 161, 122, 37);
 		panel.add(label);
 		
 		JButton btnValider = new JButton("Valider");
@@ -78,7 +78,7 @@ public class Analyse {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnValider.setBounds(554, 411, 159, 29);
+		btnValider.setBounds(499, 387, 159, 29);
 		frmPageAnalyse.getContentPane().add(btnValider);
 		
 		JComboBox comboBox = new JComboBox();
@@ -112,5 +112,10 @@ public class Analyse {
 		JLabel lblChoixDunAmi = new JLabel("Choix d'un ami pour comparaison");
 		lblChoixDunAmi.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_3.add(lblChoixDunAmi);
+		
+		JButton btnRetour_Menu = new JButton("Retour au menu principal");
+		btnRetour_Menu.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnRetour_Menu.setBounds(593, 461, 161, 38);
+		frmPageAnalyse.getContentPane().add(btnRetour_Menu);
 	}
 }
