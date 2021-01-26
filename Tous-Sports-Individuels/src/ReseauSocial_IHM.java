@@ -11,6 +11,8 @@ import javax.swing.JComboBox;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ReseauSocial_IHM extends JFrame {
 
@@ -114,6 +116,13 @@ public class ReseauSocial_IHM extends JFrame {
 		contentPane.add(btnAccepter);
 		
 		JButton btnRetour_Menu = new JButton("Retour au menu principal");
+		btnRetour_Menu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				PagePrincipale_IHM pageprincipale = new PagePrincipale_IHM();
+				pageprincipale.setVisible(true);
+				dispose();
+			}
+		});
 		btnRetour_Menu.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnRetour_Menu.setBounds(323, 281, 161, 38);
 		contentPane.add(btnRetour_Menu);

@@ -8,6 +8,8 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PagePrincipale_IHM extends JFrame {
 
@@ -85,6 +87,13 @@ public class PagePrincipale_IHM extends JFrame {
 		contentPane.add(lblNewLabel_1_2_1);
 		
 		JButton btnDeconnexion = new JButton("Deconnexion");
+		btnDeconnexion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ConnexionIHM connexion = new ConnexionIHM();
+				connexion.setVisible(true);
+				dispose();
+			}
+		});
 		btnDeconnexion.setBounds(25, 239, 118, 23);
 		contentPane.add(btnDeconnexion);
 		

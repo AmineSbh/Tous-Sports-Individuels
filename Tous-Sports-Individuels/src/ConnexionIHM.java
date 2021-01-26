@@ -11,6 +11,9 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.awt.event.ActionEvent;
 
 public class ConnexionIHM extends JFrame {
 
@@ -51,7 +54,7 @@ public class ConnexionIHM extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Tous Sport");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 30));
-		lblNewLabel.setForeground(new Color(255, 204, 0));
+		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setBounds(138, 26, 231, 33);
 		contentPane.add(lblNewLabel);
 		
@@ -62,10 +65,27 @@ public class ConnexionIHM extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		JButton btnInscription = new JButton("Inscription");
+		btnInscription.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+					InscriptionIHM inscription;
+					inscription = new InscriptionIHM();
+					inscription.setVisible(true);
+					dispose();
+			}
+		});
+		
 		btnInscription.setBounds(39, 247, 114, 23);
 		contentPane.add(btnInscription);
 		
 		JButton btnConnexion = new JButton("Connexion");
+		btnConnexion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				PagePrincipale_IHM pageprincipale = new PagePrincipale_IHM();
+				pageprincipale.setVisible(true);
+				dispose();
+			}
+		});
+		
 		btnConnexion.setBounds(330, 247, 114, 23);
 		contentPane.add(btnConnexion);
 		

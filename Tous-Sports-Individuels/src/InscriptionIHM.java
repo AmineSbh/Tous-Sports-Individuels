@@ -10,6 +10,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class InscriptionIHM extends JFrame {
 
@@ -110,10 +112,24 @@ public class InscriptionIHM extends JFrame {
 		text_Mail.setColumns(10);
 		
 		JButton btnInscription = new JButton("S'inscrire");
+		btnInscription.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				PagePrincipale_IHM pageprincipale = new PagePrincipale_IHM();
+				pageprincipale.setVisible(true);
+				dispose();
+			}
+		});
 		btnInscription.setBounds(345, 253, 111, 23);
 		contentPane.add(btnInscription);
 		
 		JButton btnRetour = new JButton("Retour");
+		btnRetour.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ConnexionIHM connexion = new ConnexionIHM();
+				connexion.setVisible(true);
+				dispose();
+			}
+		});
 		btnRetour.setBounds(22, 253, 111, 23);
 		contentPane.add(btnRetour);
 		
