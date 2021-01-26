@@ -15,7 +15,7 @@ import javax.swing.JPasswordField;
 public class ConnexionIHM extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField text_Id;
 	private JPasswordField passwordField;
 
 	/**
@@ -61,18 +61,18 @@ public class ConnexionIHM extends JFrame {
 		lblNewLabel_1.setBounds(47, 56, 397, 33);
 		contentPane.add(lblNewLabel_1);
 		
-		JButton btnNewButton = new JButton("Inscription");
-		btnNewButton.setBounds(39, 247, 114, 23);
-		contentPane.add(btnNewButton);
+		JButton btnInscription = new JButton("Inscription");
+		btnInscription.setBounds(39, 247, 114, 23);
+		contentPane.add(btnInscription);
 		
-		JButton btnNewButton_1 = new JButton("Connexion");
-		btnNewButton_1.setBounds(330, 247, 114, 23);
-		contentPane.add(btnNewButton_1);
+		JButton btnConnexion = new JButton("Connexion");
+		btnConnexion.setBounds(330, 247, 114, 23);
+		contentPane.add(btnConnexion);
 		
-		textField = new JTextField();
-		textField.setBounds(128, 136, 210, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		text_Id = new JTextField();
+		text_Id.setBounds(128, 136, 210, 20);
+		contentPane.add(text_Id);
+		text_Id.setColumns(10);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(128, 169, 210, 20);
