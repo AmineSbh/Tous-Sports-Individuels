@@ -118,7 +118,7 @@ public class InscriptionIHM extends JFrame {
 		contentPane.add(btnRetour);
 		
 		JLabel lblNewLabel_7 = new JLabel("Veuillez remplir ce formulaire pour s'inscrire et acc\u00E9der \u00E0 l'application");
-		lblNewLabel_7.setForeground(Color.WHITE);
+		lblNewLabel_7.setForeground(Color.YELLOW);
 		lblNewLabel_7.setBounds(47, 38, 376, 14);
 		contentPane.add(lblNewLabel_7);
 		
