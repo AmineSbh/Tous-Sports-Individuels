@@ -49,6 +49,7 @@ public class Analyse {
 	 */
 	private void initialize() {
 		frmPageAnalyse = new JFrame();
+		frmPageAnalyse.getContentPane().setBackground(Color.DARK_GRAY);
 		frmPageAnalyse.setTitle("Page Analyse");
 		frmPageAnalyse.setBounds(100, 100, 791, 585);
 		frmPageAnalyse.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,15 +62,17 @@ public class Analyse {
 		frmPageAnalyse.getContentPane().add(comboBox_1);
 		
 		Panel panel = new Panel();
-		panel.setBounds(26, 76, 447, 443);
+		panel.setBounds(26, 114, 447, 405);
 		frmPageAnalyse.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblMoyenneParJour = new JLabel("Moyenne \r\n/ jour");
+		lblMoyenneParJour.setForeground(Color.WHITE);
 		lblMoyenneParJour.setBounds(330, 34, 122, 37);
 		panel.add(lblMoyenneParJour);
 		
 		JLabel label = new JLabel("Moyenne \r\n/ jour");
+		label.setForeground(Color.WHITE);
 		label.setBounds(330, 161, 122, 37);
 		panel.add(label);
 		
@@ -86,36 +89,33 @@ public class Analyse {
 		comboBox.setBounds(499, 246, 159, 26);
 		frmPageAnalyse.getContentPane().add(comboBox);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.WHITE);
-		panel_1.setBounds(26, 16, 423, 42);
-		frmPageAnalyse.getContentPane().add(panel_1);
-		
-		JLabel lblAnalyseDeVos = new JLabel("Analyse de vos statistiques");
-		lblAnalyseDeVos.setFont(new Font("Tahoma", Font.BOLD, 19));
-		panel_1.add(lblAnalyseDeVos);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(Color.WHITE);
-		panel_2.setBounds(499, 23, 233, 37);
-		frmPageAnalyse.getContentPane().add(panel_2);
-		
-		JLabel lblChoixDuSport = new JLabel("Choix du sport \u00E0 analyser");
-		lblChoixDuSport.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_2.add(lblChoixDuSport);
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(Color.WHITE);
-		panel_3.setBounds(499, 204, 255, 37);
-		frmPageAnalyse.getContentPane().add(panel_3);
-		
-		JLabel lblChoixDunAmi = new JLabel("Choix d'un ami pour comparaison");
-		lblChoixDunAmi.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_3.add(lblChoixDunAmi);
-		
 		JButton btnRetour_Menu = new JButton("Retour au menu principal");
 		btnRetour_Menu.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnRetour_Menu.setBounds(593, 461, 161, 38);
 		frmPageAnalyse.getContentPane().add(btnRetour_Menu);
+		
+		JLabel label_1 = new JLabel("Tous Sport, le sport pour tous");
+		label_1.setForeground(Color.YELLOW);
+		label_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
+		label_1.setBounds(66, 23, 363, 28);
+		frmPageAnalyse.getContentPane().add(label_1);
+		
+		JLabel lblAnalyseDeVos = new JLabel("Analyse de vos statistiques");
+		lblAnalyseDeVos.setForeground(Color.WHITE);
+		lblAnalyseDeVos.setBounds(64, 67, 260, 23);
+		frmPageAnalyse.getContentPane().add(lblAnalyseDeVos);
+		lblAnalyseDeVos.setFont(new Font("Tahoma", Font.BOLD, 19));
+		
+		JLabel lblChoixDuSport = new JLabel("Choix du sport \u00E0 analyser");
+		lblChoixDuSport.setForeground(Color.WHITE);
+		lblChoixDuSport.setBounds(499, 50, 180, 20);
+		frmPageAnalyse.getContentPane().add(lblChoixDuSport);
+		lblChoixDuSport.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		
+		JLabel lblChoixDunAmi = new JLabel("Choix d'un ami pour comparaison");
+		lblChoixDunAmi.setForeground(Color.WHITE);
+		lblChoixDunAmi.setBounds(499, 220, 239, 20);
+		frmPageAnalyse.getContentPane().add(lblChoixDunAmi);
+		lblChoixDunAmi.setFont(new Font("Tahoma", Font.PLAIN, 16));
 	}
 }
