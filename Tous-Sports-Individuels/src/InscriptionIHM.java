@@ -13,6 +13,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
 public class InscriptionIHM extends JFrame {
 
 	private JPanel contentPane;
@@ -27,6 +32,13 @@ public class InscriptionIHM extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
+		Configuration con = new Configuration().configure().addClass(Inscription.class);
+		SessionFactory sf = con.buildSessionFactory();
+		Session session = sf.openSession();
+		Transaction tx = session.beginTransaction();
+		tx.commit();
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -114,6 +126,7 @@ public class InscriptionIHM extends JFrame {
 		JButton btnInscription = new JButton("S'inscrire");
 		btnInscription.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Inscription inscription = new Inscription();
 				PagePrincipale_IHM pageprincipale = new PagePrincipale_IHM();
 				pageprincipale.setVisible(true);
 				dispose();
