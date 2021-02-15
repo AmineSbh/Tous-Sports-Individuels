@@ -53,5 +53,52 @@
 	<classpathentry kind="lib" path="C:/Users/al-ma/Downloads/libs/libs/spring-webmvc-4.2.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="C:/Users/al-ma/Downloads/libs/libs/spring-webmvc-portlet-4.2.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="C:/Users/al-ma/Downloads/libs/libs/spring-websocket-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/aopalliance.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/aspectjweaver.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/cglib-2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/cglib-nodep-2.1_3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/commons-logging.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/hibernate3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/javassist-3.9.0.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/javax.faces-2.2.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/jcommon-1.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/jfreechart-1.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/jstl-api-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/jstl-impl-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/junit.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/log4j.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/mysql-connector-java-5.1.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/postgresql-8.4-702.jdbc4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/primefaces-7.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/servlet.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/slf4j-api-1.5.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/slf4j-log4j12.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/spring-aop-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/spring-aspects-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/spring-beans-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/spring-context-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/spring-context-support-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/spring-core-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/spring-expression-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/spring-instrument-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/spring-jdbc-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/spring-jms-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/spring-messaging-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/spring-orm-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/spring-oxm-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/spring-test-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/spring-tx-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/spring-web-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/spring-webmvc-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/spring-webmvc-portlet-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amine/Desktop/L3/S6/ProjetIntegration/libs/spring-websocket-4.2.2.RELEASE.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
