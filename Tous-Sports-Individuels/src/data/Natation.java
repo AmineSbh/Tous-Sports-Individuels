@@ -5,14 +5,17 @@ import javax.persistence.*;
 
 import process.SportVisitor;
 
+@Entity
 public class Natation extends Sport{
 	private double DistanceCouléeDepart;
 	private int NombreMvtBras;
 	private int Time; /*temps sur 100 mètres en seconde*/
 	
-	public Natation(Date date) {
+	public Natation(Date date, double distanceCouléeDepart, int nombreMvtBras, int time) {
 		super(date);
-		// TODO Auto-generated constructor stub
+		this.DistanceCouléeDepart=distanceCouléeDepart;
+		this.NombreMvtBras=nombreMvtBras;
+		this.Time=time;
 	}
 
 	@Override

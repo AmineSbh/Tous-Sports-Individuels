@@ -2,7 +2,10 @@ package data;
 
 import javax.persistence.*;
 
+@Entity
 public class Friend {
+	
+	@Id
 	private int id1;
 	private int id2;
 	private Boolean state;

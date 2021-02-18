@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 import process.SportVisitor;
 
+@Entity
 public class Cyclisme extends Sport{
 	private int NumberOfSprint;
 	private double UphillDistance;
