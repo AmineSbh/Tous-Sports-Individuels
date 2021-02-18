@@ -5,10 +5,11 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.password">MySQL78</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/tous_sport</property>
-        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">Marseille95</property>
+        <property name="hibernate.connection.url">jdbc:mysql://mysql-amine95.alwaysdata.net/amine95_toussport</property>
+        <property name="hibernate.connection.username">amine95</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
+        	<mapping resource="Sport.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

@@ -9,16 +9,40 @@ public class Football extends Sport{
 	private double kilometer;
 	private int NumberSuccessfulDribble;
 	
-	public Football(int id, Date date, int numberpass, double kilometer,int numberdribble) {
-		super(id, date);
-		this.NumberSuccessfulPass=numberpass;
-		this.kilometer=kilometer;
-		this.NumberSuccessfulDribble=numberdribble;
+	public Football(Date date, int numberpass, double kilometer,int numberdribble) {
+		super(date);
+		this.setNumberSuccessfulPass(numberpass);
+		this.setKilometer(kilometer);
+		this.setNumberSuccessfulDribble(numberdribble);
 	}
 
 	@Override
 	public <T> T accept(SportVisitor<T> visitor) {
 		return visitor.visit(this);
+	}
+
+	public int getNumberSuccessfulPass() {
+		return NumberSuccessfulPass;
+	}
+
+	public void setNumberSuccessfulPass(int numberSuccessfulPass) {
+		NumberSuccessfulPass = numberSuccessfulPass;
+	}
+
+	public double getKilometer() {
+		return kilometer;
+	}
+
+	public void setKilometer(double kilometer) {
+		this.kilometer = kilometer;
+	}
+
+	public int getNumberSuccessfulDribble() {
+		return NumberSuccessfulDribble;
+	}
+
+	public void setNumberSuccessfulDribble(int numberSuccessfulDribble) {
+		NumberSuccessfulDribble = numberSuccessfulDribble;
 	}
 
 }
