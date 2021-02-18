@@ -5,10 +5,11 @@ import javax.persistence.*;
 
 import process.SportVisitor;
 
-@Entity
+@MappedSuperclass
 public abstract class Sport {
 	
 	@Id
+	@GeneratedValue
 	private Integer id;
 	private Date date;
 	

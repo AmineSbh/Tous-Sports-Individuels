@@ -12,6 +12,12 @@ public class DBConnection {
 		if (config == null) {
 			config = new AnnotationConfiguration();
 			config.addAnnotatedClass(Inscription.class);
+			//config.addAnnotatedClass(Sport.class);
+			config.addAnnotatedClass(Course.class);
+            config.addAnnotatedClass(Football.class);
+            config.addAnnotatedClass(Natation.class);
+            config.addAnnotatedClass(Tennis.class);
+            config.addAnnotatedClass(Cyclisme.class);
 
 			String packageName = DBConnection.class.getPackage().getName();
 			config.configure(packageName + "/hibernate.cfg.xml");
