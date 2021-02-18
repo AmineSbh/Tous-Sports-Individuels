@@ -1,5 +1,7 @@
 package data;
 
+import javax.persistence.*;
+
 public class Friend {
 	private int id1;
 	private int id2;

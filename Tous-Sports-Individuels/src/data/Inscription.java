@@ -1,6 +1,8 @@
 package data;
 import javax.persistence.*;
 
+import process.SportVisitor;
+
 @Entity
 public class Inscription {
 	
@@ -10,6 +12,18 @@ public class Inscription {
 	private String Prenom;
 	private String Mail;
 	private String Mdp;
+	
+	public Inscription(String id, String nom,String prenom, String mail,String mdp) {
+		this.Id=id;
+		this.Nom=nom;
+		this.Prenom=prenom;
+		this.Mail=mail;
+		this.Mdp=mdp;
+	}
+	
+	public <T> T accept(SportVisitor<T> visitor) {
+		return visitor.visit(this);
+	}
 	
 	public String getNom() {
 		return Nom;

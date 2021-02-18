@@ -1,5 +1,7 @@
 package gui;
 import data.Inscription;
+import process.AddDataVisitor;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -34,12 +36,6 @@ public class InscriptionIHM extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
-		Configuration con = new Configuration().configure().addClass(Inscription.class);
-		SessionFactory sf = con.buildSessionFactory();
-		Session session = sf.openSession();
-		Transaction tx = session.beginTransaction();
-		tx.commit();
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -128,7 +124,10 @@ public class InscriptionIHM extends JFrame {
 		JButton btnInscription = new JButton("S'inscrire");
 		btnInscription.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Inscription inscription = new Inscription();
+				AddDataVisitor visitor= new AddDataVisitor();
+				Inscription inscription = new Inscription(text_Id.getText(),text_Nom.getText() ,text_Prenom.getText(), text_Mail.getText(), passwordField.getText());
+				
+				inscription.accept(visitor);
 				PagePrincipale_IHM pageprincipale = new PagePrincipale_IHM();
 				pageprincipale.setVisible(true);
 				dispose();

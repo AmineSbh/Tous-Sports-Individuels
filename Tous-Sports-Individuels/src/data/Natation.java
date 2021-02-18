@@ -1,6 +1,7 @@
 package data;
 
 import java.sql.Date;
+import javax.persistence.*;
 
 import process.SportVisitor;
 

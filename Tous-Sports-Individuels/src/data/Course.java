@@ -1,9 +1,11 @@
 package data;
 
 import java.util.Date;
+import javax.persistence.*;
 
 import process.SportVisitor;
 
+@Entity
 public class Course extends Sport{
 	private double kilometer;
 	private double MaxSpeed;

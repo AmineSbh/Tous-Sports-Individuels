@@ -1,8 +1,7 @@
 package data;
 
 import java.util.Date;
-
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import process.SportVisitor;
 

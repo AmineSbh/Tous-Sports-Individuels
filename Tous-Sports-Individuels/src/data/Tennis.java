@@ -1,9 +1,11 @@
 package data;
 
 import java.sql.Date;
+import javax.persistence.*;
 
 import process.SportVisitor;
 
+@Entity
 public class Tennis extends Sport{
 	private int NumberSuccessfulShot;
 	private int MaxSpeedService;
