@@ -5,8 +5,10 @@ import javax.persistence.*;
 
 import process.SportVisitor;
 
+@Entity
 public abstract class Sport {
 	
+	@Id
 	private Integer id;
 	private Date date;
 	
