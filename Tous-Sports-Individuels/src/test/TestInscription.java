@@ -1,9 +1,11 @@
 package test;
 
 import java.util.Date;
+import java.util.Iterator;
 
 import javax.transaction.Transaction;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -17,12 +19,13 @@ import process.AddDataVisitor;
 
 public class TestInscription {
 	
-	public static void main(String[] args) {
-		
-		AnnotationConfiguration config = DBConnection.getConfig();
-		SchemaExport schemaExport = new SchemaExport(config);
-		schemaExport.create(true, true);
+	public static void main(String[] args) throws Exception {
+	    SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+	    Session session = sessionFactory.openSession();
+	    
+	    
 
-	}
+	    sessionFactory.close();
+	  }
 
 }

@@ -3,20 +3,28 @@ package test;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import data.Course;
+import data.DBConnection;
+import data.Inscription;
 import process.AddDataVisitor;
+import process.ReadDataVisitor;
 
 public class TestVisitor {
 
 	public static void main(String[] args) {
 		AddDataVisitor visitor= new AddDataVisitor();
+		Inscription inscription= new Inscription("a","b","c","e","b");
+		//inscription.accept(visitor);
 		
-		Date date = new Date();
+		ReadDataVisitor visitor2= new ReadDataVisitor("a","b");
+		inscription.accept(visitor2);
 		
-		Course course= new Course(date,7.2,15.1,11.1);
-		
-		course.accept(visitor);
 
 	}
 
