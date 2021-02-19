@@ -11,7 +11,6 @@ public class TestProfilManager {
 	}
 
 	public static void main(String[] args) {
-		int a;
 		ProfilManager pm= new ProfilManager();
 		testConnexion(pm,"a");
 

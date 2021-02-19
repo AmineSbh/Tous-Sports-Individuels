@@ -11,6 +11,8 @@ import process.ProfilManager;
 import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -82,6 +84,23 @@ public class ConnexionIHM extends JFrame {
 		contentPane.add(btnInscription);
 		
 		JButton btnConnexion = new JButton("Connexion");
+<<<<<<< HEAD
+=======
+		btnConnexion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ProfilManager pm= new ProfilManager();
+				if(pm.connexion(text_Id.getText())) {
+					PagePrincipale_IHM pageprincipale = new PagePrincipale_IHM();
+					pageprincipale.setVisible(true);
+					dispose();
+				}else {
+					JOptionPane.showMessageDialog(null, "Login ou Password invalide",
+							"Login ou Password invalide",JOptionPane.ERROR_MESSAGE);
+				}
+			}
+	
+		});
+>>>>>>> branch 'master' of https://github.com/AmineSbh/Tous-Sports-Individuels
 		
 		btnConnexion.setBounds(330, 247, 114, 23);
 		contentPane.add(btnConnexion);

@@ -27,11 +27,16 @@ public class ProfilManager {
 		Transaction readTransaction = session.beginTransaction();
 		
 		inscription= (Inscription) session.get(Inscription.class, id);
+		try {
 		session.save(inscription);
 
 		readTransaction.commit();
+		System.out.println("le mail est "+inscription.getMail());
+		}catch(IllegalArgumentException e){
+			e.getMessage();
+		}
 		
-		System.out.println("Employee ID= "+inscription.getMail());
+		
 		session.close();
 		
 		if(inscription==null) {
