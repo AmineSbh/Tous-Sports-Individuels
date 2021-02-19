@@ -65,6 +65,13 @@ public class PagePrincipale_IHM extends JFrame {
 		contentPane.add(lblNewLabel_1_1);
 		
 		JButton btnMesurer = new JButton("Mesurer");
+		btnMesurer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//Mesure mesure = new Mesure();
+				//mesure.setVisible(true);
+				//dispose();
+			}
+		});
 		btnMesurer.setBounds(25, 143, 100, 34);
 		contentPane.add(btnMesurer);
 		
@@ -75,6 +82,12 @@ public class PagePrincipale_IHM extends JFrame {
 		contentPane.add(lblNewLabel_1_2);
 		
 		JButton btnAnalyser = new JButton("Analyser");
+		btnAnalyser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//Analyse analyse = new Analyse();
+				//dispose();
+			}
+		});
 		btnAnalyser.setBounds(175, 143, 129, 34);
 		contentPane.add(btnAnalyser);
 		
