@@ -1,15 +1,11 @@
 package process;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-
 import data.Course;
 import data.Cyclisme;
 import data.DBConnection;
 import data.Football;
-import data.HibernateUtil;
 import data.Inscription;
 import data.Natation;
 import data.Tennis;

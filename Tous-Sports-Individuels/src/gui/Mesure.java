@@ -59,10 +59,10 @@ public class Mesure {
 		lblNewLabel.setBounds(96, 11, 363, 28);
 		frmPageAnalyse.getContentPane().add(lblNewLabel);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setToolTipText("");
+		String[] sports = new String[] {"", "Course", "Cyclisme", "Tennis", "Football","Natation"};
+		JComboBox<String> comboBox_1 = new JComboBox <String>(sports);
 		comboBox_1.setBounds(26, 164, 159, 26);
-		comboBox_1.addItem(comboBox_1.getSelectedItem());
+		comboBox_1.setEnabled(true);
 		frmPageAnalyse.getContentPane().add(comboBox_1);
 		
 		JButton btnValider = new JButton("Valider");
