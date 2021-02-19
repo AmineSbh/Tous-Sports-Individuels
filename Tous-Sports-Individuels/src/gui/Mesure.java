@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.DefaultComboBoxModel;
 
 public class Mesure {
 
@@ -60,10 +61,12 @@ public class Mesure {
 		frmPageAnalyse.getContentPane().add(lblNewLabel);
 		
 		String[] sports = new String[] {"", "Course", "Cyclisme", "Tennis", "Football","Natation"};
-		JComboBox<String> comboBox_1 = new JComboBox <String>(sports);
+		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(26, 164, 159, 26);
 		comboBox_1.setEnabled(true);
+		comboBox_1.addItem("ok");
 		frmPageAnalyse.getContentPane().add(comboBox_1);
+		
 		
 		JButton btnValider = new JButton("Valider");
 		btnValider.addActionListener(new ActionListener() {

@@ -57,7 +57,6 @@ public class Analyse {
 		frmPageAnalyse.getContentPane().setLayout(null);
 		
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setToolTipText("");
 		comboBox_1.setBounds(36, 198, 159, 26);
 		comboBox_1.addItem(comboBox_1.getSelectedItem());
 		frmPageAnalyse.getContentPane().add(comboBox_1);
@@ -69,7 +68,7 @@ public class Analyse {
 		
 		JButton btnRetour_Menu = new JButton("Retour au menu principal");
 		btnRetour_Menu.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnRetour_Menu.setBounds(531, 423, 161, 38);
+		btnRetour_Menu.setBounds(48, 418, 161, 38);
 		frmPageAnalyse.getContentPane().add(btnRetour_Menu);
 		
 		JLabel label_1 = new JLabel("Tous Sport, le sport pour tous");
@@ -107,5 +106,10 @@ public class Analyse {
 		JButton btnDonnes_2 = new JButton("Donn\u00E9es 3");
 		btnDonnes_2.setBounds(490, 319, 222, 29);
 		frmPageAnalyse.getContentPane().add(btnDonnes_2);
+		
+		JButton btn_Analyse = new JButton("Lancer Analyse");
+		btn_Analyse.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btn_Analyse.setBounds(418, 418, 161, 38);
+		frmPageAnalyse.getContentPane().add(btn_Analyse);
 	}
 }

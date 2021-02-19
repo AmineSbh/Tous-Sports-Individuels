@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import process.ProfilManager;
+
 import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.JLabel;
@@ -80,13 +82,6 @@ public class ConnexionIHM extends JFrame {
 		contentPane.add(btnInscription);
 		
 		JButton btnConnexion = new JButton("Connexion");
-		btnConnexion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				PagePrincipale_IHM pageprincipale = new PagePrincipale_IHM();
-				pageprincipale.setVisible(true);
-				dispose();
-			}
-		});
 		
 		btnConnexion.setBounds(330, 247, 114, 23);
 		contentPane.add(btnConnexion);
@@ -114,5 +109,25 @@ public class ConnexionIHM extends JFrame {
 		lblNewLabel_4.setForeground(Color.YELLOW);
 		lblNewLabel_4.setBounds(65, 111, 384, 14);
 		contentPane.add(lblNewLabel_4);
+		
+		JLabel lbl_error = new JLabel("La connexion a \u00E9chou\u00E9e, veuillez r\u00E9essayer");
+		lbl_error.setBackground(Color.RED);
+		lbl_error.setForeground(Color.RED);
+		lbl_error.setEnabled(false);
+		lbl_error.setBounds(98, 197, 240, 14);
+		contentPane.add(lbl_error);
+		
+		btnConnexion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ProfilManager pm = new ProfilManager();
+				if(pm.connexion(text_Id.getText())){
+					PagePrincipale_IHM pageprincipale = new PagePrincipale_IHM();
+					pageprincipale.setVisible(true);
+					dispose();
+				}else {
+					lbl_error.setEnabled(true);
+				}
+			}
+		});
 	}
 }
