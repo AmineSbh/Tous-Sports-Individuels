@@ -13,6 +13,9 @@ public class Inscription {
 	private String Mail;
 	private String Mdp;
 	
+	public Inscription() {
+	}
+	
 	public Inscription(String id, String nom,String prenom, String mail,String mdp) {
 		this.Id=id;
 		this.Nom=nom;
