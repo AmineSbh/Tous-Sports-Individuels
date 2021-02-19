@@ -11,7 +11,7 @@ public class Course extends Sport{
 	private double MaxSpeed;
 	private double AverageSpeed;
 	
-	public Course(Date date,double kilometer, double maxspeed, double averagespeed) {
+	public Course(Date date, double kilometer, double maxspeed, double averagespeed) {
 		super(date);
 		this.setKilometer(kilometer);
 		this.setMaxSpeed(maxspeed);
