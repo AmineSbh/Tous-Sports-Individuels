@@ -5,17 +5,18 @@ import org.hibernate.Transaction;
 
 import data.DBConnection;
 import data.Inscription;
+import data.User;
 
 public class ProfilManager {
 	
-	private Inscription inscription=null;
+	private User user=null;
 	
 	public ProfilManager() {
 		
 	}
 	
-	public ProfilManager(Inscription inscription) {
-		this.setInscription(inscription);
+	public ProfilManager(User user) {
+		this.setUser(user);
 	}
 	
 	public Boolean inscription() {
@@ -26,12 +27,12 @@ public class ProfilManager {
 		Session session = DBConnection.getSession();
 		Transaction readTransaction = session.beginTransaction();
 		
-		inscription= (Inscription) session.get(Inscription.class, id);
+		setUser((User) session.get(User.class, id));
 		try {
-		session.save(inscription);
+		session.save(user);
 
 		readTransaction.commit();
-		System.out.println("le mail est "+inscription.getMail());
+		System.out.println("le mail est "+user.getMail());
 		}catch(IllegalArgumentException e){
 			e.getMessage();
 		}
@@ -39,19 +40,19 @@ public class ProfilManager {
 		
 		session.close();
 		
-		if(inscription==null) {
+		if(user==null) {
 			return false;
 		}else {
 			return true;
 		}
 	}
 
-	public Inscription getInscription() {
-		return inscription;
+	public User getUser() {
+		return user;
 	}
 
-	public void setInscription(Inscription inscription) {
-		this.inscription = inscription;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

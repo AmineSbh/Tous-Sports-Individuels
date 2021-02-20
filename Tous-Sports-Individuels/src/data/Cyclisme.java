@@ -11,8 +11,8 @@ public class Cyclisme extends Sport{
 	private double UphillDistance;
 	private double AverageSpeed;
 
-	public Cyclisme(Date date,int numberofsprint, double uphilldistance, double averagespeed) {
-		super(date);
+	public Cyclisme(User user,Date date,int numberofsprint, double uphilldistance, double averagespeed) {
+		super(user,date);
 		this.setNumberOfSprint(numberofsprint);
 		this.setUphillDistance(uphilldistance);
 		this.setAverageSpeed(averagespeed);

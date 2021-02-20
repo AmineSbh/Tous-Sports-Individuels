@@ -84,7 +84,8 @@ public class PagePrincipale_IHM extends JFrame {
 		JButton btnAnalyser = new JButton("Analyser");
 		btnAnalyser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//Analyse analyse = new Analyse();
+				//Analyse window = new Analyse();
+				//window.setVisible(true);
 				//dispose();
 			}
 		});

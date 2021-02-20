@@ -9,6 +9,7 @@ import data.Football;
 import data.Inscription;
 import data.Natation;
 import data.Tennis;
+import data.User;
 
 public class AddDataVisitor implements SportVisitor<Void>{
 
@@ -63,10 +64,10 @@ public class AddDataVisitor implements SportVisitor<Void>{
 	}
 
 	@Override
-	public Void visit(Inscription inscription) {
+	public Void visit(User user) {
 		Session session = DBConnection.getSession();
 		Transaction readTransaction = session.beginTransaction();
-		session.save(inscription);
+		session.save(user);
 		readTransaction.commit();
 		session.close();
 		return null;

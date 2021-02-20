@@ -6,6 +6,7 @@ import data.Football;
 import data.Inscription;
 import data.Natation;
 import data.Tennis;
+import data.User;
 
 public interface SportVisitor<T> {
 	T visit(Course sport);
@@ -18,6 +19,6 @@ public interface SportVisitor<T> {
 	
 	T visit(Tennis sport);
 
-	T visit(Inscription inscription);
+	T visit(User User);
 
 }

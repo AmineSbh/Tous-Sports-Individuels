@@ -10,15 +10,10 @@ public class Tennis extends Sport{
 	private int NumberSuccessfulShot;
 	private int MaxSpeedService;
 
-	public Tennis(Date date) {
-		super(date);
-		// TODO Auto-generated constructor stub
-	}
-
-	public Tennis(Date date, int NbSuccess, int MaxSpeedServ) {
-		super(date);
-		this.NumberSuccessfulShot = NbSuccess;
-		this.MaxSpeedService = MaxSpeedServ;
+	public Tennis(User user,Date date, int numberSuccessfulShot, int maxSpeedService) {
+		super(user,date);
+		this.NumberSuccessfulShot=numberSuccessfulShot;
+		this.MaxSpeedService=maxSpeedService;
 	}
 	
 	@Override

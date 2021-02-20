@@ -11,8 +11,8 @@ public class Natation extends Sport{
 	private int NombreMvtBras;
 	private int Time; /*temps sur 100 mètres en seconde*/
 	
-	public Natation(Date date, double distanceCouléeDepart, int nombreMvtBras, int time) {
-		super(date);
+	public Natation(User user,Date date, double distanceCouléeDepart, int nombreMvtBras, int time) {
+		super(user,date);
 		this.DistanceCouléeDepart=distanceCouléeDepart;
 		this.NombreMvtBras=nombreMvtBras;
 		this.Time=time;

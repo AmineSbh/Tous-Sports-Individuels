@@ -20,12 +20,9 @@ import process.AddDataVisitor;
 public class TestInscription {
 	
 	public static void main(String[] args) throws Exception {
-	    SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-	    Session session = sessionFactory.openSession();
-	    
-	    
-
-	    sessionFactory.close();
+		AnnotationConfiguration config = DBConnection.getConfig();
+		SchemaExport schemaExport = new SchemaExport(config);
+		schemaExport.create(true, true);
 	  }
 
 }

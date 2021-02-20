@@ -11,8 +11,8 @@ public class Football extends Sport{
 	private double kilometer;
 	private int NumberSuccessfulDribble;
 	
-	public Football(Date date, int numberpass, double kilometer,int numberdribble) {
-		super(date);
+	public Football(User user,Date date, int numberpass, double kilometer,int numberdribble) {
+		super(user,date);
 		this.setNumberSuccessfulPass(numberpass);
 		this.setKilometer(kilometer);
 		this.setNumberSuccessfulDribble(numberdribble);
