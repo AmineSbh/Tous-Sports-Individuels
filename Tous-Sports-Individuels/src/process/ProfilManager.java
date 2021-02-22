@@ -10,6 +10,7 @@ import data.User;
 public class ProfilManager {
 	
 	private User user=null;
+	private AddDataVisitor visitor;
 	
 	public ProfilManager() {
 		
@@ -17,6 +18,7 @@ public class ProfilManager {
 	
 	public ProfilManager(User user) {
 		this.setUser(user);
+		this.setVisitor(new AddDataVisitor());
 	}
 	
 	public Boolean inscription() {
@@ -53,6 +55,14 @@ public class ProfilManager {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public AddDataVisitor getVisitor() {
+		return visitor;
+	}
+
+	public void setVisitor(AddDataVisitor visitor) {
+		this.visitor = visitor;
 	}
 
 }

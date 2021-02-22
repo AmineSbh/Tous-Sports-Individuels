@@ -14,7 +14,6 @@ import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 import data.Course;
 import data.DBConnection;
-import data.Inscription;
 import process.AddDataVisitor;
 
 public class TestInscription {

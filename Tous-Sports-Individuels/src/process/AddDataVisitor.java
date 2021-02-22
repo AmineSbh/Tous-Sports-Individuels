@@ -6,7 +6,6 @@ import data.Course;
 import data.Cyclisme;
 import data.DBConnection;
 import data.Football;
-import data.Inscription;
 import data.Natation;
 import data.Tennis;
 import data.User;
