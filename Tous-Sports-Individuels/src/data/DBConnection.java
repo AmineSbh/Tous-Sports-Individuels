@@ -12,7 +12,7 @@ public class DBConnection {
 		if (config == null) {
 			config = new AnnotationConfiguration();
 			config.addAnnotatedClass(User.class);
-			//config.addAnnotatedClass(Sport.class);
+			config.addAnnotatedClass(Sport.class);
 			config.addAnnotatedClass(Course.class);
             config.addAnnotatedClass(Football.class);
             config.addAnnotatedClass(Natation.class);

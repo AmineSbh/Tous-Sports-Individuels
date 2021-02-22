@@ -5,17 +5,20 @@ import javax.persistence.*;
 
 import process.SportVisitor;
 
-@MappedSuperclass
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = { "Name","UserName" }) })
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Sport {
 	
 	@Id
-	private String Name;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private int Sport_id;
 	
-	 @Id
-	 @ManyToOne
-	    @JoinColumn(name="Username", nullable=false)
-	    private User User;
+	@Id
+	@ManyToOne
+	@JoinColumn(
+            name = "Username",
+            referencedColumnName = "UserName")
+	private User User;
 
 	private Date date;
 	

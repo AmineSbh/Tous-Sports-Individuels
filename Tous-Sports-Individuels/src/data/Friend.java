@@ -11,15 +11,13 @@ public class Friend {
 	@GeneratedValue( strategy=GenerationType.IDENTITY )
 	private int Friend_id;
 	
-	@Id
 	 @ManyToOne
-	    @JoinColumn(name="Username", nullable=false)
-	private User User1;
+	@JoinColumn(name="UserName1", referencedColumnName="UserName")
+	private User UserName1;
 	
-	 @Id
 	 @ManyToOne
-	    @JoinColumn(name="Username", nullable=false)
-	private User User2;
+	 @JoinColumn(name="UserName2", referencedColumnName="UserName")
+	private User UserName2;
 	
 	 @Enumerated(EnumType.STRING)
 	    @Column(length = 8)
@@ -28,8 +26,8 @@ public class Friend {
 	private Date Date;
 	
 	public Friend(User user1, User user2, String state,FriendStatus state1,Date date) {
-		this.User1=user1;
-		this.User2=user2;
+		this.UserName1=user1;
+		this.UserName2=user2;
 		this.state=state1;
 		this.setDate(date);
 	}
@@ -43,19 +41,19 @@ public class Friend {
 	}
 	
 	public User getUser1() {
-		return User1;
+		return UserName1;
 	}
 
 	public void setUser1(User user1) {
-		User1 = user1;
+		UserName1 = user1;
 	}
 
 	public User getUser2() {
-		return User2;
+		return UserName2;
 	}
 
 	public void setUser2(User user2) {
-		User2 = user2;
+		UserName2 = user2;
 	}
 
 	public FriendStatus getState() {

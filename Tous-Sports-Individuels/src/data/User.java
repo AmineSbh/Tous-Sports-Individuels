@@ -9,16 +9,18 @@ import process.SportVisitor;
 public class User {
 	
 	@Id
+	@EmbeddedId
 	private String Username;
+	
 	private String LastName;
 	private String FirstName;
 	private String Mail;
 	private String Password;
 	
-	@OneToMany( targetEntity=Sport.class, mappedBy="User" )
+	@OneToMany(mappedBy="UserName")
 	private List<Sport> sports= new ArrayList<>();
 	
-	@OneToMany( targetEntity=Friend.class, mappedBy="Friend_id" )
+	@OneToMany(mappedBy="Friend_id")
 	private List<Friend> friends= new ArrayList<>();
 	
 	public User() {

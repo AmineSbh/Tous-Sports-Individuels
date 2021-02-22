@@ -4,6 +4,7 @@ import java.sql.Date;
 import javax.persistence.*;
 
 import process.SportVisitor;
+import test.manual.SportValue;
 
 @Entity
 public class Tennis extends Sport{
