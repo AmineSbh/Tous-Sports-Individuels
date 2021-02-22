@@ -10,14 +10,10 @@ import process.SportVisitor;
 public abstract class Sport {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int Sport_id;
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	private Long Sport_id;
 	
-	@Id
 	@ManyToOne
-	@JoinColumn(
-            name = "Username",
-            referencedColumnName = "UserName")
 	private User User;
 	
 	private String Name;

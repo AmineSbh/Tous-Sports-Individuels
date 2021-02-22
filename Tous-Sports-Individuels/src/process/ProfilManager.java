@@ -4,7 +4,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import data.DBConnection;
-import data.Inscription;
 import data.User;
 
 public class ProfilManager {
@@ -21,8 +20,19 @@ public class ProfilManager {
 		this.setVisitor(new AddDataVisitor());
 	}
 	
-	public Boolean inscription() {
-		return null;
+	public Boolean inscription(AddDataVisitor visitor,User user) {
+		
+		Boolean a=false;
+		int lenghtUserName=user.getUserName().length();
+		int lenghtLastName=user.getLastName().length();
+		int lenghtFirstName=user.getFirstName().length();
+		int lenghtPassword=user.getPassword().length();
+		
+		if(lenghtUserName>3 && lenghtLastName>2 && lenghtFirstName>2 && lenghtPassword>4) {
+			user.accept(visitor);
+			a=true;
+		}
+		return a;
 	}
 	
 	public Boolean connexion(String id) {

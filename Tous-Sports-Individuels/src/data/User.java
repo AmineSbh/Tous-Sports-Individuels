@@ -9,7 +9,6 @@ import process.SportVisitor;
 public class User {
 	
 	@Id
-	@EmbeddedId
 	private String Username;
 	
 	private String LastName;
@@ -17,7 +16,7 @@ public class User {
 	private String Mail;
 	private String Password;
 	
-	@OneToMany(mappedBy="UserName")
+	@OneToMany(mappedBy="User")
 	private List<Sport> sports= new ArrayList<>();
 	
 	@OneToMany(mappedBy="Friend_id")
@@ -38,6 +37,14 @@ public class User {
 		return visitor.visit(this);
 	}
 
+	public String getUserName() {
+		return Username;
+	}
+
+	public void setUserName(String UserName) {
+		Username = UserName;
+	}
+	
 	public String getLastName() {
 		return LastName;
 	}

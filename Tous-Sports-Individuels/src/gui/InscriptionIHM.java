@@ -1,6 +1,6 @@
 package gui;
-import data.Inscription;
 import process.AddDataVisitor;
+import process.ProfilManager;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -22,6 +24,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import data.User;
+
 public class InscriptionIHM extends JFrame {
 
 	private JPanel contentPane;
@@ -31,6 +35,7 @@ public class InscriptionIHM extends JFrame {
 	private JTextField text_Nom;
 	private JTextField text_Prenom;
 	private JTextField text_Mail;
+	private ProfilManager pm=new ProfilManager();
 
 	/**
 	 * Launch the application.
@@ -125,12 +130,16 @@ public class InscriptionIHM extends JFrame {
 		btnInscription.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				AddDataVisitor visitor= new AddDataVisitor();
-				Inscription inscription = new Inscription(text_Id.getText(),text_Nom.getText() ,text_Prenom.getText(), text_Mail.getText(), passwordField.getText());
+				User user = new User(text_Id.getText(),text_Nom.getText() ,text_Prenom.getText(), text_Mail.getText(), passwordField.getText());
 				
-				inscription.accept(visitor);
-				PagePrincipale_IHM pageprincipale = new PagePrincipale_IHM();
-				pageprincipale.setVisible(true);
-				dispose();
+				if(pm.inscription(visitor, user)) {
+					PagePrincipale_IHM pageprincipale = new PagePrincipale_IHM();
+					pageprincipale.setVisible(true);
+					dispose();
+				}else {
+					JOptionPane.showMessageDialog (null, "Something went Wrong", "Title", JOptionPane.ERROR_MESSAGE);
+				}
+				
 			}
 		});
 		btnInscription.setBounds(345, 253, 111, 23);

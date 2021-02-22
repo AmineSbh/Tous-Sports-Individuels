@@ -21,8 +21,9 @@ public class DBConnection {
             config.addAnnotatedClass(Friend.class);
             
 
-			String packageName = DBConnection.class.getPackage().getName();
-			config.configure(packageName + "/hibernate.cfg.xml");
+			//String packageName = DBConnection.class.getPackage().getName();
+			//config.configure(packageName + "/hibernate.cfg.xml");
+            config.configure("/hibernate.cfg.xml");
 		}
 		return config;
 	}
