@@ -4,6 +4,7 @@ import java.sql.Date;
 import javax.persistence.*;
 
 import process.SportVisitor;
+import test.manual.SportValue;
 
 @Entity
 public class Football extends Sport{
@@ -12,7 +13,7 @@ public class Football extends Sport{
 	private int NumberSuccessfulDribble;
 	
 	public Football(User user,Date date, int numberpass, double kilometer,int numberdribble) {
-		super(user,date);
+		super(user,SportValue.Football,date);
 		this.setNumberSuccessfulPass(numberpass);
 		this.setKilometer(kilometer);
 		this.setNumberSuccessfulDribble(numberdribble);

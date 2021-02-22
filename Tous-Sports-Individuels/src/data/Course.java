@@ -4,6 +4,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 import process.SportVisitor;
+import test.manual.SportValue;
 
 @Entity
 public class Course extends Sport{
@@ -12,7 +13,7 @@ public class Course extends Sport{
 	private double AverageSpeed;
 	
 	public Course(User user, Date date, double kilometer, double maxspeed, double averagespeed) {
-		super(user,date);
+		super(user,SportValue.Course,date);
 		this.setKilometer(kilometer);
 		this.setMaxSpeed(maxspeed);
 		this.setAverageSpeed(averagespeed);

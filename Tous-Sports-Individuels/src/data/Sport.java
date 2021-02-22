@@ -19,11 +19,14 @@ public abstract class Sport {
             name = "Username",
             referencedColumnName = "UserName")
 	private User User;
+	
+	private String Name;
 
 	private Date date;
 	
-	public Sport(User user, Date date) {
+	public Sport(User user,String name, Date date) {
 		this.User=user;
+		this.Name=name;
 		this.setDate(date);
 	}
 
@@ -43,6 +46,14 @@ public abstract class Sport {
 
 	public void setUser(User user) {
 		User = user;
+	}
+
+	public String getName() {
+		return Name;
+	}
+
+	public void setName(String name) {
+		Name = name;
 	}
 
 }

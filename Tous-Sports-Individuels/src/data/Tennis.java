@@ -12,7 +12,7 @@ public class Tennis extends Sport{
 	private int MaxSpeedService;
 
 	public Tennis(User user,Date date, int numberSuccessfulShot, int maxSpeedService) {
-		super(user,date);
+		super(user,SportValue.Tennis,date);
 		this.NumberSuccessfulShot=numberSuccessfulShot;
 		this.MaxSpeedService=maxSpeedService;
 	}

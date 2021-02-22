@@ -4,6 +4,7 @@ import java.sql.Date;
 import javax.persistence.*;
 
 import process.SportVisitor;
+import test.manual.SportValue;
 
 @Entity
 public class Natation extends Sport{
@@ -12,7 +13,7 @@ public class Natation extends Sport{
 	private int Time; /*temps sur 100 mètres en seconde*/
 	
 	public Natation(User user,Date date, double distanceCouléeDepart, int nombreMvtBras, int time) {
-		super(user,date);
+		super(user,SportValue.Natation,date);
 		this.DistanceCouléeDepart=distanceCouléeDepart;
 		this.NombreMvtBras=nombreMvtBras;
 		this.Time=time;
