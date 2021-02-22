@@ -122,7 +122,7 @@ public class ConnexionIHM extends JFrame {
 		btnConnexion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ProfilManager pm = new ProfilManager();
-				if(pm.connexion(text_Id.getText())){
+				if(pm.connexion(text_Id.getText(),passwordField.getText())){
 					PagePrincipale_IHM pageprincipale = new PagePrincipale_IHM();
 					pageprincipale.setVisible(true);
 					dispose();

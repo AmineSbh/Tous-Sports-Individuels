@@ -4,15 +4,15 @@ import process.ProfilManager;
 
 public class TestProfilManager {
 	
-	private static void testConnexion(ProfilManager pm,String id) {
-		if(pm.connexion("a")) {
+	private static void testConnexion(ProfilManager pm,String id, String Password) {
+		if(pm.connexion("a","a")) {
 			System.out.println("connexion reussi");
 		}
 	}
 
 	public static void main(String[] args) {
 		ProfilManager pm= new ProfilManager();
-		testConnexion(pm,"a");
+		testConnexion(pm,"a","a");
 
 	}
 

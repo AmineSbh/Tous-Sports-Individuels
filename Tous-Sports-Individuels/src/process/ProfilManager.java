@@ -35,7 +35,7 @@ public class ProfilManager {
 		return a;
 	}
 	
-	public Boolean connexion(String id) {
+	public Boolean connexion(String id,String Password) {
 		Session session = DBConnection.getSession();
 		Transaction readTransaction = session.beginTransaction();
 		
@@ -52,7 +52,7 @@ public class ProfilManager {
 		
 		session.close();
 		
-		if(user==null) {
+		if(user==null || !(user.getPassword().equals(Password))) {
 			return false;
 		}else {
 			return true;

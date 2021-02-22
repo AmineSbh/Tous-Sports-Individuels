@@ -138,6 +138,11 @@ public class InscriptionIHM extends JFrame {
 					dispose();
 				}else {
 					JOptionPane.showMessageDialog (null, "Something went Wrong", "Title", JOptionPane.ERROR_MESSAGE);
+					text_Nom.setText("");
+					text_Prenom.setText("");
+					text_Mail.setText("");
+					passwordField.setText("");
+					passwordField_1.setText("");
 				}
 				
 			}
