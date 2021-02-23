@@ -1,6 +1,6 @@
 package data;
 
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.*;
 
 import process.SportVisitor;
@@ -10,11 +10,13 @@ import test.manual.SportValue;
 public class Tennis extends Sport{
 	private int NumberSuccessfulShot;
 	private int MaxSpeedService;
-
-	public Tennis(User user,Date date, int numberSuccessfulShot, int maxSpeedService) {
+	private int NumberAces;
+	
+	public Tennis(User user,Date date, int numberSuccessfulShot, int maxSpeedService, int numAces) {
 		super(user,SportValue.Tennis,date);
 		this.NumberSuccessfulShot=numberSuccessfulShot;
 		this.MaxSpeedService=maxSpeedService;
+		this.NumberAces=numAces;
 	}
 	
 	@Override
