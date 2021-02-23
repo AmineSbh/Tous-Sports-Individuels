@@ -12,7 +12,7 @@ public class ProfilManager {
 	private AddDataVisitor visitor;
 	
 	public ProfilManager() {
-		
+		this.setVisitor(new AddDataVisitor());
 	}
 	
 	public ProfilManager(User user) {
@@ -44,7 +44,6 @@ public class ProfilManager {
 		session.save(user);
 
 		readTransaction.commit();
-		System.out.println("le mail est "+user.getMail());
 		}catch(IllegalArgumentException e){
 			e.getMessage();
 		}

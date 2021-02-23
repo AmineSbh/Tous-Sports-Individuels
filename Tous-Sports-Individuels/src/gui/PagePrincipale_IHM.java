@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 public class PagePrincipale_IHM extends JFrame {
 
 	private JPanel contentPane;
+	//TODO save user online to add his data
 
 	/**
 	 * Launch the application.
