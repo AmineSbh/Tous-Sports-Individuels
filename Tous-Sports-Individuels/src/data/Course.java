@@ -12,6 +12,10 @@ public class Course extends Sport{
 	private double MaxSpeed;
 	private double AverageSpeed;
 	
+	public Course() {
+		super();
+	}
+	
 	public Course(User user, Date date, double kilometer, double maxspeed, double averagespeed) {
 		super(user,SportValue.Course,date);
 		this.setKilometer(kilometer);

@@ -3,7 +3,6 @@ package test;
 import java.util.Date;
 import java.util.Iterator;
 
-import javax.transaction.Transaction;
 
 import org.hibernate.Query;
 import org.hibernate.Session;

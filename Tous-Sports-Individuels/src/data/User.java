@@ -76,6 +76,14 @@ public class User {
 	public void setPassword(String password) {
 		Password = password;
 	}
+
+	public List<Sport> getSports() {
+		return sports;
+	}
+
+	public void setSports(List<Sport> sports) {
+		this.sports = sports;
+	}
 	
 
 }

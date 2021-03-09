@@ -2,12 +2,14 @@ package process;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import data.DBConnection;
 import data.Sport;
 import data.User;
+import test.manual.SportValue;
 
 public class SportManager {
 	
@@ -32,6 +34,46 @@ public class SportManager {
 			a=false;
 		}
 		return a;
+	}
+	
+	public List<Sport> getSportByUser(String username, String sport) {
+		List<Sport> sports=null;
+		String query ="";
+		
+		switch (sport) {
+		case SportValue.Course:
+			query="from "+SportValue.Course+" where User_Username="+"'"+username+"'";
+			break;
+
+		case SportValue.Cyclisme:
+			query="from "+SportValue.Cyclisme+" where User_Username="+"'"+username+"'";
+			break;
+
+		case SportValue.Football:
+			query="from "+SportValue.Football+" where User_Username="+"'"+username+"'";
+			break;
+
+		case SportValue.Natation:
+			query="from "+SportValue.Natation+" where User_Username="+"'"+username+"'";
+			break;
+		
+		case SportValue.Tennis:
+			query="from "+SportValue.Tennis+" where User_Username="+"'"+username+"'";
+			break;
+
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + sport);
+		}
+		
+		//get sport object
+		if(query!=null) {
+			Session session = DBConnection.getSession();
+			Query q = session.createQuery(query);
+			sports= q.list();
+			session.close();
+		}
+		
+		return sports;
 	}
 	
 	public List<Sport> getAllSport(){

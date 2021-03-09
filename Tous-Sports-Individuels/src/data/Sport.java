@@ -20,6 +20,9 @@ public abstract class Sport {
 
 	private Date date;
 	
+	public Sport() {
+	}
+	
 	public Sport(User user,String name, Date date) {
 		this.User=user;
 		this.Name=name;
