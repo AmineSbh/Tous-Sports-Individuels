@@ -6,6 +6,7 @@ import data.Course;
 import data.Cyclisme;
 import data.DBConnection;
 import data.Football;
+import data.Friend;
 import data.Natation;
 import data.Tennis;
 import data.User;
@@ -67,6 +68,16 @@ public class AddDataVisitor implements SportVisitor<Void>{
 		Session session = DBConnection.getSession();
 		Transaction readTransaction = session.beginTransaction();
 		session.save(user);
+		readTransaction.commit();
+		session.close();
+		return null;
+	}
+
+	@Override
+	public Void visit(Friend friend) {
+		Session session = DBConnection.getSession();
+		Transaction readTransaction = session.beginTransaction();
+		session.save(friend);
 		readTransaction.commit();
 		session.close();
 		return null;

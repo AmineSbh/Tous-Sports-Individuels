@@ -10,9 +10,11 @@ import org.hibernate.Transaction;
 
 import data.Course;
 import data.DBConnection;
+import data.Friend;
 import data.Sport;
 import data.User;
 import process.AddDataVisitor;
+import process.SocialNetworkManager;
 import process.SportManager;
 
 public class TestVisitor {
@@ -32,6 +34,21 @@ public class TestVisitor {
 		
 		for(Sport sport : s){
 			System.out.println(sport.getName()+" le nom: "+sport.getUser().getFirstName());
+		}
+		
+		
+		
+		User user= new User("weezy95","aaaaaa" ,"aaaaaa", "aaaaaa", "aaaaaa");
+		SocialNetworkManager snm= new SocialNetworkManager();
+		List<Friend> f = snm.getFriendsByUser(user);
+		
+		for(Friend friend : f){
+			if(friend.getUser1()==user) {
+				System.out.println("\n\n RELATION 1"+friend.getUser1().getUserName());
+			}else {
+				System.out.println("\n\n RELATION "+friend.getUser2().getUserName());
+			}
+			
 		}
 
 	}

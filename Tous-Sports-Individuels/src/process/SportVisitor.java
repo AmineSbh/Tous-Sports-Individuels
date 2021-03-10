@@ -3,6 +3,7 @@ package process;
 import data.Course;
 import data.Cyclisme;
 import data.Football;
+import data.Friend;
 import data.Natation;
 import data.Tennis;
 import data.User;
@@ -19,5 +20,7 @@ public interface SportVisitor<T> {
 	T visit(Tennis sport);
 
 	T visit(User User);
+	
+	T visit(Friend friend);
 
 }

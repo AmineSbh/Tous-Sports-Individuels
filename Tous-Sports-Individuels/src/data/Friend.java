@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import process.SportVisitor;
+
 @Entity
 public class Friend {
 	
@@ -25,11 +27,19 @@ public class Friend {
 	
 	private Date Date;
 	
-	public Friend(User user1, User user2, String state,FriendStatus state1,Date date) {
+	public Friend() {
+		
+	}
+	
+	public Friend(User user1, User user2) {
 		this.UserName1=user1;
 		this.UserName2=user2;
-		this.state=state1;
-		this.setDate(date);
+		this.state=FriendStatus.PENDING;
+		this.Date = new Date(); 
+	}
+	
+	public <T> T accept(SportVisitor<T> visitor) {
+		return visitor.visit(this);
 	}
 	
 	public int getFriend_id() {

@@ -76,6 +76,7 @@ public class SportManager {
 		return sports;
 	}
 	
+	
 	public List<Sport> getAllSport(){
 		Session session = DBConnection.getSession();
 		List<Sport> sports=null;
