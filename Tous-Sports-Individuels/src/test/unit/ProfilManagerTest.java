@@ -20,7 +20,7 @@ public class ProfilManagerTest {
 	public void testInscription() {
 		AddDataVisitor visitor= new AddDataVisitor();
 		ProfilManager pm= new ProfilManager();
-		User user = new User("Amine","amine" ,"sabbahi", "Thauvin", "Mandanda");
+		User user = new User("abcda","amine95" ,"sabbahi95", "Thauvin", "Mandanda");
 		assertTrue(pm.inscription(visitor, user));
 	}
 

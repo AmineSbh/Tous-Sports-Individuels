@@ -40,13 +40,13 @@ public class ProfilManager {
 		Transaction readTransaction = session.beginTransaction();
 		
 		setUser((User) session.get(User.class, id));
-		try {
+		/*try {
 		session.save(user);
 
 		readTransaction.commit();
 		}catch(IllegalArgumentException e){
 			e.getMessage();
-		}
+		}*/
 		
 		
 		session.close();

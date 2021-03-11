@@ -76,29 +76,6 @@ public class SportManager {
 		return sports;
 	}
 	
-	
-	public List<Sport> getAllSport(){
-		Session session = DBConnection.getSession();
-		List<Sport> sports=null;
-		
-		//Start the transaction
-		Transaction readTransaction = session.beginTransaction();
-		
-		//get Sport
-		/*sports = session.createQuery();
-		setUser((User) session.get(User.class, id));
-		try {
-		session.save(user);
-
-		readTransaction.commit();
-		}catch(IllegalArgumentException e){
-			e.getMessage();
-		}
-		
-		
-		session.close();*/
-		return sports;
-	}
 
 	public Sport getSport() {
 		return sport;

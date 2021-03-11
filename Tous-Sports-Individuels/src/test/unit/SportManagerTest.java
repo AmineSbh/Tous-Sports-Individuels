@@ -22,7 +22,7 @@ public class SportManagerTest {
 	public void testAddDataSport() {
 		User user= new User("weezy","a","a","a","aaaaaa");//user existant
 		Date date= new Date();
-		Sport course= new Course(user,date, 5.0, 11.0, 10.0);
+		Sport course= new Course(user,date, 6.0, 10.0, 10.0);
 		SportManager sm= new SportManager();
 		assertTrue(sm.addData(course));
 	}
