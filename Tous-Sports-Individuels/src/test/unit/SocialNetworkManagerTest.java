@@ -16,8 +16,8 @@ public class SocialNetworkManagerTest {
 
 	@Test
 	public void testAddFriendRelationship() {
-		User user= new User("weezy95","aaaaaa" ,"aaaaaa", "aaaaaa", "aaaaaa");
-		User user2= new User("weezy955","aaaaaa" ,"aaaaaa", "aaaaaa", "aaaaaa");
+		User user= new User("weezy955","aaaaaa" ,"aaaaaa", "aaaaaa", "aaaaaa");
+		User user2= new User("Amine","amine" ,"sabbahi", "Thauvin", "Mandanda");
 		SocialNetworkManager snm= new SocialNetworkManager();
 		Friend friend = new Friend(user,user2);
 		
@@ -33,6 +33,25 @@ public class SocialNetworkManagerTest {
 		List<Friend> f = snm.getFriendsByUser(user);
 		
 		assertEquals("weezy955",f.get(0).getUser2().getUserName());
+	}
+	
+	@Test
+	public void testFriendRequest() {
+		User user= new User("weezy95","aaaaaa" ,"aaaaaa", "aaaaaa", "aaaaaa");
+		SocialNetworkManager snm= new SocialNetworkManager();
+		List<Friend> f = snm.getFriendRequestByUser(user);
+		
+		assertEquals("Amine",f.get(0).getUser2().getUserName());
+	}
+	
+	@Test
+	public void testAcceptRequest() {
+		User user= new User("weezy95","aaaaaa" ,"aaaaaa", "aaaaaa", "aaaaaa");
+		User user2= new User("Amine","amine" ,"sabbahi", "Thauvin", "Mandanda");;
+		SocialNetworkManager snm= new SocialNetworkManager();
+		Boolean accept = snm.getAcceptRequest(user, user2);
+		
+		assertTrue(accept);
 	}
 
 }
