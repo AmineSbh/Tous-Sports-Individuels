@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import data.UserStatic;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -68,9 +70,9 @@ public class PagePrincipale_IHM extends JFrame {
 		JButton btnMesurer = new JButton("Mesurer");
 		btnMesurer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//Mesure mesure = new Mesure();
-				//mesure.setVisible(true);
-				//dispose();
+				Mesure1 mesure = new Mesure1();
+				mesure.setVisible(true);
+				dispose();
 			}
 		});
 		btnMesurer.setBounds(25, 143, 100, 34);
@@ -85,15 +87,22 @@ public class PagePrincipale_IHM extends JFrame {
 		JButton btnAnalyser = new JButton("Analyser");
 		btnAnalyser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//Analyse window = new Analyse();
-				//window.setVisible(true);
-				//dispose();
+				Analyse1 window = new Analyse1();
+				window.setVisible(true);
+				dispose();
 			}
 		});
 		btnAnalyser.setBounds(175, 143, 129, 34);
 		contentPane.add(btnAnalyser);
 		
 		JButton btnReseau = new JButton("R\u00E9seau");
+		btnReseau.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ReseauSocial_IHM frame = new ReseauSocial_IHM();
+				frame.setVisible(true);
+				dispose();
+			}
+		});
 		btnReseau.setBounds(355, 143, 100, 34);
 		contentPane.add(btnReseau);
 		

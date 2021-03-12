@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import data.UserStatic;
 import process.ProfilManager;
 
 import java.awt.Color;
@@ -115,7 +116,7 @@ public class ConnexionIHM extends JFrame {
 		JLabel lbl_error = new JLabel("La connexion a \u00E9chou\u00E9e, veuillez r\u00E9essayer");
 		lbl_error.setBackground(Color.RED);
 		lbl_error.setForeground(Color.RED);
-		lbl_error.setEnabled(false);
+		lbl_error.setVisible(false);
 		lbl_error.setBounds(98, 197, 240, 14);
 		contentPane.add(lbl_error);
 		
@@ -123,11 +124,12 @@ public class ConnexionIHM extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				ProfilManager pm = new ProfilManager();
 				if(pm.connexion(text_Id.getText(),passwordField.getText())){
+					UserStatic user = new UserStatic(pm.getUser());
 					PagePrincipale_IHM pageprincipale = new PagePrincipale_IHM();
 					pageprincipale.setVisible(true);
 					dispose();
 				}else {
-					lbl_error.setEnabled(true);
+					lbl_error.setVisible(true);
 				}
 			}
 		});

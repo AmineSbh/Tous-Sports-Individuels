@@ -7,7 +7,10 @@ public class UserStatic {
 	/**
 	 * Private constructor ensuring no access from outside of the class.
 	 */
-	private UserStatic(User user) {
+	public UserStatic() {
+		 
+	}
+	public UserStatic(User user) {
 		instance=user;
 	}
 

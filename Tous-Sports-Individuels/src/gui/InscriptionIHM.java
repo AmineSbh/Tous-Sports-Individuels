@@ -25,6 +25,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import data.User;
+import data.UserStatic;
 
 public class InscriptionIHM extends JFrame {
 
@@ -131,12 +132,14 @@ public class InscriptionIHM extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				AddDataVisitor visitor= new AddDataVisitor();
 				User user = new User(text_Id.getText(),text_Nom.getText() ,text_Prenom.getText(), text_Mail.getText(), passwordField.getText());
-				
 				if(pm.inscription(visitor, user)) {
+					if(pm.connexion(text_Id.getText(),passwordField.getText())){
+					UserStatic userStatic = new UserStatic(pm.getUser());
 					PagePrincipale_IHM pageprincipale = new PagePrincipale_IHM();
 					pageprincipale.setVisible(true);
 					dispose();
-				}else {
+					}
+					}else {
 					JOptionPane.showMessageDialog (null, "Something went Wrong", "Title", JOptionPane.ERROR_MESSAGE);
 					text_Nom.setText("");
 					text_Prenom.setText("");
