@@ -48,8 +48,9 @@ public class SocialNetworkManagerTest {
 	public void testAcceptRequest() {
 		User user= new User("weezy95","aaaaaa" ,"aaaaaa", "aaaaaa", "aaaaaa");
 		User user2= new User("Amine","amine" ,"sabbahi", "Thauvin", "Mandanda");;
+		String useTest = "Amine";
 		SocialNetworkManager snm= new SocialNetworkManager();
-		Boolean accept = snm.getAcceptRequest(user, user2);
+		Boolean accept = snm.getAcceptRequest(user, useTest);
 		
 		assertTrue(accept);
 	}
