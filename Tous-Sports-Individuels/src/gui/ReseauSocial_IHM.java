@@ -5,6 +5,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import data.Friend;
+import data.UserStatic;
+import process.SocialNetworkManager;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JScrollPane;
@@ -13,6 +18,8 @@ import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class ReseauSocial_IHM extends JFrame {
@@ -41,6 +48,8 @@ public class ReseauSocial_IHM extends JFrame {
 	 * Create the frame.
 	 */
 	public ReseauSocial_IHM() {
+		SocialNetworkManager snm = new SocialNetworkManager();
+		UserStatic user = new UserStatic();
 		setTitle("Tous Sport - Reseau Social");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 521, 369);
@@ -58,6 +67,12 @@ public class ReseauSocial_IHM extends JFrame {
 		
 		JComboBox Liste_Amis = new JComboBox();
 		Liste_Amis.setBounds(25, 115, 119, 22);
+		List<Friend> f = snm.getFriendsByUser(user.getInstance());
+		Iterator<Friend> iter = f.iterator();
+		while (iter.hasNext()) {
+		    Friend elt = iter.next(); 
+		    Liste_Amis.addItem(elt.getUser2().getUserName());
+		}
 		contentPane.add(Liste_Amis);
 		
 		JLabel lblNewLabel_1 = new JLabel("R\u00E9seau Social Tous Sport");
@@ -108,11 +123,26 @@ public class ReseauSocial_IHM extends JFrame {
 		lblDemandeDamis.setBounds(25, 180, 149, 25);
 		contentPane.add(lblDemandeDamis);
 		
+		List<Friend> f1 = snm.getFriendRequestByUser(user.getInstance());
 		JComboBox Demande_Amis = new JComboBox();
 		Demande_Amis.setBounds(25, 212, 119, 22);
+		Iterator<Friend> iter1 = f1.iterator();
+		while (iter1.hasNext()) {
+		    Friend elt1 = iter1.next(); 
+		    Demande_Amis.addItem(elt1.getUser2().getUserName());
+		}
 		contentPane.add(Demande_Amis);
 		
+
 		JButton btnAccepter = new JButton("Accepter");
+		btnAccepter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Boolean a = snm.getAcceptRequest(user.getInstance(), Demande_Amis.getSelectedItem().toString());
+				if(a) {
+					System.out.print(Demande_Amis.getSelectedItem().toString()+ "Ajout OK");
+				}
+			}
+		});
 		btnAccepter.setBounds(25, 242, 89, 23);
 		contentPane.add(btnAccepter);
 		

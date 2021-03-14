@@ -68,10 +68,10 @@ public class SocialNetworkManager {
 	}
 	
 	//TODO update state
-	public Boolean getAcceptRequest(User user, User user2) {
+	public Boolean getAcceptRequest(User user, String user2) {
 		Boolean accept=true;
 		String id =user.getUserName();
-		String id2 =user.getUserName();
+		String id2 = user2;
 		
 		String query="UPDATE Friend f SET f.state="+"'"+FriendStatus.CONFIRM+"'"
 				+" where (UserName1="+"'"+id+"' AND UserName2="+"'"+id2+"') "
