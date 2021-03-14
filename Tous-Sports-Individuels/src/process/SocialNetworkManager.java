@@ -69,11 +69,12 @@ public class SocialNetworkManager {
 		return friends;
 	}
 	
-	public Boolean getAcceptRequest(User user, User user2) {
+	
+	public Boolean getAcceptRequest(User user, String user2) {
 		List<Friend> friend=null;
 		Boolean accept=true;
 		String id =user.getUserName();
-		String id2 =user2.getUserName();
+		String id2 = user2;
 		
 		String query="from Friend where (UserName1='"+id+"' AND UserName2='"+id2+"') "
 					+ "OR (UserName1='"+id2+"' AND UserName2='"+id+"')";
