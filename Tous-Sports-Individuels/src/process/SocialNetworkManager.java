@@ -1,9 +1,11 @@
 package process;
 
+import java.sql.Connection;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import data.DBConnection;
 import data.Friend;
@@ -67,20 +69,25 @@ public class SocialNetworkManager {
 		return friends;
 	}
 	
-	//TODO update state
 	public Boolean getAcceptRequest(User user, User user2) {
+		List<Friend> friend=null;
 		Boolean accept=true;
 		String id =user.getUserName();
-		String id2 =user.getUserName();
+		String id2 =user2.getUserName();
 		
-		String query="UPDATE Friend f SET f.state="+"'"+FriendStatus.CONFIRM+"'"
-				+" where (UserName1="+"'"+id+"' AND UserName2="+"'"+id2+"') "
-						+ "OR (UserName1="+"'"+id2+"' AND UserName2="+"'"+id+"')";
-		
-		//Accept request
+		String query="from Friend where (UserName1='"+id+"' AND UserName2='"+id2+"') "
+					+ "OR (UserName1='"+id2+"' AND UserName2='"+id+"')";
 		try {
 			Session session = DBConnection.getSession();
-			session.createQuery(query);
+			Transaction transaction = session.beginTransaction();
+			Query q = session.createQuery(query);
+			friend= q.list();
+			
+			int idFriend = friend.get(0).getFriend_id();
+			Friend f = (Friend) session.get(Friend.class, idFriend);
+			f.setState(FriendStatus.CONFIRM);
+			
+			transaction.commit();
 			session.close();
 		}catch (IllegalArgumentException e){
 			System.err.println("accept failed.");

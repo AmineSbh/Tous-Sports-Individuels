@@ -14,7 +14,7 @@ import process.SocialNetworkManager;
 
 public class SocialNetworkManagerTest {
 
-	@Test
+	/*@Test
 	public void testAddFriendRelationship() {
 		User user= new User("weezy955","aaaaaa" ,"aaaaaa", "aaaaaa", "aaaaaa");
 		User user2= new User("Amine","amine" ,"sabbahi", "Thauvin", "Mandanda");
@@ -42,7 +42,7 @@ public class SocialNetworkManagerTest {
 		List<Friend> f = snm.getFriendRequestByUser(user);
 		
 		assertEquals("Amine",f.get(0).getUser2().getUserName());
-	}
+	}*/
 	
 	@Test
 	public void testAcceptRequest() {
