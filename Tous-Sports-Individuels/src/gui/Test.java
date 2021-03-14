@@ -22,8 +22,9 @@ import java.awt.Font;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.JTable;
 
-public class Analyse1 extends JFrame{
+public class Test extends JFrame{
 
 	private JPanel contentPane;
 	private static final Dimension IDEAL_MAIN_DIMENSION = new Dimension(500, 500);
@@ -38,7 +39,7 @@ public class Analyse1 extends JFrame{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Analyse1 window = new Analyse1();
+					Test window = new Test();
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,9 +51,9 @@ public class Analyse1 extends JFrame{
 	/**
 	 * Create the application.
 	 */
-	public Analyse1() {
+	public Test() {
 		setTitle("Page Analyse");
-		setBounds(100, 100, 749, 531);
+		setBounds(100, 100, 1131, 535);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.DARK_GRAY);
@@ -60,13 +61,13 @@ public class Analyse1 extends JFrame{
 		contentPane.setLayout(null);
 		
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(36, 198, 159, 26);
+		comboBox_1.setBounds(586, 155, 159, 26);
 		comboBox_1.addItem(comboBox_1.getSelectedItem());
 		contentPane.add(comboBox_1);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setToolTipText("");
-		comboBox.setBounds(353, 198, 159, 26);
+		comboBox.setBounds(862, 155, 159, 26);
 		contentPane.add(comboBox);
 		
 		JButton btnRetour_Menu = new JButton("Retour au menu principal");
@@ -95,37 +96,40 @@ public class Analyse1 extends JFrame{
 		
 		JLabel lblChoixDuSport = new JLabel("Choix du sport \u00E0 analyser");
 		lblChoixDuSport.setForeground(Color.WHITE);
-		lblChoixDuSport.setBounds(36, 152, 180, 20);
+		lblChoixDuSport.setBounds(586, 105, 180, 20);
 		contentPane.add(lblChoixDuSport);
 		lblChoixDuSport.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
 		JLabel lblChoixDunAmi = new JLabel("Choix d'un ami pour comparaison");
 		lblChoixDunAmi.setForeground(Color.WHITE);
-		lblChoixDunAmi.setBounds(353, 152, 239, 20);
+		lblChoixDunAmi.setBounds(862, 105, 239, 20);
 		contentPane.add(lblChoixDunAmi);
 		lblChoixDunAmi.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
 		JButton btnDonnes = new JButton("Donn\u00E9es 1");
-		btnDonnes.setBounds(26, 319, 178, 29);
+		btnDonnes.setBounds(463, 285, 178, 29);
 		contentPane.add(btnDonnes);
 		
 		JButton btnDonnes_1 = new JButton("Donn\u00E9es 2");
-		btnDonnes_1.setBounds(261, 319, 191, 29);
+		btnDonnes_1.setBounds(663, 285, 191, 29);
 		contentPane.add(btnDonnes_1);
 		
 		JButton btnDonnes_2 = new JButton("Donn\u00E9es 3");
-		btnDonnes_2.setBounds(490, 319, 222, 29);
+		btnDonnes_2.setBounds(872, 285, 222, 29);
 		contentPane.add(btnDonnes_2);
 		
 		JButton btn_Analyse = new JButton("Lancer Analyse");
 		btn_Analyse.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btn_Analyse.setBounds(418, 418, 161, 38);
+		btn_Analyse.setBounds(693, 406, 161, 38);
 		contentPane.add(btn_Analyse);
 		
-		/*dashboard = new DashboardAnalyse("Course");
-		dashboard.set
-		dashboard.setPreferredSize(IDEAL_DASHBOARD_DIMENSION);
-		contentPane.add(dashboard);*/
+		/*JPanel panel = new JPanel();
+		panel.setBounds(25, 129, 404, 260);
+		contentPane.add(panel);*/
+		
+		dashboard = new DashboardAnalyse("Course");
+		dashboard.setBounds(25, 129, 404, 260);
+		//dashboard.setPreferredSize(IDEAL_DASHBOARD_DIMENSION);
+		contentPane.add(dashboard);
 	}
-
 }
