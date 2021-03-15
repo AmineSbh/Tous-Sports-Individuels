@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import data.Friend;
+import data.User;
 import data.UserStatic;
 import process.SocialNetworkManager;
 
@@ -67,6 +68,7 @@ public class ReseauSocial_IHM extends JFrame {
 		
 		JComboBox Liste_Amis = new JComboBox();
 		Liste_Amis.setBounds(25, 115, 119, 22);
+		Liste_Amis.addItem("");
 		List<Friend> f = snm.getFriendsByUser(user.getInstance());
 		Iterator<Friend> iter = f.iterator();
 		while (iter.hasNext()) {
@@ -99,6 +101,19 @@ public class ReseauSocial_IHM extends JFrame {
 		text_Amis.setColumns(10);
 		
 		JButton btnAjouter = new JButton("Ajouter");
+		btnAjouter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			String usern = new String(text_Amis.getText());
+			List<User> username = snm.getUser(usern);
+			if(username.isEmpty()) {
+				System.out.print("Le nom d'utilisateur est inconnu");
+			}else {
+				Friend f = new Friend(user.getInstance(), username.get(0));
+				snm.Friend_Request(f);
+			}
+			}
+		});
+		
 		btnAjouter.setBounds(215, 146, 89, 23);
 		contentPane.add(btnAjouter);
 		
@@ -114,6 +129,19 @@ public class ReseauSocial_IHM extends JFrame {
 		contentPane.add(text_Supprimer);
 		
 		JButton btnSupprimer = new JButton("Supprimer");
+		btnSupprimer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			String userSupp = new String(text_Supprimer.getText());
+			List<User> accept1 = snm.getUser(user.getInstance().getUserName());
+			List<User> accept2 = snm.getUser(userSupp);
+			Friend friend = new Friend(accept1.get(0),accept2.get(0));
+			if(snm.Delete_Friend(accept1.get(0),accept2.get(0))) {
+				System.out.println("La suppression a marché");
+			}else{
+				System.out.println("La suppression n'a pas fonctionnée");
+			};
+			}
+		});
 		btnSupprimer.setBounds(215, 242, 89, 23);
 		contentPane.add(btnSupprimer);
 		
@@ -126,6 +154,7 @@ public class ReseauSocial_IHM extends JFrame {
 		List<Friend> f1 = snm.getFriendRequestByUser(user.getInstance());
 		JComboBox Demande_Amis = new JComboBox();
 		Demande_Amis.setBounds(25, 212, 119, 22);
+		Demande_Amis.addItem("");
 		Iterator<Friend> iter1 = f1.iterator();
 		while (iter1.hasNext()) {
 		    Friend elt1 = iter1.next(); 
