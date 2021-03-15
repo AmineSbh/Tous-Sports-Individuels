@@ -61,7 +61,7 @@ public class PaintVisitor implements SportVisitor {
 		
 		HistogramDataset dataset = new HistogramDataset();
         dataset.setType(HistogramType.FREQUENCY);
-        dataset.addSeries("Hist",values,20); // Number of bins is 50
+        dataset.addSeries("Hist",values,20); // Number of bins is  50
         String plotTitle = "";
         String xAxis = "Date";
         String yAxis = "Kilometer";
