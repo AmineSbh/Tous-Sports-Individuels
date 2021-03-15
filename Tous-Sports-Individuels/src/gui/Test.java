@@ -28,7 +28,7 @@ public class Test extends JFrame{
 
 	private JPanel contentPane;
 	private static final Dimension IDEAL_MAIN_DIMENSION = new Dimension(500, 500);
-	private static final Dimension IDEAL_DASHBOARD_DIMENSION = new Dimension(800, 600);
+	public static final Dimension IDEAL_DASHBOARD_DIMENSION = new Dimension(404, 260);
 
 	private DashboardAnalyse dashboard;
 
@@ -118,18 +118,25 @@ public class Test extends JFrame{
 		btnDonnes_2.setBounds(872, 285, 222, 29);
 		contentPane.add(btnDonnes_2);
 		
+		dashboard = new DashboardAnalyse();
+		dashboard.setBounds(25, 129,IDEAL_DASHBOARD_DIMENSION.width,
+				IDEAL_DASHBOARD_DIMENSION.height);
+		contentPane.add(dashboard);
+		
 		JButton btn_Analyse = new JButton("Lancer Analyse");
+		btn_Analyse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dashboard.setEmpty();
+				dashboard.setData("Distance");
+				dashboard.setSport("Course");
+				dashboard.revalidate();
+				dashboard.repaint();
+			}
+		});
 		btn_Analyse.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btn_Analyse.setBounds(693, 406, 161, 38);
 		contentPane.add(btn_Analyse);
 		
-		/*JPanel panel = new JPanel();
-		panel.setBounds(25, 129, 404, 260);
-		contentPane.add(panel);*/
 		
-		dashboard = new DashboardAnalyse("Course");
-		dashboard.setBounds(25, 129, 404, 260);
-		//dashboard.setPreferredSize(IDEAL_DASHBOARD_DIMENSION);
-		contentPane.add(dashboard);
 	}
 }

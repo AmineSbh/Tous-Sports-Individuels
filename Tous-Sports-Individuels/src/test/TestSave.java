@@ -1,5 +1,6 @@
 package test;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class TestSave {
 		session.save(inscription);
 
 		readTransaction.commit();
-		session.close();*/
+		session.close();
 		
 		Session session = DBConnection.getSession();
 		Transaction readTransaction = session.beginTransaction();
@@ -36,7 +37,22 @@ public class TestSave {
 		session.save(course);
 
 		readTransaction.commit();
-		session.close();
+		session.close();*/
+		ArrayList list = new ArrayList<Double>();
+		list.add(11.0);
+		list.add(12.0);
+		Object[] obj = list.toArray();
+
+		double[] values = new double[obj.length];
+		for(int i=0; i < values.length; i++) {
+		  //Convertir les objets en int
+			values[i]=(double) obj[i];
+		}
+		
+		for(int i=0; i < values.length; i++) {
+			  //Convertir les objets en int
+				System.out.println(values[i]);
+			}
 	}
 
 }

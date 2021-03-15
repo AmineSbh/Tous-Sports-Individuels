@@ -7,4 +7,6 @@ public class SportValue {
 	public static final String Football = "Football";
 	public static final String Natation = "Natation";
 	public static final String Tennis = "Tennis";
+	
+	public static final String CourseKilometer = "kilometer";
 }

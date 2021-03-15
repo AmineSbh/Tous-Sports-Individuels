@@ -8,29 +8,39 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.statistics.HistogramDataset;
+import org.jfree.data.statistics.HistogramType;
 
+import data.Course;
+import data.Sport;
 import data.User;
+import data.UserStatic;
+import gui.Test;
+import process.SportManager;
 
 public class DashboardAnalyse extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
 	private String sport;
-	Graphics2D g2;
-	private boolean end = false;
+	private User userFriend;
+	private String data;
 	
-	private static boolean DEBUG = false;
+	Graphics2D g2;
+	private boolean empty = true;
 
-	public DashboardAnalyse(String sport) {
-		this.sport = sport;
+	public DashboardAnalyse() {
 	}
 
 	// Defines action when repaint is called
@@ -40,27 +50,64 @@ public class DashboardAnalyse extends JPanel {
 		// Use Graphics2D to have more drawing options later
 		g2 = (Graphics2D) g;
 		
-		final DefaultPieDataset pieDataset = new DefaultPieDataset();
-        pieDataset.setValue("Femme", 21);
-        pieDataset.setValue("Homme", 11);
-        final JFreeChart pieChart = 
-        		ChartFactory.createPieChart("Ratio H/F", pieDataset, true, false, false);
-        
-        BufferedImage chartImage = pieChart.createBufferedImage(404, 260, null);
-        g2.drawImage(chartImage, 0,0, null);
+		if(empty) {
+			printErrorMessage(g2);
+		}else {
+			printGraphic(g2);
+		}
+		
 	}
 	
-	private void printDebugGrid(Graphics2D g2) {
-		g2.setColor(Color.GRAY);
-		g2.drawLine(50, 1, 50, 500);
+	private void printErrorMessage(Graphics2D g2) {
+		g2.setFont(new Font("Lancer", Font.BOLD, 20));
+		g2.setColor(Color.RED);
+		g2.drawString("Pas de graphique actuellement",55, 100);
+	}
+	
+	private void printGraphic(Graphics2D g2) {
+		List<Sport> sport = null;
+		
+		SportManager sm= new SportManager();
+		
+		User user= new User("weezy","a","a","a","aaaaaa");//user existant
+		Date date= new Date();
+		Sport course= new Course();
+		
+		//sport = sm.getSportByUser(UserStatic.getInstance().getUserName()
+			//	, this.sport);
+		
+		sport = sm.getSportByUser("weezy", this.sport);
+		
+		PaintVisitor paintVisitor = new PaintVisitor(g2, this.data, sport);
+		course.accept(paintVisitor);
 	}
 
-	public void setSimulation(String sport) {
+	public User getUser() {
+		return this.userFriend;
+	}
+	
+	public void setUser(User user) {
+		this.userFriend = user;
+	}
+	
+	public String getData() {
+		return this.data;
+	}
+	
+	public void setData(String data) {
+		this.data = data;
+	}
+	
+	public String getSport() {
+		return this.sport;
+	}
+	
+	public void setSport(String sport) {
 		this.sport = sport;
 	}
 	
-	public void setEnd(Boolean a) {
-		this.end = a;
+	public void setEmpty() {
+		this.empty = false;
 	}
 
 }
