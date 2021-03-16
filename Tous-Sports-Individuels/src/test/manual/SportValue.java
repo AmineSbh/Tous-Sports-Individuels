@@ -9,4 +9,22 @@ public class SportValue {
 	public static final String Tennis = "Tennis";
 	
 	public static final String CourseKilometer = "kilometer";
+	public static final String CourseMaxSpeed = "MaxSpeed";
+	public static final String CourseAverageSpeed = "AverageSpeed";
+	
+	public static final String CyclismeNumberOfSprint = "NumberOfSprint";
+	public static final String CyclismeUphillDistance = "UphillDistance";
+	public static final String CyclismeAverageSpeed = "AverageSpeed";
+	
+	public static final String FoorballNumberSuccessfulPass = "NumberSuccessfulPass";
+	public static final String Foorballkilometer = "kilometer";
+	public static final String FoorballNumberSuccessfulDribble = "NumberSuccessfulDribble";
+	
+	public static final String NatationDistanceCouléeDepart = "DistanceCouléeDepart";
+	public static final String NatationNombreMvtBras = "NombreMvtBras";
+	public static final String NatationTime = "Time";
+	
+	public static final String TennisNumberSuccessfulShot = "NumberSuccessfulShot";
+	public static final String TennisMaxSpeedService = "MaxSpeedService";
+	public static final String TennisNumberAces = "NumberAces";
 }

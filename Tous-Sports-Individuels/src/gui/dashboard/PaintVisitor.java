@@ -123,7 +123,6 @@ public class PaintVisitor implements SportVisitor {
 	
 	private void CourseKilometer() {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset(); 
-		
 		Course course = new Course();
 		Boolean exist;
 		
@@ -159,7 +158,6 @@ public class PaintVisitor implements SportVisitor {
 		
 		JFreeChart barChart = ChartFactory.createBarChart("Kilometres parcouru", "Date", 
 	      "Kilometres", dataset, PlotOrientation.VERTICAL, true, true, false);
-		
 	    barChart.setBackgroundPaint(Color.white);
 	    
 	    BufferedImage chartImage = barChart.createBufferedImage(Test.IDEAL_DASHBOARD_DIMENSION.width,
