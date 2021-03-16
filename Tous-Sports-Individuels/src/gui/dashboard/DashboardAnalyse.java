@@ -69,7 +69,6 @@ public class DashboardAnalyse extends JPanel {
 		
 		SportManager sm= new SportManager();
 		
-		User user= new User("weezy","a","a","a","aaaaaa");//user existant
 		Date date= new Date();
 		Sport course= new Course();
 		

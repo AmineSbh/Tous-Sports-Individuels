@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -12,6 +13,7 @@ import org.hibernate.Transaction;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.statistics.HistogramDataset;
 import org.jfree.data.statistics.HistogramType;
 
@@ -26,6 +28,7 @@ import data.Tennis;
 import data.User;
 import gui.Test;
 import process.SportVisitor;
+import test.manual.SportValue;
 
 public class PaintVisitor implements SportVisitor {
 	
@@ -43,41 +46,14 @@ public class PaintVisitor implements SportVisitor {
 	//TODO Try 
 	public Void visit(Course sport) {
 		
-		ArrayList list = new ArrayList<Double>();
-		Course course = new Course();
-		
-		for(Sport s : this.sport) {
-			course = (Course) s;
-			list.add(course.getKilometer());
+		switch (dataToProcess) {
+		case SportValue.CourseKilometer:
+			CourseKilometer();
+			break;
+
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + dataToProcess);
 		}
-		
-		Object[] obj = list.toArray();
-
-		double[] values = new double[obj.length];
-		for(int i=0; i < values.length; i++) {
-		  //Convertir les objets en int
-			values[i]=(double) obj[i];
-		}
-		
-		HistogramDataset dataset = new HistogramDataset();
-        dataset.setType(HistogramType.FREQUENCY);
-        dataset.addSeries("Hist",values,20); // Number of bins is  50
-        String plotTitle = "";
-        String xAxis = "Date";
-        String yAxis = "Kilometer";
-        PlotOrientation orientation = PlotOrientation.VERTICAL;
-
-        boolean show = false;
-        boolean toolTips = false;
-        boolean urls = false;
-        JFreeChart chart = ChartFactory.createHistogram(plotTitle, xAxis, yAxis,
-                dataset, orientation, show, toolTips, urls);
-
-        chart.setBackgroundPaint(Color.white);
-		
-		BufferedImage chartImage = chart.createBufferedImage(Test.IDEAL_DASHBOARD_DIMENSION.width,
-        		Test.IDEAL_DASHBOARD_DIMENSION.height, null);
-        g2.drawImage(chartImage, 0,0, null);
 		return null;
 	}
 
@@ -143,6 +119,53 @@ public class PaintVisitor implements SportVisitor {
 
 	public void setDataToProcess(String dataToProcess) {
 		this.dataToProcess = dataToProcess;
+	}
+	
+	private void CourseKilometer() {
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset(); 
+		
+		Course course = new Course();
+		Boolean exist;
+		
+		Calendar cal = Calendar.getInstance();
+		cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+		
+		for(Integer i=1; i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH);i++) {
+			exist=false;
+			String dayI = i.toString();
+			
+			for(Sport s : this.sport) {
+				course = (Course) s;
+				Integer d = course.getDate().getDate();
+				Integer m = course.getDate().getMonth();
+				
+				if(d==i) {
+					exist = true;
+					if(i<10) {
+						dataset.addValue(course.getKilometer(),"Weezy","0"+dayI);
+					}else {
+						dataset.addValue(course.getKilometer(),"Weezy",dayI);
+					}
+				}
+			}
+			if(!exist) {
+				if(i<10) {
+					dataset.addValue(0,"Weezy","0"+dayI);
+				}else {
+					dataset.addValue(0,"Weezy",dayI);
+				}
+			}
+		}
+		
+		JFreeChart barChart = ChartFactory.createBarChart("Kilometres parcouru", "Date", 
+	      "Kilometres", dataset, PlotOrientation.VERTICAL, true, true, false);
+		
+	    barChart.setBackgroundPaint(Color.white);
+	    
+	    BufferedImage chartImage = barChart.createBufferedImage(Test.IDEAL_DASHBOARD_DIMENSION.width,
+        		Test.IDEAL_DASHBOARD_DIMENSION.height, null);
+        g2.drawImage(chartImage, 0,0, null);
+		
 	}
 
 }
