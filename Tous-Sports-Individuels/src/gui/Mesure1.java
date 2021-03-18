@@ -64,6 +64,7 @@ public class Mesure1 extends JFrame {
 		setTitle("Page Mesure");
 		setBounds(100, 100, 791, 522);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.DARK_GRAY);
 		setContentPane(contentPane);

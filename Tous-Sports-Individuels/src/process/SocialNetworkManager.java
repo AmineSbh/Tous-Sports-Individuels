@@ -97,7 +97,7 @@ public class SocialNetworkManager {
 		String id =user.getUserName();
 		
 		//delete UserName1 
-		String query="from Friend where (UserName1="+"'"+id+"' OR UserName2="+"'"+id+"') "
+		String query="from Friend where (UserName2="+"'"+id+"') "
 				+ "AND state ="+"'"+FriendStatus.PENDING+"'";
 		
 		//get List of Friend object

@@ -54,6 +54,7 @@ public class Analyse1 extends JFrame{
 		setTitle("Page Analyse");
 		setBounds(100, 100, 749, 531);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.DARK_GRAY);
 		setContentPane(contentPane);
