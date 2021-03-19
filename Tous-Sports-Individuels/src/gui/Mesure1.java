@@ -104,15 +104,6 @@ public class Mesure1 extends JFrame {
 		label_1.setBounds(402, 167, 193, 20);
 		contentPane.add(label_1);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.WHITE);
-		panel_1.setBounds(26, 111, 193, 37);
-		contentPane.add(panel_1);
-		
-		JLabel lblChoisissezVotreSport = new JLabel("Choisissez votre sport");
-		lblChoisissezVotreSport.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_1.add(lblChoisissezVotreSport);
-		
 		JButton btnRetour_Menu = new JButton("Retour au menu principal");
 		btnRetour_Menu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -142,6 +133,12 @@ public class Mesure1 extends JFrame {
 		lblEntrerValeurs_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblEntrerValeurs_1.setBounds(402, 347, 208, 20);
 		contentPane.add(lblEntrerValeurs_1);
+		
+		JLabel lblNewLabel_1 = new JLabel("Choisissez votre sport");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setBounds(26, 100, 217, 38);
+		contentPane.add(lblNewLabel_1);
 		
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

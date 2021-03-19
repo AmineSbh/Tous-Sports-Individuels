@@ -18,11 +18,10 @@ import test.manual.SportValue;
 public class SocialNetworkManager {
 	
 	private AddDataVisitor visitor;
-	private DeleteDataVisitor visitor1;
 	
 	public SocialNetworkManager() {
 		visitor = new AddDataVisitor();
-		visitor1 = new DeleteDataVisitor();
+
 	}
 	
 	public Boolean Friend_Request(Friend friend) {
