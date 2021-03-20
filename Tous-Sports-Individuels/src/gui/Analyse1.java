@@ -132,15 +132,7 @@ public class Analyse1 extends JFrame{
 		contentPane.add(dashboard);
 		
 		JButton btn_Analyse = new JButton("Lancer Analyse");
-		btn_Analyse.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				dashboard.setEmpty();
-				dashboard.setData(SportValue.CourseKilometer);
-				dashboard.setSport("Course");
-				dashboard.revalidate();
-				dashboard.repaint();
-			}
-		});
+
 		btn_Analyse.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btn_Analyse.setBounds(784, 162, 161, 38);
 		contentPane.add(btn_Analyse);
@@ -149,6 +141,28 @@ public class Analyse1 extends JFrame{
 		comboBox_2.setToolTipText("");
 		comboBox_2.setBounds(563, 166, 159, 26);
 		contentPane.add(comboBox_2);
+		btn_Analyse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dashboard.setEmpty();
+				switch (comboBox_2.getSelectedItem().toString()) {
+						case "kilomètres parcourus" :
+						dashboard.setData(SportValue.CourseKilometer);
+						break;
+						case "Vitesse maximale" :
+						dashboard.setData(SportValue.CourseMaxSpeed);
+						break;
+						case "Vitesse Moyenne":
+						dashboard.setData(SportValue.CourseAverageSpeed);
+						break;
+						default:
+							throw new IllegalArgumentException("Unexpected value: ");
+					}
+			
+				dashboard.setSport(comboBox_1.getSelectedItem().toString());
+				dashboard.revalidate();
+				dashboard.repaint();
+			}
+		});
 		
 		JLabel lblChoixDeLa = new JLabel("Choix de la cat\u00E9gorie");
 		lblChoixDeLa.setForeground(Color.WHITE);

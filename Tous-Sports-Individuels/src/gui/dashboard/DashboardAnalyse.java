@@ -83,13 +83,13 @@ public class DashboardAnalyse extends JPanel {
 			case SportValue.Course:
 				switch (this.data) {
 					case SportValue.CourseKilometer:
-						CourseKilometer(sport,SportValue.CourseKilometer,SportValue.Course);
+						CourseKilometer(sport,SportValue.CourseKilometer,SportValue.Course, 1);
 					break;
 					case SportValue.CourseMaxSpeed:
-						CourseKilometer(sport,SportValue.CourseMaxSpeed,SportValue.Course);
+						CourseKilometer(sport,SportValue.CourseMaxSpeed,SportValue.Course, 2);
 					break;
 					case SportValue.CourseAverageSpeed:
-						//CourseKilometer(sport);
+						CourseKilometer(sport,SportValue.CourseAverageSpeed,SportValue.Course, 3);
 					break;
 					default:
 						throw new IllegalArgumentException("Unexpected value: " + this.data);
@@ -102,10 +102,10 @@ public class DashboardAnalyse extends JPanel {
 						//CourseKilometer(sport);
 					break;
 					case SportValue.CyclismeNumberOfSprint:
-						CourseKilometer(sport,SportValue.CyclismeNumberOfSprint,SportValue.Cyclisme);
+						CourseKilometer(sport,SportValue.CyclismeNumberOfSprint,SportValue.Cyclisme,2);
 					break;
 					case SportValue.CyclismeUphillDistance:
-						CourseKilometer(sport,SportValue.CyclismeUphillDistance,SportValue.Cyclisme);
+						CourseKilometer(sport,SportValue.CyclismeUphillDistance,SportValue.Cyclisme,3);
 					break;
 					default:
 						throw new IllegalArgumentException("Unexpected value: " + this.data);
@@ -115,7 +115,7 @@ public class DashboardAnalyse extends JPanel {
 			case SportValue.Football:
 				switch (this.data) {
 					case SportValue.Foorballkilometer:
-						CourseKilometer(sport,SportValue.Foorballkilometer,SportValue.Football);
+						CourseKilometer(sport,SportValue.Foorballkilometer,SportValue.Football,1);
 					break;
 					case SportValue.FoorballNumberSuccessfulDribble:
 						//CourseKilometer(sport);
@@ -134,7 +134,7 @@ public class DashboardAnalyse extends JPanel {
 						//CourseKilometer(sport);
 					break;
 					case SportValue.NatationNombreMvtBras:
-						CourseKilometer(sport,SportValue.NatationNombreMvtBras,SportValue.Natation);
+						CourseKilometer(sport,SportValue.NatationNombreMvtBras,SportValue.Natation,2);
 					break;
 					case SportValue.NatationTime:
 						//CourseKilometer(sport);
@@ -166,13 +166,14 @@ public class DashboardAnalyse extends JPanel {
 		
 	}
 	
-	private void CourseKilometer(List<Sport> lsport, String legendOrdinate, String legendGraphic) {
+	private void CourseKilometer(List<Sport> lsport, String legendOrdinate, String legendGraphic, Integer choix) {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset(); 
 		Course course = new Course();
 		Boolean exist;
+		Integer choix_data = choix;
 		Calendar cal = Calendar.getInstance();
 		cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-		
+		if(choix_data==1) {
 		for(Integer i=1; i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH);i++) {
 			exist=false;
 			String dayI = i.toString();
@@ -199,6 +200,66 @@ public class DashboardAnalyse extends JPanel {
 				}
 			}
 		}
+		}
+		if(choix_data==2) {
+			for(Integer i=1; i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH);i++) {
+				exist=false;
+				String dayI = i.toString();
+				
+				for(Sport s : lsport) {
+					course = (Course) s;
+					Integer d = course.getDate().getDate();
+					Integer m = course.getDate().getMonth();
+					
+					if(d==i) {
+						exist = true;
+						if(i<10) {
+							dataset.addValue(course.getMaxSpeed(),"Weezy","0"+dayI);
+						}else {
+							dataset.addValue(course.getMaxSpeed(),"Weezy",dayI);
+						}
+					}
+				}
+				if(!exist) {
+					if(i<10) {
+						dataset.addValue(0,"Weezy","0"+dayI);
+					}else {
+						dataset.addValue(0,"Weezy",dayI);
+					}
+				}
+			}
+		}
+		
+			if(choix_data==3) {
+				for(Integer i=1; i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH);i++) {
+					exist=false;
+					String dayI = i.toString();
+					
+					for(Sport s : lsport) {
+						course = (Course) s;
+						Integer d = course.getDate().getDate();
+						Integer m = course.getDate().getMonth();
+						
+						if(d==i) {
+							exist = true;
+							if(i<10) {
+								dataset.addValue(course.getAverageSpeed(),"Weezy","0"+dayI);
+							}else {
+								dataset.addValue(course.getAverageSpeed(),"Weezy",dayI);
+							}
+						}
+					}
+					if(!exist) {
+						if(i<10) {
+							dataset.addValue(0,"Weezy","0"+dayI);
+						}else {
+							dataset.addValue(0,"Weezy",dayI);
+						}
+					}
+				}
+			}
+		
+		
 		
 		JFreeChart barChart = ChartFactory.createBarChart(legendOrdinate, "Date", 
 				legendGraphic, dataset, PlotOrientation.VERTICAL, true, true, false);
