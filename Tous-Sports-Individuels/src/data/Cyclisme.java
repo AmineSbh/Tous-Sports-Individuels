@@ -19,6 +19,10 @@ public class Cyclisme extends Sport{
 		this.setAverageSpeed(averagespeed);
 	}
 
+	public Cyclisme() {
+		super();
+	}
+
 	@Override
 	public <T> T accept(SportVisitor<T> visitor) {
 		return visitor.visit(this);

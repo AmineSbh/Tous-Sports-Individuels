@@ -25,6 +25,7 @@ import org.jfree.data.statistics.HistogramDataset;
 import org.jfree.data.statistics.HistogramType;
 
 import data.Course;
+import data.Cyclisme;
 import data.Sport;
 import data.User;
 import data.UserStatic;
@@ -70,11 +71,9 @@ public class DashboardAnalyse extends JPanel {
 	
 	private void printGraphic(Graphics2D g2) {
 		List<Sport> sport = null;
-		//sport = sm.getSportByUser(UserStatic.getInstance().getUserName()
-			//	, this.sport);
-		
-		sport = sm.getSportByUser("weezy", this.sport);
-		
+		UserStatic user = new UserStatic();		
+		sport = sm.getSportByUser(user.getInstance().getUserName(), this.sport);
+	
 		//PaintVisitor paintVisitor = new PaintVisitor(g2, this.data, sport);
 		//course.accept(paintVisitor);
 		
@@ -83,13 +82,13 @@ public class DashboardAnalyse extends JPanel {
 			case SportValue.Course:
 				switch (this.data) {
 					case SportValue.CourseKilometer:
-						CourseKilometer(sport,SportValue.CourseKilometer,SportValue.Course, 1);
+						Course(sport,SportValue.CourseKilometer,SportValue.Course, 1);
 					break;
 					case SportValue.CourseMaxSpeed:
-						CourseKilometer(sport,SportValue.CourseMaxSpeed,SportValue.Course, 2);
+						Course(sport,SportValue.CourseMaxSpeed,SportValue.Course, 2);
 					break;
 					case SportValue.CourseAverageSpeed:
-						CourseKilometer(sport,SportValue.CourseAverageSpeed,SportValue.Course, 3);
+						Course(sport,SportValue.CourseAverageSpeed,SportValue.Course, 3);
 					break;
 					default:
 						throw new IllegalArgumentException("Unexpected value: " + this.data);
@@ -99,13 +98,13 @@ public class DashboardAnalyse extends JPanel {
 			case SportValue.Cyclisme:
 				switch (this.data) {
 					case SportValue.CyclismeAverageSpeed:
-						//CourseKilometer(sport);
+						Cyclisme(sport,SportValue.CyclismeAverageSpeed,SportValue.Cyclisme,1);
 					break;
 					case SportValue.CyclismeNumberOfSprint:
-						CourseKilometer(sport,SportValue.CyclismeNumberOfSprint,SportValue.Cyclisme,2);
+						Cyclisme(sport,SportValue.CyclismeNumberOfSprint,SportValue.Cyclisme,2);
 					break;
 					case SportValue.CyclismeUphillDistance:
-						CourseKilometer(sport,SportValue.CyclismeUphillDistance,SportValue.Cyclisme,3);
+						Cyclisme(sport,SportValue.CyclismeUphillDistance,SportValue.Cyclisme,3);
 					break;
 					default:
 						throw new IllegalArgumentException("Unexpected value: " + this.data);
@@ -115,13 +114,13 @@ public class DashboardAnalyse extends JPanel {
 			case SportValue.Football:
 				switch (this.data) {
 					case SportValue.Foorballkilometer:
-						CourseKilometer(sport,SportValue.Foorballkilometer,SportValue.Football,1);
+						Course(sport,SportValue.Foorballkilometer,SportValue.Football,1);
 					break;
 					case SportValue.FoorballNumberSuccessfulDribble:
-						//CourseKilometer(sport);
+						Course(sport,SportValue.FoorballNumberSuccessfulDribble,SportValue.Football,2);
 					break;
 					case SportValue.FoorballNumberSuccessfulPass:
-						//CourseKilometer(sport);
+						Course(sport,SportValue.FoorballNumberSuccessfulPass,SportValue.Football,3);
 					break;
 					default:
 						throw new IllegalArgumentException("Unexpected value: " + this.data);
@@ -131,13 +130,13 @@ public class DashboardAnalyse extends JPanel {
 			case SportValue.Natation:
 				switch (this.data) {
 					case SportValue.NatationDistanceCouléeDepart:
-						//CourseKilometer(sport);
+						Course(sport,SportValue.NatationDistanceCouléeDepart, SportValue.Natation,1);
 					break;
 					case SportValue.NatationNombreMvtBras:
-						CourseKilometer(sport,SportValue.NatationNombreMvtBras,SportValue.Natation,2);
+						Course(sport,SportValue.NatationNombreMvtBras, SportValue.Natation,2);
 					break;
 					case SportValue.NatationTime:
-						//CourseKilometer(sport);
+						Course(sport,SportValue.NatationTime, SportValue.Natation,3);
 					break;
 					default:
 						throw new IllegalArgumentException("Unexpected value: " + this.data);
@@ -147,13 +146,13 @@ public class DashboardAnalyse extends JPanel {
 			case SportValue.Tennis:
 				switch (this.data) {
 					case SportValue.TennisMaxSpeedService:
-						//CourseKilometer(sport);
+						Course(sport,SportValue.TennisMaxSpeedService,SportValue.Football,1);
 					break;
 					case SportValue.TennisNumberAces:
-						//CourseKilometer(sport);
+						Course(sport,SportValue.TennisNumberAces,SportValue.Football,1);
 					break;
 					case SportValue.TennisNumberSuccessfulShot:
-						//CourseKilometer(sport);
+						Course(sport,SportValue.TennisNumberSuccessfulShot,SportValue.Football,1);
 					break;
 					default:
 						throw new IllegalArgumentException("Unexpected value: " + this.data);
@@ -166,8 +165,9 @@ public class DashboardAnalyse extends JPanel {
 		
 	}
 	
-	private void CourseKilometer(List<Sport> lsport, String legendOrdinate, String legendGraphic, Integer choix) {
-		DefaultCategoryDataset dataset = new DefaultCategoryDataset(); 
+	private void Course(List<Sport> lsport, String legendOrdinate, String legendGraphic, Integer choix) {
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		UserStatic user = new UserStatic();
 		Course course = new Course();
 		Boolean exist;
 		Integer choix_data = choix;
@@ -186,17 +186,17 @@ public class DashboardAnalyse extends JPanel {
 				if(d==i) {
 					exist = true;
 					if(i<10) {
-						dataset.addValue(course.getKilometer(),"Weezy","0"+dayI);
+						dataset.addValue(course.getKilometer(),user.getInstance().getUserName(),"0"+dayI);
 					}else {
-						dataset.addValue(course.getKilometer(),"Weezy",dayI);
+						dataset.addValue(course.getKilometer(),user.getInstance().getUserName(), dayI);
 					}
 				}
 			}
 			if(!exist) {
 				if(i<10) {
-					dataset.addValue(0,"Weezy","0"+dayI);
+					dataset.addValue(0,user.getInstance().getUserName(),"0"+dayI);
 				}else {
-					dataset.addValue(0,"Weezy",dayI);
+					dataset.addValue(0,user.getInstance().getUserName(),dayI);
 				}
 			}
 		}
@@ -214,17 +214,17 @@ public class DashboardAnalyse extends JPanel {
 					if(d==i) {
 						exist = true;
 						if(i<10) {
-							dataset.addValue(course.getMaxSpeed(),"Weezy","0"+dayI);
+							dataset.addValue(course.getMaxSpeed(),user.getInstance().getUserName(),"0"+dayI);
 						}else {
-							dataset.addValue(course.getMaxSpeed(),"Weezy",dayI);
+							dataset.addValue(course.getMaxSpeed(),user.getInstance().getUserName(), dayI);
 						}
 					}
 				}
 				if(!exist) {
 					if(i<10) {
-						dataset.addValue(0,"Weezy","0"+dayI);
+						dataset.addValue(0,user.getInstance().getUserName(),"0"+dayI);
 					}else {
-						dataset.addValue(0,"Weezy",dayI);
+						dataset.addValue(0,user.getInstance().getUserName(),dayI);
 					}
 				}
 			}
@@ -243,21 +243,141 @@ public class DashboardAnalyse extends JPanel {
 						if(d==i) {
 							exist = true;
 							if(i<10) {
-								dataset.addValue(course.getAverageSpeed(),"Weezy","0"+dayI);
+								dataset.addValue(course.getAverageSpeed(),user.getInstance().getUserName(),"0"+dayI);
 							}else {
-								dataset.addValue(course.getAverageSpeed(),"Weezy",dayI);
+								dataset.addValue(course.getAverageSpeed(),user.getInstance().getUserName(),dayI);
 							}
 						}
 					}
 					if(!exist) {
 						if(i<10) {
-							dataset.addValue(0,"Weezy","0"+dayI);
+							dataset.addValue(0,user.getInstance().getUserName(),"0"+dayI);
 						}else {
-							dataset.addValue(0,"Weezy",dayI);
+							dataset.addValue(0,user.getInstance().getUserName(),dayI);
 						}
 					}
 				}
 			}
+		
+		JFreeChart barChart = ChartFactory.createBarChart(legendOrdinate, "Date", 
+				legendGraphic, dataset, PlotOrientation.VERTICAL, true, true, false);
+	    barChart.setBackgroundPaint(Color.white);
+	    
+	    JFreeChart lineChart = ChartFactory.createLineChart(legendOrdinate, "Date", 
+				legendGraphic, dataset, PlotOrientation.VERTICAL, true, true, false);
+	  switch (choix_data) {
+	  case 1:
+		  	BufferedImage chartImage = barChart.createBufferedImage(Test.IDEAL_DASHBOARD_DIMENSION.width,
+        		Test.IDEAL_DASHBOARD_DIMENSION.height, null);
+		  	g2.drawImage(chartImage, 0,0, null);
+		  	break;
+	  case 2:
+		    BufferedImage chartImage1 = lineChart.createBufferedImage(Test.IDEAL_DASHBOARD_DIMENSION.width,
+	        		Test.IDEAL_DASHBOARD_DIMENSION.height, null);
+	        g2.drawImage(chartImage1, 0,0, null);
+	        break;
+	  case 3:
+		    BufferedImage chartImage2 = barChart.createBufferedImage(Test.IDEAL_DASHBOARD_DIMENSION.width,
+	        		Test.IDEAL_DASHBOARD_DIMENSION.height, null);
+	        g2.drawImage(chartImage2, 0,0, null);
+	        break;
+		  
+	  }
+	}
+	
+	private void Cyclisme(List<Sport> lsport, String legendOrdinate, String legendGraphic, Integer choix) {
+				DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+				UserStatic user = new UserStatic();
+				Cyclisme cyclisme = new Cyclisme();
+				Boolean exist;
+				Integer choix_data = choix;
+				Calendar cal = Calendar.getInstance();
+				cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+				if(choix_data==1) {
+				for(Integer i=1; i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH);i++) {
+					exist=false;
+					String dayI = i.toString();
+					
+					for(Sport s : lsport) {
+						cyclisme = (Cyclisme) s;
+						Integer d = cyclisme.getDate().getDate();
+						Integer m = cyclisme.getDate().getMonth();
+						
+						if(d==i) {
+							exist = true;
+							if(i<10) {
+								dataset.addValue(cyclisme.getNumberOfSprint(),user.getInstance().getUserName(),"0"+dayI);
+							}else {
+								dataset.addValue(cyclisme.getNumberOfSprint(),user.getInstance().getUserName(), dayI);
+							}
+						}
+					}
+					if(!exist) {
+						if(i<10) {
+							dataset.addValue(0,user.getInstance().getUserName(),"0"+dayI);
+						}else {
+							dataset.addValue(0,user.getInstance().getUserName(),dayI);
+						}
+					}
+				}
+				}
+				if(choix_data==2) {
+					for(Integer i=1; i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH);i++) {
+						exist=false;
+						String dayI = i.toString();
+						
+						for(Sport s : lsport) {
+							cyclisme = (Cyclisme) s;
+							Integer d = cyclisme.getDate().getDate();
+							Integer m = cyclisme.getDate().getMonth();
+							
+							if(d==i) {
+								exist = true;
+								if(i<10) {
+									dataset.addValue(cyclisme.getUphillDistance(),user.getInstance().getUserName(),"0"+dayI);
+								}else {
+									dataset.addValue(cyclisme.getUphillDistance(),user.getInstance().getUserName(), dayI);
+								}
+							}
+						}
+						if(!exist) {
+							if(i<10) {
+								dataset.addValue(0,user.getInstance().getUserName(),"0"+dayI);
+							}else {
+								dataset.addValue(0,user.getInstance().getUserName(),dayI);
+							}
+						}
+					}
+				}
+				
+					if(choix_data==3) {
+						for(Integer i=1; i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH);i++) {
+							exist=false;
+							String dayI = i.toString();
+							
+							for(Sport s : lsport) {
+								cyclisme = (Cyclisme) s;
+								Integer d = cyclisme.getDate().getDate();
+								Integer m = cyclisme.getDate().getMonth();
+								
+								if(d==i) {
+									exist = true;
+									if(i<10) {
+										dataset.addValue(cyclisme.getAverageSpeed(),user.getInstance().getUserName(),"0"+dayI);
+									}else {
+										dataset.addValue(cyclisme.getAverageSpeed(),user.getInstance().getUserName(),dayI);
+									}
+								}
+							}
+							if(!exist) {
+								if(i<10) {
+									dataset.addValue(0,user.getInstance().getUserName(),"0"+dayI);
+								}else {
+									dataset.addValue(0,user.getInstance().getUserName(),dayI);
+								}
+							}
+						}
+					}
 		
 		
 		
