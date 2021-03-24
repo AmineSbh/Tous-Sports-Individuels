@@ -207,7 +207,7 @@ public class DashboardAnalyse extends JPanel {
 	    JFreeChart lineChart = ChartFactory.createLineChart(legendOrdinate, "Date", 
 				legendGraphic, dataset, PlotOrientation.VERTICAL, true, true, false);
 	  
-	    BufferedImage chartImage = barChart.createBufferedImage(Test.IDEAL_DASHBOARD_DIMENSION.width,
+	    BufferedImage chartImage = lineChart.createBufferedImage(Test.IDEAL_DASHBOARD_DIMENSION.width,
         		Test.IDEAL_DASHBOARD_DIMENSION.height, null);
         g2.drawImage(chartImage, 0,0, null);
 	}
