@@ -37,6 +37,10 @@ public class Analyse1 extends JFrame{
 	private static final Dimension IDEAL_DASHBOARD_DIMENSION = new Dimension(700, 293);
 
 	private DashboardAnalyse dashboard;
+	private JComboBox comboBox_2 = new JComboBox();
+	private JComboBox comboBox = new JComboBox();
+	private String[] sports = new String[] {"", "Course", "Cyclisme", "Tennis", "Football","Natation"};
+	private JComboBox<String> comboBox_1 = new JComboBox<String>(sports);
 
 	/**
 	 * Launch the application.
@@ -68,15 +72,12 @@ public class Analyse1 extends JFrame{
 		contentPane.setBackground(Color.DARK_GRAY);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		String[] sports = new String[] {"", "Course", "Cyclisme", "Tennis", "Football","Natation"};
-		JComboBox<String> comboBox_1 = new JComboBox<String>(sports);
+
 		comboBox_1.setBounds(48, 166, 159, 26);
 		comboBox_1.setEnabled(true);
 		contentPane.add(comboBox_1);
 		
 		//Friend comboBox
-		JComboBox comboBox = new JComboBox();
 		comboBox.setToolTipText("");
 		comboBox.setBounds(302, 166, 159, 26);
 		comboBox.addItem("");
@@ -139,36 +140,11 @@ public class Analyse1 extends JFrame{
 		btn_Analyse.setBounds(784, 162, 161, 38);
 		contentPane.add(btn_Analyse);
 		
-		JComboBox comboBox_2 = new JComboBox();
+		//Data
 		comboBox_2.setToolTipText("");
 		comboBox_2.setBounds(563, 166, 159, 26);
 		contentPane.add(comboBox_2);
-		btn_Analyse.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				dashboard.setEmpty();
-				switch (comboBox_2.getSelectedItem().toString()) {
-						case "kilomètres parcourus" :
-						dashboard.setData(SportValue.CourseKilometer);
-						break;
-						case "Vitesse maximale" :
-						dashboard.setData(SportValue.CourseMaxSpeed);
-						break;
-						case "Vitesse Moyenne":
-						dashboard.setData(SportValue.CourseAverageSpeed);
-						break;
-						default:
-							throw new IllegalArgumentException("Unexpected value: ");
-					}
-				if(!(comboBox.getSelectedItem() == "")) {
-					String userFriend = comboBox.getSelectedItem().toString();
-					User userF = snm.getUser(userFriend).get(0);
-					dashboard.setUser(userF);
-				}
-				dashboard.setSport(comboBox_1.getSelectedItem().toString());
-				dashboard.revalidate();
-				dashboard.repaint();
-			}
-		});
+		btn_Analyse.addActionListener(new generateGraphic());
 		
 		JLabel lblChoixDeLa = new JLabel("Choix de la cat\u00E9gorie");
 		lblChoixDeLa.setForeground(Color.WHITE);
@@ -195,7 +171,7 @@ public class Analyse1 extends JFrame{
 					}
 					comboBox_2.addItem("Nombre de sprint");
 					comboBox_2.addItem("uphill distance");
-					comboBox_2.addItem("Vitesse Moyenne");
+					comboBox_2.addItem("Vitesse Moyenne vélo");
 				}
 				if(comboBox_1.getSelectedIndex() == 3) {
 					int item = comboBox_2.getItemCount();
@@ -228,5 +204,45 @@ public class Analyse1 extends JFrame{
 		});
 		btnNewButton.setBounds(87, 192, 89, 23);
 		contentPane.add(btnNewButton);
+	}
+	
+	class generateGraphic implements ActionListener {
+		private SocialNetworkManager snm = new SocialNetworkManager();
+		 
+		public void actionPerformed(ActionEvent evt) {
+			dashboard.setEmpty();
+			
+			switch(comboBox_2.getSelectedItem().toString()) {
+					case "kilomètres parcourus" :
+						dashboard.setData(SportValue.CourseKilometer);
+						break;
+					case "Vitesse maximale" :
+						dashboard.setData(SportValue.CourseMaxSpeed);
+						break;
+					case "Vitesse Moyenne":
+						dashboard.setData(SportValue.CourseAverageSpeed);
+						break;
+					case "Vitesse Moyenne vélo":
+						dashboard.setData(SportValue.CyclismeAverageSpeed);
+						break;
+					case "Nombre de sprint":
+						dashboard.setData(SportValue.CyclismeNumberOfSprint);
+						break;
+					case "uphill distance":
+						dashboard.setData(SportValue.CyclismeUphillDistance);
+						break;
+					default:
+						throw new IllegalArgumentException("Unexpected value: ");
+				}
+			
+			if(!(comboBox.getSelectedItem() == "")) {
+				String userFriend = comboBox.getSelectedItem().toString();
+				User userF = snm.getUser(userFriend).get(0);
+				dashboard.setUser(userF);
+			}
+			dashboard.setSport(comboBox_1.getSelectedItem().toString());
+			dashboard.revalidate();
+			dashboard.repaint();
+		}
 	}
 }
