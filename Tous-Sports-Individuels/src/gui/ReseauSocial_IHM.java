@@ -54,6 +54,7 @@ public class ReseauSocial_IHM extends JFrame {
 		setTitle("Tous Sport - Reseau Social");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 521, 369);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -73,7 +74,11 @@ public class ReseauSocial_IHM extends JFrame {
 		Iterator<Friend> iter = f.iterator();
 		while (iter.hasNext()) {
 		    Friend elt = iter.next(); 
-		    Liste_Amis.addItem(elt.getUser2().getUserName());
+		    if(user.getInstance().getUserName().contains(elt.getUser1().getUserName())) {
+		    	Liste_Amis.addItem(elt.getUser2().getUserName());
+		    }else {
+		    	Liste_Amis.addItem(elt.getUser1().getUserName());
+		    }
 		}
 		contentPane.add(Liste_Amis);
 		
@@ -158,7 +163,7 @@ public class ReseauSocial_IHM extends JFrame {
 		Iterator<Friend> iter1 = f1.iterator();
 		while (iter1.hasNext()) {
 		    Friend elt1 = iter1.next(); 
-		    Demande_Amis.addItem(elt1.getUser2().getUserName());
+		    Demande_Amis.addItem(elt1.getUser1().getUserName());
 		}
 		contentPane.add(Demande_Amis);
 		
