@@ -40,6 +40,9 @@ public class DashboardAnalyse extends JPanel {
 	private String sport;
 	private User userFriend = null;
 	private String data;
+	
+	private List<Sport> lsport = null;
+	private List<Sport> lsportFriend = null;
 	private SportManager sm= new SportManager();
 	
 	Graphics2D g2;
@@ -70,9 +73,12 @@ public class DashboardAnalyse extends JPanel {
 	}
 	
 	private void printGraphic(Graphics2D g2) {
-		List<Sport> sport = null;
 		UserStatic user = new UserStatic();		
-		sport = sm.getSportByUser(user.getInstance().getUserName(), this.sport);
+		lsport = sm.getSportByUser(user.getInstance().getUserName(), this.sport);
+		
+		if(existFriend()) {
+			lsportFriend = sm.getSportByUser(getUser().getUserName(), this.sport);
+		}
 	
 		//PaintVisitor paintVisitor = new PaintVisitor(g2, this.data, sport);
 		//course.accept(paintVisitor);
@@ -82,13 +88,13 @@ public class DashboardAnalyse extends JPanel {
 			case SportValue.Course:
 				switch (this.data) {
 					case SportValue.CourseKilometer:
-						Course(sport,SportValue.CourseKilometer,SportValue.Course, 1);
+						Course(lsport,SportValue.CourseKilometer,SportValue.Course, 1);
 					break;
 					case SportValue.CourseMaxSpeed:
-						Course(sport,SportValue.CourseMaxSpeed,SportValue.Course, 2);
+						Course(lsport,SportValue.CourseMaxSpeed,SportValue.Course, 2);
 					break;
 					case SportValue.CourseAverageSpeed:
-						Course(sport,SportValue.CourseAverageSpeed,SportValue.Course, 3);
+						Course(lsport,SportValue.CourseAverageSpeed,SportValue.Course, 3);
 					break;
 					default:
 						throw new IllegalArgumentException("Unexpected value: " + this.data);
@@ -98,13 +104,13 @@ public class DashboardAnalyse extends JPanel {
 			case SportValue.Cyclisme:
 				switch (this.data) {
 					case SportValue.CyclismeAverageSpeed:
-						Cyclisme(sport,SportValue.CyclismeAverageSpeed,SportValue.Cyclisme,1);
+						Cyclisme(lsport,SportValue.CyclismeAverageSpeed,SportValue.Cyclisme,1);
 					break;
 					case SportValue.CyclismeNumberOfSprint:
-						Cyclisme(sport,SportValue.CyclismeNumberOfSprint,SportValue.Cyclisme,2);
+						Cyclisme(lsport,SportValue.CyclismeNumberOfSprint,SportValue.Cyclisme,2);
 					break;
 					case SportValue.CyclismeUphillDistance:
-						Cyclisme(sport,SportValue.CyclismeUphillDistance,SportValue.Cyclisme,3);
+						Cyclisme(lsport,SportValue.CyclismeUphillDistance,SportValue.Cyclisme,3);
 					break;
 					default:
 						throw new IllegalArgumentException("Unexpected value: " + this.data);
@@ -114,13 +120,13 @@ public class DashboardAnalyse extends JPanel {
 			case SportValue.Football:
 				switch (this.data) {
 					case SportValue.Foorballkilometer:
-						Course(sport,SportValue.Foorballkilometer,SportValue.Football,1);
+						Course(lsport,SportValue.Foorballkilometer,SportValue.Football,1);
 					break;
 					case SportValue.FoorballNumberSuccessfulDribble:
-						Course(sport,SportValue.FoorballNumberSuccessfulDribble,SportValue.Football,2);
+						Course(lsport,SportValue.FoorballNumberSuccessfulDribble,SportValue.Football,2);
 					break;
 					case SportValue.FoorballNumberSuccessfulPass:
-						Course(sport,SportValue.FoorballNumberSuccessfulPass,SportValue.Football,3);
+						Course(lsport,SportValue.FoorballNumberSuccessfulPass,SportValue.Football,3);
 					break;
 					default:
 						throw new IllegalArgumentException("Unexpected value: " + this.data);
@@ -130,13 +136,13 @@ public class DashboardAnalyse extends JPanel {
 			case SportValue.Natation:
 				switch (this.data) {
 					case SportValue.NatationDistanceCouléeDepart:
-						Course(sport,SportValue.NatationDistanceCouléeDepart, SportValue.Natation,1);
+						Course(lsport,SportValue.NatationDistanceCouléeDepart, SportValue.Natation,1);
 					break;
 					case SportValue.NatationNombreMvtBras:
-						Course(sport,SportValue.NatationNombreMvtBras, SportValue.Natation,2);
+						Course(lsport,SportValue.NatationNombreMvtBras, SportValue.Natation,2);
 					break;
 					case SportValue.NatationTime:
-						Course(sport,SportValue.NatationTime, SportValue.Natation,3);
+						Course(lsport,SportValue.NatationTime, SportValue.Natation,3);
 					break;
 					default:
 						throw new IllegalArgumentException("Unexpected value: " + this.data);
@@ -146,13 +152,13 @@ public class DashboardAnalyse extends JPanel {
 			case SportValue.Tennis:
 				switch (this.data) {
 					case SportValue.TennisMaxSpeedService:
-						Course(sport,SportValue.TennisMaxSpeedService,SportValue.Football,1);
+						Course(lsport,SportValue.TennisMaxSpeedService,SportValue.Football,1);
 					break;
 					case SportValue.TennisNumberAces:
-						Course(sport,SportValue.TennisNumberAces,SportValue.Football,1);
+						Course(lsport,SportValue.TennisNumberAces,SportValue.Football,1);
 					break;
 					case SportValue.TennisNumberSuccessfulShot:
-						Course(sport,SportValue.TennisNumberSuccessfulShot,SportValue.Football,1);
+						Course(lsport,SportValue.TennisNumberSuccessfulShot,SportValue.Football,1);
 					break;
 					default:
 						throw new IllegalArgumentException("Unexpected value: " + this.data);
@@ -199,6 +205,31 @@ public class DashboardAnalyse extends JPanel {
 					dataset.addValue(0,user.getInstance().getUserName(),dayI);
 				}
 			}
+			
+			if(existFriend()) {
+				for(Sport sf : lsportFriend) {
+					course = (Course) sf;
+					Integer d = course.getDate().getDate();
+					Integer m = course.getDate().getMonth();
+					
+					if(d==i) {
+						exist = true;
+						if(i<10) {
+							dataset.addValue(course.getKilometer(),getUser().getUserName(),"0"+dayI);
+						}else {
+							dataset.addValue(course.getKilometer(),getUser().getUserName(), dayI);
+						}
+					}
+				}
+				if(!exist) {
+					if(i<10) {
+						dataset.addValue(0,getUser().getUserName(),"0"+dayI);
+					}else {
+						dataset.addValue(0,getUser().getUserName(),dayI);
+					}
+				}
+			}
+			
 		}
 		}
 		if(choix_data==2) {
@@ -293,6 +324,7 @@ public class DashboardAnalyse extends JPanel {
 				Integer choix_data = choix;
 				Calendar cal = Calendar.getInstance();
 				cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+				
 				if(choix_data==1) {
 				for(Integer i=1; i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH);i++) {
 					exist=false;
@@ -399,6 +431,14 @@ public class DashboardAnalyse extends JPanel {
 	
 	public void setUser(User user) {
 		this.userFriend = user;
+	}
+	
+	public Boolean existFriend() {
+		Boolean exist = true;
+		if(userFriend == null) {
+			exist = false;
+		}
+		return exist;
 	}
 	
 	public String getData() {

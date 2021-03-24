@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 
 import data.Friend;
+import data.User;
 import data.UserStatic;
 import gui.dashboard.DashboardAnalyse;
 import process.SocialNetworkManager;
@@ -74,6 +75,7 @@ public class Analyse1 extends JFrame{
 		comboBox_1.setEnabled(true);
 		contentPane.add(comboBox_1);
 		
+		//Friend comboBox
 		JComboBox comboBox = new JComboBox();
 		comboBox.setToolTipText("");
 		comboBox.setBounds(302, 166, 159, 26);
@@ -157,7 +159,11 @@ public class Analyse1 extends JFrame{
 						default:
 							throw new IllegalArgumentException("Unexpected value: ");
 					}
-			
+				if(!(comboBox.getSelectedItem() == "")) {
+					String userFriend = comboBox.getSelectedItem().toString();
+					User userF = snm.getUser(userFriend).get(0);
+					dashboard.setUser(userF);
+				}
 				dashboard.setSport(comboBox_1.getSelectedItem().toString());
 				dashboard.revalidate();
 				dashboard.repaint();
