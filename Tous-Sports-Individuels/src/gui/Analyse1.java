@@ -33,13 +33,15 @@ import java.awt.Dimension;
 public class Analyse1 extends JFrame{
 
 	private JPanel contentPane;
+	
 	private static final Dimension IDEAL_MAIN_DIMENSION = new Dimension(500, 500);
 	private static final Dimension IDEAL_DASHBOARD_DIMENSION = new Dimension(700, 293);
 
 	private DashboardAnalyse dashboard;
-	private JComboBox comboBox_2 = new JComboBox();
-	private JComboBox comboBox = new JComboBox();
 	private String[] sports = new String[] {"", "Course", "Cyclisme", "Tennis", "Football","Natation"};
+	
+	private JComboBox comboBoxData = new JComboBox();
+	private JComboBox comboBoxFriend = new JComboBox();
 	private JComboBox<String> comboBox_1 = new JComboBox<String>(sports);
 
 	/**
@@ -72,27 +74,42 @@ public class Analyse1 extends JFrame{
 		contentPane.setBackground(Color.DARK_GRAY);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		//Dashboard
+		dashboard = new DashboardAnalyse();
+		dashboard.setBounds(48, 227,IDEAL_DASHBOARD_DIMENSION.width,
+				IDEAL_DASHBOARD_DIMENSION.height);
+		contentPane.add(dashboard);
+		
+		//Data
+		comboBoxData.setToolTipText("");
+		comboBoxData.setBounds(563, 166, 159, 26);
+		contentPane.add(comboBoxData);
 
+		//Sport
 		comboBox_1.setBounds(48, 166, 159, 26);
+		comboBox_1.addActionListener(new generateDataSport()); 
 		comboBox_1.setEnabled(true);
 		contentPane.add(comboBox_1);
 		
-		//Friend comboBox
-		comboBox.setToolTipText("");
-		comboBox.setBounds(302, 166, 159, 26);
-		comboBox.addItem("");
+		//Friend
+		comboBoxFriend.setToolTipText("");
+		comboBoxFriend.setBounds(302, 166, 159, 26);
+		comboBoxFriend.addItem("");
 		List<Friend> f = snm.getFriendsByUser(user.getInstance());
 		Iterator<Friend> iter = f.iterator();
 		while (iter.hasNext()) {
 		    Friend elt = iter.next(); 
 		    if(user.getInstance().getUserName().contains(elt.getUser1().getUserName())) {
-		    	comboBox.addItem(elt.getUser2().getUserName());
+		    	comboBoxFriend.addItem(elt.getUser2().getUserName());
 		    }else {
-		    	comboBox.addItem(elt.getUser1().getUserName());
+		    	comboBoxFriend.addItem(elt.getUser1().getUserName());
 		    }
 		}
-		contentPane.add(comboBox);
+		contentPane.add(comboBoxFriend);
 		
+		
+		//Button
 		JButton btnRetour_Menu = new JButton("Retour au menu principal");
 		btnRetour_Menu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -105,6 +122,15 @@ public class Analyse1 extends JFrame{
 		btnRetour_Menu.setBounds(25, 555, 161, 38);
 		contentPane.add(btnRetour_Menu);
 		
+		//Generate graphic
+		JButton btn_Analyse = new JButton("Lancer Analyse");
+		btn_Analyse.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btn_Analyse.setBounds(784, 162, 161, 38);
+		contentPane.add(btn_Analyse);
+		btn_Analyse.addActionListener(new generateGraphic());
+		
+		
+		//Label
 		JLabel label_1 = new JLabel("Tous Sport, le sport pour tous");
 		label_1.setForeground(Color.YELLOW);
 		label_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
@@ -129,81 +155,11 @@ public class Analyse1 extends JFrame{
 		contentPane.add(lblChoixDunAmi);
 		lblChoixDunAmi.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		dashboard = new DashboardAnalyse();
-		dashboard.setBounds(48, 227,IDEAL_DASHBOARD_DIMENSION.width,
-				IDEAL_DASHBOARD_DIMENSION.height);
-		contentPane.add(dashboard);
-		
-		JButton btn_Analyse = new JButton("Lancer Analyse");
-
-		btn_Analyse.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btn_Analyse.setBounds(784, 162, 161, 38);
-		contentPane.add(btn_Analyse);
-		
-		//Data
-		comboBox_2.setToolTipText("");
-		comboBox_2.setBounds(563, 166, 159, 26);
-		contentPane.add(comboBox_2);
-		btn_Analyse.addActionListener(new generateGraphic());
-		
 		JLabel lblChoixDeLa = new JLabel("Choix de la cat\u00E9gorie");
 		lblChoixDeLa.setForeground(Color.WHITE);
 		lblChoixDeLa.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblChoixDeLa.setBounds(563, 130, 239, 20);
 		contentPane.add(lblChoixDeLa);
-		
-		JButton btnNewButton = new JButton("Select");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(comboBox_1.getSelectedIndex() == 1) {
-					int item = comboBox_2.getItemCount();
-					for(int i=0; i<item ; i++) {
-					comboBox_2.removeItemAt(0);
-					}
-					comboBox_2.addItem("kilomètres parcourus");
-					comboBox_2.addItem("Vitesse maximale");
-					comboBox_2.addItem("Vitesse Moyenne");
-				}
-				if(comboBox_1.getSelectedIndex() == 2) {
-					int item = comboBox_2.getItemCount();
-					for(int i=0; i<item ; i++) {
-					comboBox_2.removeItemAt(0);
-					}
-					comboBox_2.addItem("Nombre de sprint");
-					comboBox_2.addItem("uphill distance");
-					comboBox_2.addItem("Vitesse Moyenne vélo");
-				}
-				if(comboBox_1.getSelectedIndex() == 3) {
-					int item = comboBox_2.getItemCount();
-					for(int i=0; i<item ; i++) {
-					comboBox_2.removeItemAt(0);
-					}
-					comboBox_2.addItem("Nombre de tir réussi");
-					comboBox_2.addItem("Vitesse maximum Service");
-					comboBox_2.addItem("Nombre de Ace");
-				}
-				if(comboBox_1.getSelectedIndex() == 4) {
-					int item = comboBox_2.getItemCount();
-					for(int i=0; i<item ; i++) {
-					comboBox_2.removeItemAt(0);
-					}
-					comboBox_2.addItem("Nombre de passe réussi");
-					comboBox_2.addItem("Kilometre parcouru");
-					comboBox_2.addItem("Nb de drible réussi");
-				}
-				if(comboBox_1.getSelectedIndex() == 5) {
-					int item = comboBox_2.getItemCount();
-					for(int i=0; i<item ; i++) {
-					comboBox_2.removeItemAt(0);
-					}
-					comboBox_2.addItem("Distance de coulée départ");
-					comboBox_2.addItem("Nombre de mvt de bras");
-					comboBox_2.addItem("Temps sur 100 m");
-				}
-			}			
-		});
-		btnNewButton.setBounds(87, 192, 89, 23);
-		contentPane.add(btnNewButton);
 	}
 	
 	class generateGraphic implements ActionListener {
@@ -211,32 +167,10 @@ public class Analyse1 extends JFrame{
 		 
 		public void actionPerformed(ActionEvent evt) {
 			dashboard.setEmpty();
+			dashboard.setData(comboBoxData.getSelectedItem().toString());
 			
-			switch(comboBox_2.getSelectedItem().toString()) {
-					case "kilomètres parcourus" :
-						dashboard.setData(SportValue.CourseKilometer);
-						break;
-					case "Vitesse maximale" :
-						dashboard.setData(SportValue.CourseMaxSpeed);
-						break;
-					case "Vitesse Moyenne":
-						dashboard.setData(SportValue.CourseAverageSpeed);
-						break;
-					case "Vitesse Moyenne vélo":
-						dashboard.setData(SportValue.CyclismeAverageSpeed);
-						break;
-					case "Nombre de sprint":
-						dashboard.setData(SportValue.CyclismeNumberOfSprint);
-						break;
-					case "uphill distance":
-						dashboard.setData(SportValue.CyclismeUphillDistance);
-						break;
-					default:
-						throw new IllegalArgumentException("Unexpected value: ");
-				}
-			
-			if(!(comboBox.getSelectedItem() == "")) {
-				String userFriend = comboBox.getSelectedItem().toString();
+			if(!(comboBoxFriend.getSelectedItem() == "")) {
+				String userFriend = comboBoxFriend.getSelectedItem().toString();
 				User userF = snm.getUser(userFriend).get(0);
 				dashboard.setUser(userF);
 			}
@@ -245,4 +179,55 @@ public class Analyse1 extends JFrame{
 			dashboard.repaint();
 		}
 	}
+	
+	class generateDataSport implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			if(comboBox_1.getSelectedIndex() == 1) {
+				int item = comboBoxData.getItemCount();
+				for(int i=0; i<item ; i++) {
+					comboBoxData.removeItemAt(0);
+				}
+				comboBoxData.addItem(SportValue.CourseKilometer);
+				comboBoxData.addItem(SportValue.CourseAverageSpeed);
+				comboBoxData.addItem(SportValue.CourseMaxSpeed);
+			}
+			if(comboBox_1.getSelectedIndex() == 2) {
+				int item = comboBoxData.getItemCount();
+				for(int i=0; i<item ; i++) {
+					comboBoxData.removeItemAt(0);
+				}
+				comboBoxData.addItem(SportValue.CyclismeUphillDistance);
+				comboBoxData.addItem(SportValue.CyclismeNumberOfSprint);
+				comboBoxData.addItem(SportValue.CyclismeAverageSpeed);
+			}
+			if(comboBox_1.getSelectedIndex() == 3) {
+				int item = comboBoxData.getItemCount();
+				for(int i=0; i<item ; i++) {
+					comboBoxData.removeItemAt(0);
+				}
+				comboBoxData.addItem("Nombre de tir réussi");
+				comboBoxData.addItem("Vitesse maximum Service");
+				comboBoxData.addItem("Nombre de Ace");
+			}
+			if(comboBox_1.getSelectedIndex() == 4) {
+				int item = comboBoxData.getItemCount();
+				for(int i=0; i<item ; i++) {
+					comboBoxData.removeItemAt(0);
+				}
+				comboBoxData.addItem("Nombre de passe réussi");
+				comboBoxData.addItem("Kilometre parcouru");
+				comboBoxData.addItem("Nb de drible réussi");
+			}
+			if(comboBox_1.getSelectedIndex() == 5) {
+				int item = comboBoxData.getItemCount();
+				for(int i=0; i<item ; i++) {
+					comboBoxData.removeItemAt(0);
+				}
+				comboBoxData.addItem("Distance de coulée départ");
+				comboBoxData.addItem("Nombre de mvt de bras");
+				comboBoxData.addItem("Temps sur 100 m");
+			}
+		}			
+	}
+	
 }

@@ -79,9 +79,6 @@ public class DashboardAnalyse extends JPanel {
 		if(existFriend()) {
 			lsportFriend = sm.getSportByUser(getUser().getUserName(), this.sport);
 		}
-	
-		//PaintVisitor paintVisitor = new PaintVisitor(g2, this.data, sport);
-		//course.accept(paintVisitor);
 		
 		switch (this.sport) {
 		
