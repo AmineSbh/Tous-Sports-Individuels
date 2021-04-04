@@ -115,6 +115,7 @@ public class ReseauSocial_IHM extends JFrame {
 			}else {
 				Friend f = new Friend(user.getInstance(), username.get(0));
 				snm.Friend_Request(f);
+				text_Amis.setText("");
 			}
 			}
 		});
@@ -174,6 +175,7 @@ public class ReseauSocial_IHM extends JFrame {
 				Boolean a = snm.getAcceptRequest(user.getInstance(), Demande_Amis.getSelectedItem().toString());
 				if(a) {
 					System.out.print(Demande_Amis.getSelectedItem().toString()+ "Ajout OK");
+					Demande_Amis.removeItemAt(Demande_Amis.getSelectedIndex());
 				}
 			}
 		});

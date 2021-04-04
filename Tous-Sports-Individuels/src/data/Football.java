@@ -19,6 +19,10 @@ public class Football extends Sport{
 		this.setNumberSuccessfulDribble(numberdribble);
 	}
 
+	public Football() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public <T> T accept(SportVisitor<T> visitor) {
 		return visitor.visit(this);
