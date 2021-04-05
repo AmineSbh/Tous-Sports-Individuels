@@ -4,6 +4,8 @@ import java.awt.Panel;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Date;
 
 import javax.swing.JButton;
@@ -29,6 +31,7 @@ import data.Tennis;
 import data.User;
 import data.UserStatic;
 import process.AddDataVisitor;
+import process.SocialNetworkManager;
 
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -39,7 +42,26 @@ import javax.swing.DefaultComboBoxModel;
 public class Mesure1 extends JFrame {
 
 	private JPanel contentPane;
+	
+	String[] sports = new String[] {"", "Course", "Cyclisme", "Tennis", "Football","Natation"};
+	
+	//Jlabel
+	JLabel labelTitle = new JLabel("Tous Sport, le sport pour tous");
+	JLabel value1 = new JLabel("Entrer valeurs");
+	JLabel value2 = new JLabel("Entrer valeurs");
+	JLabel value3 = new JLabel("Entrer valeurs");
+	
+	//JComboBox
+	JComboBox<String> comboBoxSportList = new JComboBox<String>(sports);
+	
+	//Jbutton
+	JButton btnValidate = new JButton("Valider");
+	JButton btnRetour_Menu = new JButton("Retour au menu principal");
 
+	//TextField
+	TextField field1 = new TextField();
+	TextField field2 = new TextField();
+	TextField field3 = new TextField();
 
 	/**
 	 * Launch the application.
@@ -70,41 +92,50 @@ public class Mesure1 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Tous Sport, le sport pour tous");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		lblNewLabel.setForeground(Color.YELLOW);
-		lblNewLabel.setBounds(96, 11, 363, 28);
-		contentPane.add(lblNewLabel);
+		//JLabel
+		labelTitle.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
+		labelTitle.setForeground(Color.YELLOW);
+		labelTitle.setBounds(96, 11, 363, 28);
+		contentPane.add(labelTitle);
 		
-		String[] sports = new String[] {"", "Course", "Cyclisme", "Tennis", "Football","Natation"};
-		JComboBox<String> comboBox_1 = new JComboBox<String>(sports);
-		comboBox_1.setBounds(26, 164, 159, 26);
-		comboBox_1.setEnabled(true);
-		contentPane.add(comboBox_1);
+		value3.setForeground(Color.WHITE);
+		value3.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		value3.setBounds(402, 347, 208, 20);
+		contentPane.add(value3);
+		
+		value2.setForeground(Color.WHITE);
+		value2.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		value2.setBounds(402, 257, 208, 20);
+		contentPane.add(value2);
+		
+		value1.setForeground(Color.WHITE);
+		value1.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		value1.setBounds(402, 167, 193, 20);
+		contentPane.add(value1);
+		
+		JLabel lblNewLabel_1 = new JLabel("Choisissez votre sport");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setBounds(26, 100, 217, 38);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblIciPourrezEntrer = new JLabel("Ici, pourrez entrer vos donn\u00E9es concernant le sport souhait\u00E9.");
+		lblIciPourrezEntrer.setForeground(Color.WHITE);
+		lblIciPourrezEntrer.setBounds(26, 55, 584, 23);
+		contentPane.add(lblIciPourrezEntrer);
+		lblIciPourrezEntrer.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		
+		
+		//ComboBox
+		comboBoxSportList.setBounds(26, 164, 159, 26);
+		comboBoxSportList.setEnabled(true);
+		contentPane.add(comboBoxSportList);
 
-		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(256, 401, 159, 29);
-		contentPane.add(btnValider);
+		//Jbutton
+		btnValidate.setBounds(256, 401, 159, 29);
+		contentPane.add(btnValidate);
+		btnValidate.addActionListener(new addData());
 		
-		TextField text_v0 = new TextField();
-		text_v0.setBounds(256, 164, 140, 27);
-		contentPane.add(text_v0);
-		
-		TextField text_v1 = new TextField();
-		text_v1.setBounds(256, 250, 140, 27);
-		contentPane.add(text_v1);
-		
-		TextField text_v2 = new TextField();
-		text_v2.setBounds(256, 340, 140, 27);
-		contentPane.add(text_v2);
-		
-		JLabel label_1 = new JLabel("Entrer valeurs");
-		label_1.setForeground(Color.WHITE);
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label_1.setBounds(402, 167, 193, 20);
-		contentPane.add(label_1);
-		
-		JButton btnRetour_Menu = new JButton("Retour au menu principal");
 		btnRetour_Menu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				PagePrincipale_IHM page = new PagePrincipale_IHM();
@@ -116,96 +147,106 @@ public class Mesure1 extends JFrame {
 		btnRetour_Menu.setBounds(570, 398, 161, 38);
 		contentPane.add(btnRetour_Menu);
 		
-		JLabel lblIciPourrezEntrer = new JLabel("Ici, pourrez entrer vos donn\u00E9es concernant le sport souhait\u00E9.");
-		lblIciPourrezEntrer.setForeground(Color.WHITE);
-		lblIciPourrezEntrer.setBounds(26, 55, 584, 23);
-		contentPane.add(lblIciPourrezEntrer);
-		lblIciPourrezEntrer.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		
-		JLabel lblEntrerValeurs = new JLabel("Entrer valeurs");
-		lblEntrerValeurs.setForeground(Color.WHITE);
-		lblEntrerValeurs.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblEntrerValeurs.setBounds(402, 257, 208, 20);
-		contentPane.add(lblEntrerValeurs);
+		//TextFields
+		field1.setBounds(256, 164, 140, 27);
+		/*field1.addKeyListener(new KeyAdapter() {
+			@Override 
+			public void keyPressed(KeyEvent e) {
+				try {
+					int i = Integer.parseInt(field1.getText());
+					value1.setText("Entrer valeurs");
+				} catch (NumberFormatException e1) {
+					value1.setText("Mauvais format");
+				}
+			}
+		});*/
+		contentPane.add(field1);
 		
-		JLabel lblEntrerValeurs_1 = new JLabel("Entrer valeurs");
-		lblEntrerValeurs_1.setForeground(Color.WHITE);
-		lblEntrerValeurs_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblEntrerValeurs_1.setBounds(402, 347, 208, 20);
-		contentPane.add(lblEntrerValeurs_1);
+		field2.setBounds(256, 250, 140, 27);
+		contentPane.add(field2);
 		
-		JLabel lblNewLabel_1 = new JLabel("Choisissez votre sport");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_1.setForeground(Color.WHITE);
-		lblNewLabel_1.setBounds(26, 100, 217, 38);
-		contentPane.add(lblNewLabel_1);
+		field3.setBounds(256, 340, 140, 27);
+		contentPane.add(field3);		
 		
-		comboBox_1.addActionListener(new ActionListener() {
+		
+		comboBoxSportList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(comboBox_1.getSelectedIndex() == 1) {
-					label_1.setText("kilomètres parcourus");
-					lblEntrerValeurs.setText("Vitesse maximale");
-					lblEntrerValeurs_1.setText("Vitesse Moyenne");
+				if(comboBoxSportList.getSelectedIndex() == 1) {
+					value3.setText("kilomètres parcourus");
+					value1.setText("Vitesse maximale");
+					value2.setText("Vitesse Moyenne");
 				}
-				if(comboBox_1.getSelectedIndex() == 2) {
-					label_1.setText("Nombre de sprint");
-					lblEntrerValeurs.setText("uphill distance");
-					lblEntrerValeurs_1.setText("Vitesse Moyenne");
+				if(comboBoxSportList.getSelectedIndex() == 2) {
+					value3.setText("Nombre de sprint");
+					value1.setText("uphill distance");
+					value2.setText("Vitesse Moyenne");
 				}
-				if(comboBox_1.getSelectedIndex() == 3) {
-					label_1.setText("Nombre de tir réussi");
-					lblEntrerValeurs.setText("Vitesse maximum Service");
-					lblEntrerValeurs_1.setText("Nombre de Ace");
+				if(comboBoxSportList.getSelectedIndex() == 3) {
+					value3.setText("Nombre de tir réussi");
+					value1.setText("Vitesse maximum Service");
+					value2.setText("Nombre de Ace");
 				}
-				if(comboBox_1.getSelectedIndex() == 4) {
-					label_1.setText("Nombre de passe réussi");
-					lblEntrerValeurs.setText("Kilometre parcouru");
-					lblEntrerValeurs_1.setText("Nb de drible réussi");
+				if(comboBoxSportList.getSelectedIndex() == 4) {
+					value3.setText("Nombre de passe réussi");
+					value1.setText("Kilometre parcouru");
+					value2.setText("Nb de drible réussi");
 				}
-				if(comboBox_1.getSelectedIndex() == 5) {
-					label_1.setText("Distance de coulée départ");
-					lblEntrerValeurs.setText("Nombre de mvt de bras");
-					lblEntrerValeurs_1.setText("Temps sur 100 m");
+				if(comboBoxSportList.getSelectedIndex() == 5) {
+					value3.setText("Distance de coulée départ");
+					value1.setText("Nombre de mvt de bras");
+					value2.setText("Temps sur 100 m");
 				}
 			}
 		});
 		
-		AddDataVisitor visitor= new AddDataVisitor();
-		UserStatic user = new UserStatic();
-		btnValider.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(text_v0 != null & text_v1 != null & text_v2 != null) {
-					if(comboBox_1.getSelectedIndex() == 1) {
-						Date date= new Date();
-						Sport course= new Course(user.getInstance(),date, Integer.valueOf(text_v0.getText()), Integer.valueOf(text_v1.getText()), Integer.valueOf(text_v2.getText()));
-						course.accept(visitor);
-					}
-					if(comboBox_1.getSelectedIndex() == 2) {
-						Date date= new Date();
-						Sport cyclisme= new Cyclisme(user.getInstance(),date, Integer.valueOf(text_v0.getText()), Integer.valueOf(text_v1.getText()), Integer.valueOf(text_v2.getText()));
-						cyclisme.accept(visitor);
-					}
-					if(comboBox_1.getSelectedIndex() == 3) {
-						Date date= new Date();
-						Sport tennis= new Tennis(user.getInstance(),date, Integer.valueOf(text_v0.getText()), Integer.valueOf(text_v1.getText()), Integer.valueOf(text_v2.getText()));
-						tennis.accept(visitor);
-					}
-					if(comboBox_1.getSelectedIndex() == 4) {
-						Date date= new Date();
-						Sport football= new Football(user.getInstance(),date, Integer.valueOf(text_v0.getText()), Integer.valueOf(text_v1.getText()), Integer.valueOf(text_v2.getText()));
-						football.accept(visitor);
-					}
-					if(comboBox_1.getSelectedIndex() == 5) {
-						Date date= new Date();
-						Sport natation= new Natation(user.getInstance(),date, Integer.valueOf(text_v0.getText()), Integer.valueOf(text_v1.getText()), Integer.valueOf(text_v2.getText()));
-						natation.accept(visitor);
-					}
-				}
-				text_v0.setText("");
-				text_v1.setText("");
-				text_v2.setText("");
-			}
-		});
+		
+		
 		
 	}
+	
+	class addData implements ActionListener {
+		private AddDataVisitor visitor= new AddDataVisitor();
+		UserStatic user = new UserStatic();
+		 
+		public void actionPerformed(ActionEvent arg0) {
+			if(field1 != null & field2 != null & field3 != null) {
+				if(comboBoxSportList.getSelectedIndex() == 1) {
+					Date date= new Date();
+					Sport course= new Course(user.getInstance(),date, Integer.valueOf(field1.getText()), 
+							Integer.valueOf(field2.getText()), Integer.valueOf(field3.getText()));
+					course.accept(visitor);
+				}
+				if(comboBoxSportList.getSelectedIndex() == 2) {
+					Date date= new Date();
+					Sport cyclisme= new Cyclisme(user.getInstance(),date, Integer.valueOf(field1.getText()), 
+							Integer.valueOf(field2.getText()), Integer.valueOf(field3.getText()));
+					cyclisme.accept(visitor);
+				}
+				if(comboBoxSportList.getSelectedIndex() == 3) {
+					Date date= new Date();
+					Sport tennis= new Tennis(user.getInstance(),date, Integer.valueOf(field1.getText()), 
+							Integer.valueOf(field2.getText()), Integer.valueOf(field3.getText()));
+					tennis.accept(visitor);
+				}
+				if(comboBoxSportList.getSelectedIndex() == 4) {
+					Date date= new Date();
+					Sport football= new Football(user.getInstance(),date, Integer.valueOf(field1.getText()), 
+							Integer.valueOf(field2.getText()), Integer.valueOf(field3.getText()));
+					football.accept(visitor);
+				}
+				if(comboBoxSportList.getSelectedIndex() == 5) {
+					Date date= new Date();
+					Sport natation= new Natation(user.getInstance(),date, Integer.valueOf(field1.getText()), 
+							Integer.valueOf(field2.getText()), Integer.valueOf(field3.getText()));
+					natation.accept(visitor);
+				}
+			}
+			field1.setText("");
+			field2.setText("");
+			field3.setText("");
+		}
+	}
+	
+	
 }

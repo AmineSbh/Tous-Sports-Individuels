@@ -205,27 +205,27 @@ public class Analyse1 extends JFrame{
 				for(int i=0; i<item ; i++) {
 					comboBoxData.removeItemAt(0);
 				}
-				comboBoxData.addItem("Nombre de tir réussi");
-				comboBoxData.addItem("Vitesse maximum Service");
-				comboBoxData.addItem("Nombre de Ace");
+				comboBoxData.addItem(SportValue.TennisNumberSuccessfulShot);
+				comboBoxData.addItem(SportValue.TennisMaxSpeedService);
+				comboBoxData.addItem(SportValue.TennisNumberAces);
 			}
 			if(comboBox_1.getSelectedIndex() == 4) {
 				int item = comboBoxData.getItemCount();
 				for(int i=0; i<item ; i++) {
 					comboBoxData.removeItemAt(0);
 				}
-				comboBoxData.addItem("Nombre de passe réussi");
-				comboBoxData.addItem("Kilometre parcouru");
-				comboBoxData.addItem("Nb de drible réussi");
+				comboBoxData.addItem(SportValue.FoorballNumberSuccessfulPass);
+				comboBoxData.addItem(SportValue.Foorballkilometer);
+				comboBoxData.addItem(SportValue.FoorballNumberSuccessfulDribble);
 			}
 			if(comboBox_1.getSelectedIndex() == 5) {
 				int item = comboBoxData.getItemCount();
 				for(int i=0; i<item ; i++) {
 					comboBoxData.removeItemAt(0);
 				}
-				comboBoxData.addItem("Distance de coulée départ");
-				comboBoxData.addItem("Nombre de mvt de bras");
-				comboBoxData.addItem("Temps sur 100 m");
+				comboBoxData.addItem(SportValue.NatationDistanceCouléeDepart);
+				comboBoxData.addItem(SportValue.NatationNombreMvtBras);
+				comboBoxData.addItem(SportValue.NatationTime);
 			}
 		}			
 	}

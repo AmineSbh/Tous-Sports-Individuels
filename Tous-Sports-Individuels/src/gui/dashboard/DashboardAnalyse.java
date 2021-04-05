@@ -421,6 +421,7 @@ public class DashboardAnalyse extends JPanel {
         		Test.IDEAL_DASHBOARD_DIMENSION.height, null);
         g2.drawImage(chartImage, 0,0, null);
 	}
+	
 
 	public User getUser() {
 		return this.userFriend;

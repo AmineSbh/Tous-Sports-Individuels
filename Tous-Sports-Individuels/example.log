@@ -1,0 +1,80 @@
+DEBUG AWT-EventQueue-0 org.hibernate.loader.collection.OneToManyLoader - Static select for one-to-many data.User.friends: select friends0_.Friend_id as Friend1_3_, friends0_.Friend_id as Friend1_7_2_, friends0_.Date as Date7_2_, friends0_.UserName1 as UserName4_7_2_, friends0_.UserName2 as UserName5_7_2_, friends0_.state as state7_2_, user1_.Username as Username0_0_, user1_.FirstName as FirstName0_0_, user1_.LastName as LastName0_0_, user1_.Mail as Mail0_0_, user1_.Password as Password0_0_, user2_.Username as Username0_1_, user2_.FirstName as FirstName0_1_, user2_.LastName as LastName0_1_, user2_.Mail as Mail0_1_, user2_.Password as Password0_1_ from Friend friends0_ left outer join User user1_ on friends0_.UserName1=user1_.Username left outer join User user2_ on friends0_.UserName2=user2_.Username where friends0_.Friend_id=?
+DEBUG AWT-EventQueue-0 org.hibernate.impl.SessionFactoryObjectFactory - initializing class SessionFactoryObjectFactory
+DEBUG AWT-EventQueue-0 org.hibernate.impl.SessionFactoryObjectFactory - registered: 4028b881789c80fa01789c80fae30000 (unnamed)
+INFO AWT-EventQueue-0 org.hibernate.impl.SessionFactoryObjectFactory - Not binding factory to JNDI, no JNDI name configured
+DEBUG AWT-EventQueue-0 org.hibernate.impl.SessionFactoryImpl - instantiated session factory
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.SchemaUpdate - Running hbm2ddl schema update
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.SchemaUpdate - fetching database metadata
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.SchemaUpdate - updating schema
+DEBUG AWT-EventQueue-0 org.hibernate.cfg.AnnotationConfiguration - Execute first pass mapping processing
+DEBUG AWT-EventQueue-0 org.hibernate.cfg.AnnotationConfiguration - Process hbm files
+DEBUG AWT-EventQueue-0 org.hibernate.cfg.AnnotationConfiguration - Process annotated classes
+DEBUG AWT-EventQueue-0 org.hibernate.cfg.AnnotationConfiguration - processing fk mappings (*ToOne and JoinedSubclass)
+DEBUG AWT-EventQueue-0 org.hibernate.cfg.Configuration - processing extends queue
+DEBUG AWT-EventQueue-0 org.hibernate.cfg.Configuration - processing collection mappings
+DEBUG AWT-EventQueue-0 org.hibernate.cfg.Configuration - processing native query and ResultSetMapping mappings
+DEBUG AWT-EventQueue-0 org.hibernate.cfg.Configuration - processing association property references
+DEBUG AWT-EventQueue-0 org.hibernate.cfg.Configuration - processing foreign key constraints
+DEBUG AWT-EventQueue-0 org.hibernate.cfg.Configuration - resolving reference to class: data.User
+DEBUG AWT-EventQueue-0 org.hibernate.cfg.Configuration - resolving reference to class: data.User
+DEBUG AWT-EventQueue-0 org.hibernate.cfg.Configuration - resolving reference to class: data.User
+DEBUG AWT-EventQueue-0 org.hibernate.cfg.Configuration - resolving reference to class: data.User
+DEBUG AWT-EventQueue-0 org.hibernate.cfg.Configuration - resolving reference to class: data.User
+DEBUG AWT-EventQueue-0 org.hibernate.cfg.Configuration - resolving reference to class: data.User
+DEBUG AWT-EventQueue-0 org.hibernate.cfg.Configuration - resolving reference to class: data.User
+DEBUG AWT-EventQueue-0 org.hibernate.cfg.Configuration - resolving reference to class: data.User
+DEBUG AWT-EventQueue-0 org.hibernate.cfg.Configuration - resolving reference to class: data.User
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - table found: amine95_toussport.Course
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - columns: [date, sport_id, user_username, name, maxspeed, kilometer, averagespeed]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - foreign keys: [fk4c63754dac3c67978a7cc3b]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - indexes: [fk4c63754dac3c67978a7cc3b, primary]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - table found: amine95_toussport.Cyclisme
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - columns: [date, sport_id, uphilldistance, user_username, numberofsprint, name, averagespeed]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - foreign keys: [fk4c63754dac3c679dfd3e841]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - indexes: [fk4c63754dac3c679dfd3e841, primary]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - table found: amine95_toussport.Football
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - columns: [date, sport_id, user_username, name, kilometer, numbersuccessfuldribble, numbersuccessfulpass]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - foreign keys: [fk4c63754dac3c6791b608f8d]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - indexes: [fk4c63754dac3c6791b608f8d, primary]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - table found: amine95_toussport.Friend
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - columns: [date, friend_id, state, username2, username1]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - foreign keys: [fk7deaf6befc9e75ca, fk7deaf6befc9e75cb]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - indexes: [fk7deaf6befc9e75ca, fk7deaf6befc9e75cb, primary]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - table found: amine95_toussport.Natation
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - columns: [date, sport_id, distancecouléedepart, nombremvtbras, user_username, name, time]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - foreign keys: [fk4c63754dac3c6797d578294]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - indexes: [primary, fk4c63754dac3c6797d578294]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - table found: amine95_toussport.Tennis
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - columns: [date, sport_id, numbersuccessfulshot, user_username, name, maxspeedservice, numberaces]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - foreign keys: [fk4c63754dac3c679951a04fb]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - indexes: [fk4c63754dac3c679951a04fb, primary]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - table found: amine95_toussport.User
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - columns: [firstname, password, mail, username, lastname]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - foreign keys: []
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - indexes: [primary]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - table found: amine95_toussport.hibernate_sequences
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - columns: [sequence_next_hi_value, sequence_name]
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - foreign keys: []
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.TableMetadata - indexes: []
+DEBUG AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.SchemaUpdate - alter table Friend add index FK7DEAF6BEA225DE0B (Friend_id), add constraint FK7DEAF6BEA225DE0B foreign key (Friend_id) references User (Username)
+ERROR AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.SchemaUpdate - Unsuccessful: alter table Friend add index FK7DEAF6BEA225DE0B (Friend_id), add constraint FK7DEAF6BEA225DE0B foreign key (Friend_id) references User (Username)
+ERROR AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.SchemaUpdate - Can't create table `amine95_toussport`.`Friend` (errno: 150 "Foreign key constraint is incorrectly formed")
+INFO AWT-EventQueue-0 org.hibernate.tool.hbm2ddl.SchemaUpdate - schema update complete
+DEBUG AWT-EventQueue-0 org.hibernate.impl.SessionFactoryImpl - Checking 0 named HQL queries
+DEBUG AWT-EventQueue-0 org.hibernate.impl.SessionFactoryImpl - Checking 0 named SQL queries
+DEBUG AWT-EventQueue-0 org.hibernate.impl.SessionImpl - opened session at timestamp: 16175334021
+DEBUG AWT-EventQueue-0 org.hibernate.transaction.JDBCTransaction - begin
+DEBUG AWT-EventQueue-0 org.hibernate.jdbc.ConnectionManager - opening JDBC connection
+DEBUG AWT-EventQueue-0 org.hibernate.transaction.JDBCTransaction - current autocommit status: false
+DEBUG AWT-EventQueue-0 org.hibernate.loader.Loader - loading entity: [data.User#Amine]
+DEBUG AWT-EventQueue-0 org.hibernate.jdbc.AbstractBatcher - about to open PreparedStatement (open PreparedStatements: 0, globally: 0)
+DEBUG AWT-EventQueue-0 org.hibernate.SQL - select user0_.Username as Username0_0_, user0_.FirstName as FirstName0_0_, user0_.LastName as LastName0_0_, user0_.Mail as Mail0_0_, user0_.Password as Password0_0_ from User user0_ where user0_.Username=?
+DEBUG AWT-EventQueue-0 org.hibernate.jdbc.AbstractBatcher - about to open ResultSet (open ResultSets: 0, globally: 0)
+DEBUG AWT-EventQueue-0 org.hibernate.loader.Loader - result row: EntityKey[data.User#Amine]
+DEBUG AWT-EventQueue-0 org.hibernate.jdbc.AbstractBatcher - about to close ResultSet (open ResultSets: 1, globally: 1)
+DEBUG AWT-EventQueue-0 org.hibernate.jdbc.AbstractBatcher - about to close PreparedStatement (open PreparedStatements: 1, globally: 1)
+DEBUG AWT-EventQueue-0 org.hibernate.engine.TwoPhaseLoad - resolving associations for [data.User#Amine]
+DEBUG AWT-EventQueue-0 org.hibernate.engine.TwoPhaseLoad - done materializing entity [data.User#Amine]
+DEBUG AWT-EventQueue-0 org.hibernate.engine.StatefulPersistenceContext - initializing non-lazy collections
+DEBUG AWT-EventQueue-0 org.hibernate.loader.Loader - done entity load
+DEBUG AWT-EventQueue-0 org.hibernate.jdbc.ConnectionManager - releasing JDBC connection [ (open PreparedStatements: 0, globally: 0) (open ResultSets: 0, globally: 0)]
