@@ -214,9 +214,9 @@ public class Analyse1 extends JFrame{
 				for(int i=0; i<item ; i++) {
 					comboBoxData.removeItemAt(0);
 				}
-				comboBoxData.addItem(SportValue.FoorballNumberSuccessfulPass);
-				comboBoxData.addItem(SportValue.Foorballkilometer);
-				comboBoxData.addItem(SportValue.FoorballNumberSuccessfulDribble);
+				comboBoxData.addItem(SportValue.FootballNumberSuccessfulPass);
+				comboBoxData.addItem(SportValue.Footballkilometer);
+				comboBoxData.addItem(SportValue.FootballNumberSuccessfulDribble);
 			}
 			if(comboBox_1.getSelectedIndex() == 5) {
 				int item = comboBoxData.getItemCount();

@@ -16,9 +16,13 @@ public class Tennis extends Sport{
 		super(user,SportValue.Tennis,date);
 		this.NumberSuccessfulShot=numberSuccessfulShot;
 		this.MaxSpeedService=maxSpeedService;
-		this.NumberAces=numAces;
+		this.setNumberAces(numAces);
 	}
 	
+	public Tennis() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public <T> T accept(SportVisitor<T> visitor) {
 		return visitor.visit(this);
@@ -38,5 +42,13 @@ public class Tennis extends Sport{
 
 	public void setMaxSpeedService(int maxSpeedService) {
 		MaxSpeedService = maxSpeedService;
+	}
+
+	public int getNumberAces() {
+		return NumberAces;
+	}
+
+	public void setNumberAces(int numberAces) {
+		NumberAces = numberAces;
 	}
 }

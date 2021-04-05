@@ -16,9 +16,9 @@ public class SportValue {
 	public static final String CyclismeUphillDistance = "UphillDistance";
 	public static final String CyclismeAverageSpeed = "AverageSpeed";
 	
-	public static final String FoorballNumberSuccessfulPass = "NumberSuccessfulPass";
-	public static final String Foorballkilometer = "kilometer";
-	public static final String FoorballNumberSuccessfulDribble = "NumberSuccessfulDribble";
+	public static final String FootballNumberSuccessfulPass = "NumberSuccessfulPass";
+	public static final String Footballkilometer = "kilometer";
+	public static final String FootballNumberSuccessfulDribble = "NumberSuccessfulDribble";
 	
 	public static final String NatationDistanceCouléeDepart = "DistanceCouléeDepart";
 	public static final String NatationNombreMvtBras = "NombreMvtBras";

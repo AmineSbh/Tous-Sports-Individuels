@@ -26,6 +26,9 @@ import org.jfree.data.statistics.HistogramType;
 
 import data.Course;
 import data.Cyclisme;
+import data.Tennis;
+import data.Football;
+import data.Natation;
 import data.Sport;
 import data.User;
 import data.UserStatic;
@@ -116,14 +119,14 @@ public class DashboardAnalyse extends JPanel {
 			
 			case SportValue.Football:
 				switch (this.data) {
-					case SportValue.Foorballkilometer:
-						Course(lsport,SportValue.Foorballkilometer,SportValue.Football,1);
+					case SportValue.Footballkilometer:
+						Football(lsport,SportValue.Footballkilometer,SportValue.Football,1);
 					break;
-					case SportValue.FoorballNumberSuccessfulDribble:
-						Course(lsport,SportValue.FoorballNumberSuccessfulDribble,SportValue.Football,2);
+					case SportValue.FootballNumberSuccessfulDribble:
+						Football(lsport,SportValue.FootballNumberSuccessfulDribble,SportValue.Football,2);
 					break;
-					case SportValue.FoorballNumberSuccessfulPass:
-						Course(lsport,SportValue.FoorballNumberSuccessfulPass,SportValue.Football,3);
+					case SportValue.FootballNumberSuccessfulPass:
+						Football(lsport,SportValue.FootballNumberSuccessfulPass,SportValue.Football,3);
 					break;
 					default:
 						throw new IllegalArgumentException("Unexpected value: " + this.data);
@@ -133,13 +136,13 @@ public class DashboardAnalyse extends JPanel {
 			case SportValue.Natation:
 				switch (this.data) {
 					case SportValue.NatationDistanceCouléeDepart:
-						Course(lsport,SportValue.NatationDistanceCouléeDepart, SportValue.Natation,1);
+						Natation(lsport,SportValue.NatationDistanceCouléeDepart, SportValue.Natation,1);
 					break;
 					case SportValue.NatationNombreMvtBras:
-						Course(lsport,SportValue.NatationNombreMvtBras, SportValue.Natation,2);
+						Natation(lsport,SportValue.NatationNombreMvtBras, SportValue.Natation,2);
 					break;
 					case SportValue.NatationTime:
-						Course(lsport,SportValue.NatationTime, SportValue.Natation,3);
+						Natation(lsport,SportValue.NatationTime, SportValue.Natation,3);
 					break;
 					default:
 						throw new IllegalArgumentException("Unexpected value: " + this.data);
@@ -149,13 +152,13 @@ public class DashboardAnalyse extends JPanel {
 			case SportValue.Tennis:
 				switch (this.data) {
 					case SportValue.TennisMaxSpeedService:
-						Course(lsport,SportValue.TennisMaxSpeedService,SportValue.Football,1);
+						Tennis(lsport,SportValue.TennisMaxSpeedService,SportValue.Football,1);
 					break;
 					case SportValue.TennisNumberAces:
-						Course(lsport,SportValue.TennisNumberAces,SportValue.Football,1);
+						Tennis(lsport,SportValue.TennisNumberAces,SportValue.Football,1);
 					break;
 					case SportValue.TennisNumberSuccessfulShot:
-						Course(lsport,SportValue.TennisNumberSuccessfulShot,SportValue.Football,1);
+						Tennis(lsport,SportValue.TennisNumberSuccessfulShot,SportValue.Football,1);
 					break;
 					default:
 						throw new IllegalArgumentException("Unexpected value: " + this.data);
@@ -255,6 +258,30 @@ public class DashboardAnalyse extends JPanel {
 						dataset.addValue(0,user.getInstance().getUserName(),dayI);
 					}
 				}
+				if(existFriend()) {
+					for(Sport sf : lsportFriend) {
+						course = (Course) sf;
+						Integer d = course.getDate().getDate();
+						Integer m = course.getDate().getMonth();
+						
+						if(d==i) {
+							exist = true;
+							if(i<10) {
+								dataset.addValue(course.getMaxSpeed(),getUser().getUserName(),"0"+dayI);
+							}else {
+								dataset.addValue(course.getMaxSpeed(),getUser().getUserName(), dayI);
+							}
+						}
+					}
+					if(!exist) {
+						if(i<10) {
+							dataset.addValue(0,getUser().getUserName(),"0"+dayI);
+						}else {
+							dataset.addValue(0,getUser().getUserName(),dayI);
+						}
+					}
+				}
+				
 			}
 		}
 		
@@ -282,6 +309,29 @@ public class DashboardAnalyse extends JPanel {
 							dataset.addValue(0,user.getInstance().getUserName(),"0"+dayI);
 						}else {
 							dataset.addValue(0,user.getInstance().getUserName(),dayI);
+						}
+					}
+					if(existFriend()) {
+						for(Sport sf : lsportFriend) {
+							course = (Course) sf;
+							Integer d = course.getDate().getDate();
+							Integer m = course.getDate().getMonth();
+							
+							if(d==i) {
+								exist = true;
+								if(i<10) {
+									dataset.addValue(course.getAverageSpeed(),getUser().getUserName(),"0"+dayI);
+								}else {
+									dataset.addValue(course.getAverageSpeed(),getUser().getUserName(), dayI);
+								}
+							}
+						}
+						if(!exist) {
+							if(i<10) {
+								dataset.addValue(0,getUser().getUserName(),"0"+dayI);
+							}else {
+								dataset.addValue(0,getUser().getUserName(),dayI);
+							}
 						}
 					}
 				}
@@ -348,6 +398,29 @@ public class DashboardAnalyse extends JPanel {
 							dataset.addValue(0,user.getInstance().getUserName(),dayI);
 						}
 					}
+					if(existFriend()) {
+						for(Sport sf : lsportFriend) {
+							cyclisme = (Cyclisme) sf;
+							Integer d = cyclisme.getDate().getDate();
+							Integer m = cyclisme.getDate().getMonth();
+							
+							if(d==i) {
+								exist = true;
+								if(i<10) {
+									dataset.addValue(cyclisme.getNumberOfSprint(),getUser().getUserName(),"0"+dayI);
+								}else {
+									dataset.addValue(cyclisme.getNumberOfSprint(),getUser().getUserName(), dayI);
+								}
+							}
+						}
+						if(!exist) {
+							if(i<10) {
+								dataset.addValue(0,getUser().getUserName(),"0"+dayI);
+							}else {
+								dataset.addValue(0,getUser().getUserName(),dayI);
+							}
+						}
+					}
 				}
 				}
 				if(choix_data==2) {
@@ -376,6 +449,30 @@ public class DashboardAnalyse extends JPanel {
 								dataset.addValue(0,user.getInstance().getUserName(),dayI);
 							}
 						}
+						if(existFriend()) {
+							for(Sport sf : lsportFriend) {
+								cyclisme = (Cyclisme) sf;
+								Integer d = cyclisme.getDate().getDate();
+								Integer m = cyclisme.getDate().getMonth();
+								
+								if(d==i) {
+									exist = true;
+									if(i<10) {
+										dataset.addValue(cyclisme.getUphillDistance(),getUser().getUserName(),"0"+dayI);
+									}else {
+										dataset.addValue(cyclisme.getUphillDistance(),getUser().getUserName(), dayI);
+									}
+								}
+							}
+							if(!exist) {
+								if(i<10) {
+									dataset.addValue(0,getUser().getUserName(),"0"+dayI);
+								}else {
+									dataset.addValue(0,getUser().getUserName(),dayI);
+								}
+							}
+						}
+						
 					}
 				}
 				
@@ -405,6 +502,29 @@ public class DashboardAnalyse extends JPanel {
 									dataset.addValue(0,user.getInstance().getUserName(),dayI);
 								}
 							}
+							if(existFriend()) {
+								for(Sport sf : lsportFriend) {
+									cyclisme = (Cyclisme) sf;
+									Integer d = cyclisme.getDate().getDate();
+									Integer m = cyclisme.getDate().getMonth();
+									
+									if(d==i) {
+										exist = true;
+										if(i<10) {
+											dataset.addValue(cyclisme.getAverageSpeed(),getUser().getUserName(),"0"+dayI);
+										}else {
+											dataset.addValue(cyclisme.getAverageSpeed(),getUser().getUserName(), dayI);
+										}
+									}
+								}
+								if(!exist) {
+									if(i<10) {
+										dataset.addValue(0,getUser().getUserName(),"0"+dayI);
+									}else {
+										dataset.addValue(0,getUser().getUserName(),dayI);
+									}
+								}
+							}
 						}
 					}
 		
@@ -422,6 +542,579 @@ public class DashboardAnalyse extends JPanel {
         g2.drawImage(chartImage, 0,0, null);
 	}
 	
+	
+	private void Tennis(List<Sport> lsport, String legendOrdinate, String legendGraphic, Integer choix) {
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		UserStatic user = new UserStatic();
+		Tennis tennis = new Tennis();
+		Boolean exist;
+		Integer choix_data = choix;
+		Calendar cal = Calendar.getInstance();
+		cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+		if(choix_data==1) {
+		for(Integer i=1; i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH);i++) {
+			exist=false;
+			String dayI = i.toString();
+			
+			for(Sport s : lsport) {
+				tennis = (Tennis) s;
+				Integer d = tennis.getDate().getDate();
+				Integer m = tennis.getDate().getMonth();
+				
+				if(d==i) {
+					exist = true;
+					if(i<10) {
+						dataset.addValue(tennis.getNumberSuccessfulShot(),user.getInstance().getUserName(),"0"+dayI);
+					}else {
+						dataset.addValue(tennis.getNumberSuccessfulShot(),user.getInstance().getUserName(), dayI);
+					}
+				}
+			}
+			if(!exist) {
+				if(i<10) {
+					dataset.addValue(0,user.getInstance().getUserName(),"0"+dayI);
+				}else {
+					dataset.addValue(0,user.getInstance().getUserName(),dayI);
+				}
+			}
+			
+			if(existFriend()) {
+				for(Sport sf : lsportFriend) {
+					tennis = (Tennis) sf;
+					Integer d = tennis.getDate().getDate();
+					Integer m = tennis.getDate().getMonth();
+					
+					if(d==i) {
+						exist = true;
+						if(i<10) {
+							dataset.addValue(tennis.getNumberSuccessfulShot(),getUser().getUserName(),"0"+dayI);
+						}else {
+							dataset.addValue(tennis.getNumberSuccessfulShot(),getUser().getUserName(), dayI);
+						}
+					}
+				}
+				if(!exist) {
+					if(i<10) {
+						dataset.addValue(0,getUser().getUserName(),"0"+dayI);
+					}else {
+						dataset.addValue(0,getUser().getUserName(),dayI);
+					}
+				}
+			}
+			
+		}
+		}
+		if(choix_data==2) {
+			for(Integer i=1; i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH);i++) {
+				exist=false;
+				String dayI = i.toString();
+				
+				for(Sport s : lsport) {
+					tennis = (Tennis) s;
+					Integer d = tennis.getDate().getDate();
+					Integer m = tennis.getDate().getMonth();
+					
+					if(d==i) {
+						exist = true;
+						if(i<10) {
+							dataset.addValue(tennis.getMaxSpeedService(),user.getInstance().getUserName(),"0"+dayI);
+						}else {
+							dataset.addValue(tennis.getMaxSpeedService(),user.getInstance().getUserName(), dayI);
+						}
+					}
+				}
+				if(!exist) {
+					if(i<10) {
+						dataset.addValue(0,user.getInstance().getUserName(),"0"+dayI);
+					}else {
+						dataset.addValue(0,user.getInstance().getUserName(),dayI);
+					}
+				}
+				if(existFriend()) {
+					for(Sport sf : lsportFriend) {
+						tennis = (Tennis) sf;
+						Integer d = tennis.getDate().getDate();
+						Integer m = tennis.getDate().getMonth();
+						
+						if(d==i) {
+							exist = true;
+							if(i<10) {
+								dataset.addValue(tennis.getMaxSpeedService(),getUser().getUserName(),"0"+dayI);
+							}else {
+								dataset.addValue(tennis.getMaxSpeedService(),getUser().getUserName(), dayI);
+							}
+						}
+					}
+					if(!exist) {
+						if(i<10) {
+							dataset.addValue(0,getUser().getUserName(),"0"+dayI);
+						}else {
+							dataset.addValue(0,getUser().getUserName(),dayI);
+						}
+					}
+				}
+			}
+		}
+		
+			if(choix_data==3) {
+				for(Integer i=1; i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH);i++) {
+					exist=false;
+					String dayI = i.toString();
+					
+					for(Sport s : lsport) {
+						tennis = (Tennis) s;
+						Integer d = tennis.getDate().getDate();
+						Integer m = tennis.getDate().getMonth();
+						
+						if(d==i) {
+							exist = true;
+							if(i<10) {
+								dataset.addValue(tennis.getNumberAces(),user.getInstance().getUserName(),"0"+dayI);
+							}else {
+								dataset.addValue(tennis.getNumberAces(),user.getInstance().getUserName(),dayI);
+							}
+						}
+					}
+					if(!exist) {
+						if(i<10) {
+							dataset.addValue(0,user.getInstance().getUserName(),"0"+dayI);
+						}else {
+							dataset.addValue(0,user.getInstance().getUserName(),dayI);
+						}
+					}
+					if(existFriend()) {
+						for(Sport sf : lsportFriend) {
+							tennis = (Tennis) sf;
+							Integer d = tennis.getDate().getDate();
+							Integer m = tennis.getDate().getMonth();
+							
+							if(d==i) {
+								exist = true;
+								if(i<10) {
+									dataset.addValue(tennis.getNumberAces(),getUser().getUserName(),"0"+dayI);
+								}else {
+									dataset.addValue(tennis.getNumberAces(),getUser().getUserName(), dayI);
+								}
+							}
+						}
+						if(!exist) {
+							if(i<10) {
+								dataset.addValue(0,getUser().getUserName(),"0"+dayI);
+							}else {
+								dataset.addValue(0,getUser().getUserName(),dayI);
+							}
+						}
+					}
+				}
+			}
+		
+		JFreeChart barChart = ChartFactory.createBarChart(legendOrdinate, "Date", 
+				legendGraphic, dataset, PlotOrientation.VERTICAL, true, true, false);
+	    barChart.setBackgroundPaint(Color.white);
+	    
+	    JFreeChart lineChart = ChartFactory.createLineChart(legendOrdinate, "Date", 
+				legendGraphic, dataset, PlotOrientation.VERTICAL, true, true, false);
+	  switch (choix_data) {
+	  case 1:
+		  	BufferedImage chartImage = barChart.createBufferedImage(Test.IDEAL_DASHBOARD_DIMENSION.width,
+        		Test.IDEAL_DASHBOARD_DIMENSION.height, null);
+		  	g2.drawImage(chartImage, 0,0, null);
+		  	break;
+	  case 2:
+		    BufferedImage chartImage1 = lineChart.createBufferedImage(Test.IDEAL_DASHBOARD_DIMENSION.width,
+	        		Test.IDEAL_DASHBOARD_DIMENSION.height, null);
+	        g2.drawImage(chartImage1, 0,0, null);
+	        break;
+	  case 3:
+		    BufferedImage chartImage2 = barChart.createBufferedImage(Test.IDEAL_DASHBOARD_DIMENSION.width,
+	        		Test.IDEAL_DASHBOARD_DIMENSION.height, null);
+	        g2.drawImage(chartImage2, 0,0, null);
+	        break;
+		  
+	  }
+	}
+	
+	private void Football(List<Sport> lsport, String legendOrdinate, String legendGraphic, Integer choix) {
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		UserStatic user = new UserStatic();
+		Football football = new Football();
+		Boolean exist;
+		Integer choix_data = choix;
+		Calendar cal = Calendar.getInstance();
+		cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+		if(choix_data==1) {
+		for(Integer i=1; i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH);i++) {
+			exist=false;
+			String dayI = i.toString();
+			
+			for(Sport s : lsport) {
+				football = (Football) s;
+				Integer d = football.getDate().getDate();
+				Integer m = football.getDate().getMonth();
+				
+				if(d==i) {
+					exist = true;
+					if(i<10) {
+						dataset.addValue(football.getNumberSuccessfulPass(),user.getInstance().getUserName(),"0"+dayI);
+					}else {
+						dataset.addValue(football.getNumberSuccessfulPass(),user.getInstance().getUserName(), dayI);
+					}
+				}
+			}
+			if(!exist) {
+				if(i<10) {
+					dataset.addValue(0,user.getInstance().getUserName(),"0"+dayI);
+				}else {
+					dataset.addValue(0,user.getInstance().getUserName(),dayI);
+				}
+			}
+			
+			if(existFriend()) {
+				for(Sport sf : lsportFriend) {
+					football = (Football) sf;
+					Integer d = football.getDate().getDate();
+					Integer m = football.getDate().getMonth();
+					
+					if(d==i) {
+						exist = true;
+						if(i<10) {
+							dataset.addValue(football.getNumberSuccessfulPass(),getUser().getUserName(),"0"+dayI);
+						}else {
+							dataset.addValue(football.getNumberSuccessfulPass(),getUser().getUserName(), dayI);
+						}
+					}
+				}
+				if(!exist) {
+					if(i<10) {
+						dataset.addValue(0,getUser().getUserName(),"0"+dayI);
+					}else {
+						dataset.addValue(0,getUser().getUserName(),dayI);
+					}
+				}
+			}
+			
+		}
+		}
+		if(choix_data==2) {
+			for(Integer i=1; i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH);i++) {
+				exist=false;
+				String dayI = i.toString();
+				
+				for(Sport s : lsport) {
+					football = (Football) s;
+					Integer d = football.getDate().getDate();
+					Integer m = football.getDate().getMonth();
+					
+					if(d==i) {
+						exist = true;
+						if(i<10) {
+							dataset.addValue(football.getKilometer(),user.getInstance().getUserName(),"0"+dayI);
+						}else {
+							dataset.addValue(football.getKilometer(),user.getInstance().getUserName(), dayI);
+						}
+					}
+				}
+				if(!exist) {
+					if(i<10) {
+						dataset.addValue(0,user.getInstance().getUserName(),"0"+dayI);
+					}else {
+						dataset.addValue(0,user.getInstance().getUserName(),dayI);
+					}
+				}
+				if(existFriend()) {
+					for(Sport sf : lsportFriend) {
+						football = (Football) sf;
+						Integer d = football.getDate().getDate();
+						Integer m = football.getDate().getMonth();
+						
+						if(d==i) {
+							exist = true;
+							if(i<10) {
+								dataset.addValue(football.getKilometer(),getUser().getUserName(),"0"+dayI);
+							}else {
+								dataset.addValue(football.getKilometer(),getUser().getUserName(), dayI);
+							}
+						}
+					}
+					if(!exist) {
+						if(i<10) {
+							dataset.addValue(0,getUser().getUserName(),"0"+dayI);
+						}else {
+							dataset.addValue(0,getUser().getUserName(),dayI);
+						}
+					}
+				}
+			}
+		}
+		
+			if(choix_data==3) {
+				for(Integer i=1; i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH);i++) {
+					exist=false;
+					String dayI = i.toString();
+					
+					for(Sport s : lsport) {
+						football = (Football) s;
+						Integer d = football.getDate().getDate();
+						Integer m = football.getDate().getMonth();
+						
+						if(d==i) {
+							exist = true;
+							if(i<10) {
+								dataset.addValue(football.getNumberSuccessfulDribble(),user.getInstance().getUserName(),"0"+dayI);
+							}else {
+								dataset.addValue(football.getNumberSuccessfulDribble(),user.getInstance().getUserName(),dayI);
+							}
+						}
+					}
+					if(!exist) {
+						if(i<10) {
+							dataset.addValue(0,user.getInstance().getUserName(),"0"+dayI);
+						}else {
+							dataset.addValue(0,user.getInstance().getUserName(),dayI);
+						}
+					}
+					if(existFriend()) {
+						for(Sport sf : lsportFriend) {
+							football = (Football) sf;
+							Integer d = football.getDate().getDate();
+							Integer m = football.getDate().getMonth();
+							
+							if(d==i) {
+								exist = true;
+								if(i<10) {
+									dataset.addValue(football.getNumberSuccessfulDribble(),getUser().getUserName(),"0"+dayI);
+								}else {
+									dataset.addValue(football.getNumberSuccessfulDribble(),getUser().getUserName(), dayI);
+								}
+							}
+						}
+						if(!exist) {
+							if(i<10) {
+								dataset.addValue(0,getUser().getUserName(),"0"+dayI);
+							}else {
+								dataset.addValue(0,getUser().getUserName(),dayI);
+							}
+						}
+					}
+				}
+			}
+		
+		JFreeChart barChart = ChartFactory.createBarChart(legendOrdinate, "Date", 
+				legendGraphic, dataset, PlotOrientation.VERTICAL, true, true, false);
+	    barChart.setBackgroundPaint(Color.white);
+	    
+	    JFreeChart lineChart = ChartFactory.createLineChart(legendOrdinate, "Date", 
+				legendGraphic, dataset, PlotOrientation.VERTICAL, true, true, false);
+	  switch (choix_data) {
+	  case 1:
+		  	BufferedImage chartImage = barChart.createBufferedImage(Test.IDEAL_DASHBOARD_DIMENSION.width,
+        		Test.IDEAL_DASHBOARD_DIMENSION.height, null);
+		  	g2.drawImage(chartImage, 0,0, null);
+		  	break;
+	  case 2:
+		    BufferedImage chartImage1 = lineChart.createBufferedImage(Test.IDEAL_DASHBOARD_DIMENSION.width,
+	        		Test.IDEAL_DASHBOARD_DIMENSION.height, null);
+	        g2.drawImage(chartImage1, 0,0, null);
+	        break;
+	  case 3:
+		    BufferedImage chartImage2 = barChart.createBufferedImage(Test.IDEAL_DASHBOARD_DIMENSION.width,
+	        		Test.IDEAL_DASHBOARD_DIMENSION.height, null);
+	        g2.drawImage(chartImage2, 0,0, null);
+	        break;
+		  
+	  }
+	}
+	
+	private void Natation(List<Sport> lsport, String legendOrdinate, String legendGraphic, Integer choix) {
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		UserStatic user = new UserStatic();
+		Natation natation = new Natation();
+		Boolean exist;
+		Integer choix_data = choix;
+		Calendar cal = Calendar.getInstance();
+		cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+		if(choix_data==1) {
+		for(Integer i=1; i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH);i++) {
+			exist=false;
+			String dayI = i.toString();
+			
+			for(Sport s : lsport) {
+				natation = (Natation) s;
+				Integer d = natation.getDate().getDate();
+				Integer m = natation.getDate().getMonth();
+				
+				if(d==i) {
+					exist = true;
+					if(i<10) {
+						dataset.addValue(natation.getDistanceCouléeDepart(),user.getInstance().getUserName(),"0"+dayI);
+					}else {
+						dataset.addValue(natation.getDistanceCouléeDepart(),user.getInstance().getUserName(), dayI);
+					}
+				}
+			}
+			if(!exist) {
+				if(i<10) {
+					dataset.addValue(0,user.getInstance().getUserName(),"0"+dayI);
+				}else {
+					dataset.addValue(0,user.getInstance().getUserName(),dayI);
+				}
+			}
+			
+			if(existFriend()) {
+				for(Sport sf : lsportFriend) {
+					natation = (Natation) sf;
+					Integer d = natation.getDate().getDate();
+					Integer m = natation.getDate().getMonth();
+					
+					if(d==i) {
+						exist = true;
+						if(i<10) {
+							dataset.addValue(natation.getDistanceCouléeDepart(),getUser().getUserName(),"0"+dayI);
+						}else {
+							dataset.addValue(natation.getDistanceCouléeDepart(),getUser().getUserName(), dayI);
+						}
+					}
+				}
+				if(!exist) {
+					if(i<10) {
+						dataset.addValue(0,getUser().getUserName(),"0"+dayI);
+					}else {
+						dataset.addValue(0,getUser().getUserName(),dayI);
+					}
+				}
+			}
+			
+		}
+		}
+		if(choix_data==2) {
+			for(Integer i=1; i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH);i++) {
+				exist=false;
+				String dayI = i.toString();
+				
+				for(Sport s : lsport) {
+					natation = (Natation) s;
+					Integer d = natation.getDate().getDate();
+					Integer m = natation.getDate().getMonth();
+					
+					if(d==i) {
+						exist = true;
+						if(i<10) {
+							dataset.addValue(natation.getNombreMvtBras(),user.getInstance().getUserName(),"0"+dayI);
+						}else {
+							dataset.addValue(natation.getNombreMvtBras(),user.getInstance().getUserName(), dayI);
+						}
+					}
+				}
+				if(!exist) {
+					if(i<10) {
+						dataset.addValue(0,user.getInstance().getUserName(),"0"+dayI);
+					}else {
+						dataset.addValue(0,user.getInstance().getUserName(),dayI);
+					}
+				}
+				if(existFriend()) {
+					for(Sport sf : lsportFriend) {
+						natation = (Natation) sf;
+						Integer d = natation.getDate().getDate();
+						Integer m = natation.getDate().getMonth();
+						
+						if(d==i) {
+							exist = true;
+							if(i<10) {
+								dataset.addValue(natation.getNombreMvtBras(),getUser().getUserName(),"0"+dayI);
+							}else {
+								dataset.addValue(natation.getNombreMvtBras(),getUser().getUserName(), dayI);
+							}
+						}
+					}
+					if(!exist) {
+						if(i<10) {
+							dataset.addValue(0,getUser().getUserName(),"0"+dayI);
+						}else {
+							dataset.addValue(0,getUser().getUserName(),dayI);
+						}
+					}
+				}
+			}
+		}
+		
+			if(choix_data==3) {
+				for(Integer i=1; i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH);i++) {
+					exist=false;
+					String dayI = i.toString();
+					
+					for(Sport s : lsport) {
+						natation = (Natation) s;
+						Integer d = natation.getDate().getDate();
+						Integer m = natation.getDate().getMonth();
+						
+						if(d==i) {
+							exist = true;
+							if(i<10) {
+								dataset.addValue(natation.getTime(),user.getInstance().getUserName(),"0"+dayI);
+							}else {
+								dataset.addValue(natation.getTime(),user.getInstance().getUserName(),dayI);
+							}
+						}
+					}
+					if(!exist) {
+						if(i<10) {
+							dataset.addValue(0,user.getInstance().getUserName(),"0"+dayI);
+						}else {
+							dataset.addValue(0,user.getInstance().getUserName(),dayI);
+						}
+					}
+					if(existFriend()) {
+						for(Sport sf : lsportFriend) {
+							natation = (Natation) sf;
+							Integer d = natation.getDate().getDate();
+							Integer m = natation.getDate().getMonth();
+							
+							if(d==i) {
+								exist = true;
+								if(i<10) {
+									dataset.addValue(natation.getTime(),getUser().getUserName(),"0"+dayI);
+								}else {
+									dataset.addValue(natation.getTime(),getUser().getUserName(), dayI);
+								}
+							}
+						}
+						if(!exist) {
+							if(i<10) {
+								dataset.addValue(0,getUser().getUserName(),"0"+dayI);
+							}else {
+								dataset.addValue(0,getUser().getUserName(),dayI);
+							}
+						}
+					}
+				}
+			}
+		
+		JFreeChart barChart = ChartFactory.createBarChart(legendOrdinate, "Date", 
+				legendGraphic, dataset, PlotOrientation.VERTICAL, true, true, false);
+	    barChart.setBackgroundPaint(Color.white);
+	    
+	    JFreeChart lineChart = ChartFactory.createLineChart(legendOrdinate, "Date", 
+				legendGraphic, dataset, PlotOrientation.VERTICAL, true, true, false);
+	  switch (choix_data) {
+	  case 1:
+		  	BufferedImage chartImage = barChart.createBufferedImage(Test.IDEAL_DASHBOARD_DIMENSION.width,
+        		Test.IDEAL_DASHBOARD_DIMENSION.height, null);
+		  	g2.drawImage(chartImage, 0,0, null);
+		  	break;
+	  case 2:
+		    BufferedImage chartImage1 = lineChart.createBufferedImage(Test.IDEAL_DASHBOARD_DIMENSION.width,
+	        		Test.IDEAL_DASHBOARD_DIMENSION.height, null);
+	        g2.drawImage(chartImage1, 0,0, null);
+	        break;
+	  case 3:
+		    BufferedImage chartImage2 = barChart.createBufferedImage(Test.IDEAL_DASHBOARD_DIMENSION.width,
+	        		Test.IDEAL_DASHBOARD_DIMENSION.height, null);
+	        g2.drawImage(chartImage2, 0,0, null);
+	        break;
+		  
+	  }
+	}
 
 	public User getUser() {
 		return this.userFriend;

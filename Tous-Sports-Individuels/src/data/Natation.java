@@ -19,6 +19,10 @@ public class Natation extends Sport{
 		this.Time=time;
 	}
 
+	public Natation() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public <T> T accept(SportVisitor<T> visitor) {
 		return visitor.visit(this);
